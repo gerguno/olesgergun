@@ -1,5 +1,10 @@
+import Link from 'next/link'
+import {MainLayout} from "../components/MainLayout";
+
 export default function Texts() {
 	return (
-		<h1>Texts page</h1>
+		<MainLayout title={'Texts'}>
+			<h1>Texts page</h1>
+		</MainLayout>
 	)
 }

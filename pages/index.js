@@ -1,21 +1,25 @@
+import {MainLayout} from "../components/MainLayout";
 import Link from 'next/link'
-import Head from 'next/head'
 
-export default function Index() {
+export default function Index({posts}) {
 	return (
-		<>
-			<Head>
-				<title>Oleś Gergun</title>
-				<meta name="keywords" content='oles, gergun, ui, design, type, typography, code'/>
-				<meta name="description" content='oles, gergun, ui, design, type, typography, code'/>
-				<meta charSet="utf-8"/>
-			</Head>
-
-			<h1>Index page</h1>
-			<p>Lorem ipsum</p>
-
-			<p><Link href={'/about'}><a>About</a></Link></p>
-			<p><Link href={'/texts'}><a>Texts</a></Link></p>
-		</>
+		<MainLayout title={'Workbench'}>
+			{posts.map(post => (
+				<li key={post.id}>
+					<Link href={`/[id]`} as={`/${post.id}`}>
+						<a>{post.title} {post.aftertitle}</a>
+					</Link>
+				</li>
+			))}
+		</MainLayout>
 	)
 }
+
+Index.getInitialProps = async () => {
+	const response = await fetch('http://localhost:4200/posts')
+	const posts = await response.json();
+	return {
+		posts
+	}
+}
+

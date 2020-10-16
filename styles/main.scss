@@ -1,0 +1,30 @@
+$white: white;
+$black: black;
+
+body {
+    color: $black;
+    background-color: $white;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+nav {
+    position: fixed;
+    height: 60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $black;
+    display: flex;
+    justify-content: space-around;
+}
+nav a {
+    color: $white;
+    text-decoration: none;
+}
+main {
+    margin-top: 60px;
+}
