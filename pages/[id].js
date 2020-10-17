@@ -2,27 +2,7 @@ import {useState, useEffect} from 'react'
 import {MainLayout} from "../components/MainLayout"
 import {useRouter} from 'next/router'
 
-export default function Post({post: serverPost}) {
-	// const [post, setPost] = useState(serverPost)
-	// const router = useRouter()
-	//
-	// useEffect(() => {
-	// 	async function load() {
-	// 		const response = await fetch(`http://localhost:4200/posts/${router.query.id}`)
-	// 		const data = await response.json();
-	// 		setPost(data)
-	// 	}
-	// 	if (!serverPost) {
-	// 		load()
-	// 	}
-	// }, [])
-	//
-	// if (!post) {
-	// 	return <MainLayout>
-	// 		<p>Loading...</p>
-	// 	</MainLayout>
-	// }
-
+export default function Post({ post }) {
 	return (
 		<MainLayout title={post.title}>
 			<p>{post.title} {post.aftertitle}</p>
