@@ -7,7 +7,8 @@ export default function Index({posts}) {
 			{posts.map(post => (
 				<li key={post.id}>
 					<Link href={`/[id]`} as={`/${post.id}`}>
-						<a>{post.title} {post.aftertitle}</a>
+						<a>{post.title} {post.afterTitle}</a>
+						{/*<img src={`/media/${posts.heroImage}`}/>*/}
 					</Link>
 				</li>
 			))}

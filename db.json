@@ -2,7 +2,7 @@
   "posts": [
     {"id":  "kse",
       "title": "Kyiv School of Economics",
-      "aftertitle": "2016, brand identity, website design, while working at MB",
+      "afterTitle": "2016, brand identity, website design, while working at MB",
       "heroImage": "heroimage.png",
       "heroImageInternal": "heroimageinternal.png",
       "description": "Litigation and courts search service that helps you to find platform unites a wide audience of researchers by building connection between topics they study. The public art of the platform gives.",
@@ -10,7 +10,7 @@
     },
     {"id":  "ukrainian-judiciary",
       "title": "Ukrainian Judiciary",
-      "aftertitle": "2018, digital service design, while working at MB",
+      "afterTitle": "2018, digital service design, while working at MB",
       "heroImage": "heroimage.png",
       "heroImageInternal": "heroimageinternal.png",
       "description": "Litigation and courts search service that helps you to find platform unites a wide audience of researchers by building connection between topics they study. The public art of the platform gives.",

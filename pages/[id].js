@@ -5,10 +5,8 @@ import {useRouter} from 'next/router'
 export default function Post({ post }) {
 	return (
 		<MainLayout title={post.title}>
-			<p>{post.title} {post.aftertitle}</p>
-			{/*<img src={`..public/images/${post.heroImage}`}/>*/}
-
-			{/*<img src={img}/>*/}
+			<p>{post.title} {post.afterTitle}</p>
+			<img src={`/media/${post.id}/${post.heroImageInternal}`}/>
 			<h1>{post.description}</h1>
 		</MainLayout>
 	)
