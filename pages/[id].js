@@ -6,7 +6,7 @@ export default function Post({ post }) {
 	return (
 		<MainLayout title={post.title}>
 			<p>{post.title} {post.afterTitle}</p>
-			<img src={`/media/${post.id}/${post.heroImageInternal}`}/>
+			<img src={`/media/${post.id}/${post.heroVisualInternal.imageURL}`}/>
 			<h1>{post.description}</h1>
 		</MainLayout>
 	)
