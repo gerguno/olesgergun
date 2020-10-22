@@ -1,14 +1,19 @@
-import {MainLayout} from "../components/MainLayout";
+import { MainLayout } from "../components/MainLayout"
+import { getAllPostsForHome } from '../lib/api'
+import { request } from '../lib/api'
 import Link from 'next/link'
 
-export default function Index({posts}) {
+export default function Index({ posts }) {
+	console.log(posts)
 	return (
 		<MainLayout title={'Workbench'}>
+			{/*<div>{JSON.stringify(posts, null, 2)}</div>*/}
+
 			{posts.map(post => (
-				<li key={post.id}>
-					<Link href={`/[id]`} as={`/${post.id}`}>
+				<li key={post.slug}>
+					<Link href={`/[slug]`} as={`/${post.slug}`}>
 						<a>{post.title} {post.afterTitle}
-							<img src={`/media/${post.id}/${post.heroVisual.imageURL}`}/>
+							<img src={post.coverImage.url}/>
 						</a>
 					</Link>
 				</li>
@@ -17,11 +22,24 @@ export default function Index({posts}) {
 	)
 }
 
-Index.getInitialProps = async () => {
-	const response = await fetch('http://localhost:4200/posts')
-	const posts = await response.json();
+const HOMEPAGE_QUERY = `{
+      allPosts {
+        slug
+        title
+        afterTitle
+         coverImage {
+		  url
+		}
+      }
+    }`
+
+export async function getStaticProps() {
+	const data = await request({
+		query: HOMEPAGE_QUERY,
+	})
+	const posts = data.allPosts;
 	return {
-		posts
+		props: { posts }
 	}
 }
 
