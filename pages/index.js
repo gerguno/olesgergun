@@ -1,45 +1,44 @@
-import { MainLayout } from "../components/MainLayout"
-import { getAllPostsForHome } from '../lib/api'
-import { request } from '../lib/api'
 import Link from 'next/link'
+import {request} from '../lib/api'
+import {MainLayout} from "../components/MainLayout"
+import {FullsizeMedia} from "../components/FullsizeMedia";
+import {PostTitle} from "../components/PostTitle";
 
 export default function Index({ posts }) {
-	console.log(posts)
 	return (
 		<MainLayout title={'Workbench'}>
-			{/*<div>{JSON.stringify(posts, null, 2)}</div>*/}
-
 			{posts.map(post => (
-				<li key={post.slug}>
 					<Link href={`/[slug]`} as={`/${post.slug}`}>
-						<a>{post.title} {post.afterTitle}
-							<img src={post.coverImage.url}/>
+						<a>
+							<PostTitle title={post.title} afterTitle={post.afterTitle}/>
+							<FullsizeMedia src={post.coverImage.url}/>
 						</a>
 					</Link>
-				</li>
 			))}
 		</MainLayout>
 	)
 }
 
-const HOMEPAGE_QUERY = `{
-      allPosts {
-        slug
-        title
-        afterTitle
-         coverImage {
-		  url
-		}
-      }
-    }`
-
 export async function getStaticProps() {
 	const data = await request({
-		query: HOMEPAGE_QUERY,
+		query: `
+		{
+		  allPosts {
+			slug
+			title
+			afterTitle
+			 coverImage {
+			  url
+			}
+		  }
+		}`
 	})
-	const posts = data.allPosts;
 	return {
-		props: { posts }
+		props: {
+			posts: [...data?.allPosts] //return cut array (posts = data.allPosts)
+		}
 	}
 }
+
+
 
