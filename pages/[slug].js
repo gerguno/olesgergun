@@ -3,7 +3,7 @@ import ErrorPage from 'next/error'
 import {MainLayout} from "../components/MainLayout"
 import {request} from "../lib/api"
 import {PostTitle} from "../components/PostTitle";
-import {FullsizeMedia} from "../components/FullsizeMedia";
+import {FullsizeMedium} from "../components/FullsizeMedium";
 import {PostDescription} from "../components/PostDescription";
 import {PostModuleContent} from "../components/PostModuleContent";
 
@@ -15,7 +15,7 @@ export default function Post({ post }) {
 	return (
 		<MainLayout title={post.title}>
 			<PostTitle title={post.title} afterTitle={post.afterTitle}/>
-			<FullsizeMedia src={post.coverImageInternal.url}/>
+			<FullsizeMedium src={post.coverMediumInternal.url}/>
 			<PostDescription content={post.description}/>
 			<PostModuleContent contentArray={post.moduleContent} />
 		</MainLayout>
@@ -55,10 +55,10 @@ query PostBySlug($slug: String) {
     title
     afterTitle
     slug
-    coverImage {
+    coverMedium {
       url
     }
-    coverImageInternal {
+    coverMediumInternal {
       url
     }
     description
@@ -68,27 +68,15 @@ query PostBySlug($slug: String) {
         storyName
         storyText
       }
-      ... on FullsizeImageRecord {
+      ... on FullsizeMediumRecord {
         id
-        fullsizeImageSpecific {
+        fullsizeMedium {
           url
         }
       }
-      ... on FullsizeVideoRecord {
+      ... on HalfscreensMediumRecord {
         id
-        fullsizeVideoSpecific {
-          url
-        }
-      }
-      ... on HalfscreenVideoRecord {
-        id
-        halfscreenVideoSpecific {
-          url
-        }
-      }
-      ... on HalfscreenImageBlockRecord {
-        id
-        halfscreenImages {
+        halfscreenMedium {
           url
         }
       }

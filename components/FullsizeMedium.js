@@ -1,8 +1,8 @@
 import {FullsizeImage} from "./FullsizeImage";
 import {FullsizeVideo} from "./FullsizeVideo";
 
-export function FullsizeMedia({src}) {
-    const extension = src.split('.').pop()
+export function FullsizeMedium({src}) {
+    let extension = src.split('.').pop() //get extension
     return (
         <>
             {(extension=="png" || extension=="jpg") &&

@@ -1,7 +1,6 @@
-import {FullsizeMedia} from "./FullsizeMedia";
 import {PostStory} from "./PostStory";
-import {HalfscreenImage} from "./HalfscreenImage";
-import {HalfscreenImages} from "./HalfscreenImages";
+import {FullsizeMedium} from "./FullsizeMedium";
+import {HalfscreensMedium} from "./HalfscreensMedium";
 
 export function PostModuleContent({contentArray}) {
     return (
@@ -10,11 +9,11 @@ export function PostModuleContent({contentArray}) {
                 {postModule.storyName &&
                 <PostStory name={postModule.storyName} text={postModule.storyText} />}
 
-                {postModule.fullsizeImageSpecific &&
-                <FullsizeMedia src={postModule.fullsizeImageSpecific.url}/>}
+                {postModule.fullsizeMedium &&
+                <FullsizeMedium src={postModule.fullsizeMedium.url}/>}
 
-                {postModule.halfscreenImages &&
-                <HalfscreenImages imagesArray={postModule.halfscreenImages}/>}
+                {postModule.halfscreenMedium &&
+                <HalfscreensMedium mediaArray={postModule.halfscreenMedium}/>}
 
             </>
         ))

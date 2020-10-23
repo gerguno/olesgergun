@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import {request} from '../lib/api'
 import {MainLayout} from "../components/MainLayout"
-import {FullsizeMedia} from "../components/FullsizeMedia";
+import {FullsizeMedium} from "../components/FullsizeMedium";
 import {PostTitle} from "../components/PostTitle";
 
 export default function Index({ posts }) {
@@ -11,7 +11,7 @@ export default function Index({ posts }) {
 					<Link href={`/[slug]`} as={`/${post.slug}`}>
 						<a>
 							<PostTitle title={post.title} afterTitle={post.afterTitle}/>
-							<FullsizeMedia src={post.coverImage.url}/>
+							<FullsizeMedium src={post.coverMedium.url}/>
 						</a>
 					</Link>
 			))}
@@ -27,7 +27,7 @@ export async function getStaticProps() {
 			slug
 			title
 			afterTitle
-			 coverImage {
+			 coverMedium {
 			  url
 			}
 		  }
