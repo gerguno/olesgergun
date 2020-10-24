@@ -4,8 +4,9 @@ import {MainLayout} from "../components/MainLayout"
 import {request} from "../lib/api"
 import {PostTitle} from "../components/PostTitle";
 import {FullsizeMedium} from "../components/FullsizeMedium";
-import {PostDescription} from "../components/PostDescription";
-import {PostModuleContent} from "../components/PostModuleContent";
+import {Description} from "../components/description";
+import {PostContent} from "../components/PostContent";
+import {ScreenDesktopImage} from "../components/screen-desktop-image";
 
 export default function Post({ post }) {
 	if (!post?.slug) {
@@ -15,9 +16,7 @@ export default function Post({ post }) {
 	return (
 		<MainLayout title={post.title}>
 			<PostTitle title={post.title} afterTitle={post.afterTitle}/>
-			<FullsizeMedium src={post.coverMediumInternal.url}/>
-			<PostDescription content={post.description}/>
-			<PostModuleContent contentArray={post.moduleContent} />
+			<PostContent contentArray={post.postContent} />
 		</MainLayout>
 	)
 }
@@ -55,14 +54,7 @@ query PostBySlug($slug: String) {
     title
     afterTitle
     slug
-    coverMedium {
-      url
-    }
-    coverMediumInternal {
-      url
-    }
-    description
-    moduleContent {
+    postContent {
       ... on StoryRecord {
         id
         storyName
@@ -80,9 +72,38 @@ query PostBySlug($slug: String) {
           url
         }
       }
+      ... on ScreenDesktopRecord {
+        id
+        screenDesktop {
+          url
+        }
+      }
+      ... on ScreenDesktopFullRecord {
+        id
+        screenDesktopFull {
+          url
+        }
+      }
+      ... on ScreensIphone6Record {
+        id
+        screenIphone6 {
+          url
+        }
+      }
+      ... on ScreensIphonexRecord {
+        id
+        screenIphonex {
+          url
+        }
+      }
+      ... on DescriptionRecord {
+        id
+        description
+      }
     }
   }
 }
+
 		`,
 		variables:  { slug }
 	})

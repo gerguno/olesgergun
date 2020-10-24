@@ -1,4 +1,4 @@
-export function PostStory({name, text}) {
+export function Story({name, text}) {
     return (
         <>
             <p>{name}</p>
