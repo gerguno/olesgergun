@@ -74,6 +74,7 @@ query PostBySlug($slug: String) {
       }
       ... on ScreenDesktopRecord {
         id
+        customColor
         screenDesktop {
           url
         }
@@ -83,6 +84,7 @@ query PostBySlug($slug: String) {
         screenDesktopFull {
           url
         }
+        cut
       }
       ... on ScreensIphone6Record {
         id

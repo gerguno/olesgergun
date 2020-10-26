@@ -1,13 +1,11 @@
 export function FullsizeImage({src}) {
     return (
-        <div className="fullsize-image">
-            <img src={src}/>
+        <div className="fullsize" style={{background: `url('${src}')`, backgroundPosition: 'center',backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
         </div>
     )
 }
 
 //Background-image && background video
-
 
 // export function FullsizeImage({src}) {
 //     return (

@@ -1,7 +1,15 @@
-$white: white;
+$black: black;
 $grey: #9C9C9C;
 $lightgrey: #E2E2E2;
-$black: black;
+$white: white;
+
+$border: 18px;
+$border-radius: 18px;
+
+$screen-desktop-width: 846px;
+$fullsize-height: 704px;
+$fullsize-padding-bottom: 3px;
+
 
 * {
     margin: 0;
@@ -13,6 +21,13 @@ h1 {
     line-height: 48px;
     letter-spacing: -0.02em;
 }
+
+h3 {
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+}
+
 a {
     color: $black;
     text-decoration: none;
@@ -42,9 +57,27 @@ a:visited {
     display: none;
 }
 
+.more-padding {
+    padding: 0 0 $fullsize-padding-bottom 0;
+}
+
+
+// Body
+body {
+    //overflow-x: hidden;
+    color: $black;
+    background-color: $white;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
 // Header
 nav {
     position: fixed;
+    z-index: 999;
     width:100%;
     height: 60px;
     top: 0;
@@ -52,7 +85,7 @@ nav {
     right: 0;
     background: $black;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 20px;
     line-height: 22px;
     letter-spacing: -0.02em;
@@ -67,65 +100,145 @@ nav a:visited {
     text-decoration: none;
 }
 
-// Body
-body {
-    //overflow-x: hidden;
-    color: $black;
-    background-color: $white;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-    letter-spacing: -0.02em;
-    text-rendering: optimizeLegibility !important;
-    -webkit-font-smoothing: antialiased !important;
-}
-
 // Main container
 main {
-    margin-top: 63px;
+    margin-top: 60px;
 }
 
 // Elements
 .post-title {
-    height: 30px;
+    height: 32px;
     font-size: 16px;
     letter-spacing: -0.01em;
-    line-height: 24px;
+    line-height: 27px;
+}
+
+.post-title img {
+    float: right;
+    margin: 7px 0 0 0;
 }
 
 .description {
     padding-bottom: 80px;
 }
 
+.story {
+    padding-bottom: 70px;
+}
+
+.story-name, .story-text {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.story-name {
+    width: 768px;
+}
+
+.story-text {
+    width: 468px;
+}
+
 //________________________________
 
-.post-fullsize-image {
+.post-fullsize {
     width: 100%;
-    height: 60vh;
+    height: $fullsize-height;
+    padding: 0 0 $fullsize-padding-bottom 0;
     background: $lightgrey;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.screen-desktop {
-    width: 912px;
-    border: 19px $black solid;
-    border-radius: 18px;
-}
-
-.post-fullsize-image img {
+.post-fullsize img {
     width: inherit;
     display:block;
 }
 
-//________________________________
-.fullsize-image > img {
-    width: 100%;
+.screen-desktop {
+    width: $screen-desktop-width;
+    border: $border $black solid;
+    border-radius: $border-radius;
+    background: $black;
 }
 
-.fullsize-video > video {
+.post-fullsize-full {
     width: 100%;
+    height: auto;
+    background: $lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.post-fullsize-full img {
+    width: inherit;
+    display: block;
+}
+
+.screen-desktop-full {
+    margin: 44px 44px;
+    width: $screen-desktop-width + ($border*2);
+}
+
+.cut {
+    margin: 48px 0 0 0 !important;
+}
+
+.post-halfscreens {
+    width: 100%;
+    display: flex;
+    background: $lightgrey;
+    padding: 0 0 $fullsize-padding-bottom 0;
+}
+
+.post-halfscreens img {
+    width: inherit;
+    display: block;
+    border-radius: 28px;
+}
+
+.post-halfscreen {
+    width: 50%;
+    height: $fullsize-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen-iphoneX {
+    width: 277px;
+    border: 10px $black solid;
+    border-radius: 38px;
+    background: $black;
+}
+
+
+//________________________________
+.fullsize {
+    width: 100%;
+    height: $fullsize-height;
+    overflow: hidden;
+    position: relative;
+}
+
+.fullsize > video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+//.fullsize-image > img {
+//    width: 100%;
+//}
+//
+//.fullsize-video > video {
+//    width: 100%;
+//}
 
 .halfscreen-image {
     display: inline-block;

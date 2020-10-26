@@ -1,7 +1,9 @@
 import {Story} from "./story";
 import {FullsizeMedium} from "./FullsizeMedium";
 import {HalfscreensMedium} from "./HalfscreensMedium";
-import {ScreenDesktopImage} from "./screen-desktop-image";
+import {ScreensIphoneXMedium} from "./screens-iphoneX-medium";
+import {ScreenDesktopMedium} from "./screen-desktop-medium";
+import {ScreenDesktopImageFull} from "./screen-desktop-image-full";
 import {Description} from "./description";
 
 export function PostContent({contentArray}) {
@@ -18,7 +20,14 @@ export function PostContent({contentArray}) {
                 <Story name={content.storyName} text={content.storyText} />}
 
                 {content.screenDesktop &&
-                <ScreenDesktopImage src={content.screenDesktop.url}/>}
+                <ScreenDesktopMedium src={content.screenDesktop.url} color={content.customColor}/>}
+
+                {content.screenDesktopFull &&
+                <ScreenDesktopImageFull src={content.screenDesktopFull.url} cut={content.cut}/>}
+
+                {content.screenIphonex &&
+                <ScreensIphoneXMedium src={content.screenIphonex}/>}
+
 
                 {content.halfscreenMedium &&
                 <HalfscreensMedium mediaArray={content.halfscreenMedium}/>}
