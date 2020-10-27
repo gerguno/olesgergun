@@ -23,7 +23,7 @@ export function PostContent({contentArray}) {
                 <ScreenDesktopMedium src={content.screenDesktop.url} color={content.customColor}/>}
 
                 {content.screenDesktopFull &&
-                <ScreenDesktopImageFull src={content.screenDesktopFull.url} cut={content.cut}/>}
+                <ScreenDesktopImageFull src={content.screenDesktopFull.url} cut={content.cut} color={content.customColor}/>}
 
                 {content.screenIphonex &&
                 <ScreensIphoneXMedium src={content.screenIphonex}/>}

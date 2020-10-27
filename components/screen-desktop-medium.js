@@ -1,18 +1,15 @@
 import {ScreenDesktopImage} from "./screen-desktop-image"
+import {ScreenDesktopVideo} from "./screen-desktop-video"
 
 export function ScreenDesktopMedium({src, color}) {
-    let isColor = color.indexOf('#') > -1
+    let extension = src.split('.').pop()
     return (
         <>
-        {!isColor &&
-        <div className="post-fullsize">
-            <ScreenDesktopImage src={src}/>
-        </div>}
+            {(extension=="png" || extension=="jpg") &&
+            <ScreenDesktopImage src={src} color={color}/>}
 
-        {isColor &&
-        <div className="post-fullsize" style={{backgroundColor:color}}>
-            <ScreenDesktopImage src={src}/>
-        </div>}
+            {(extension=="mp4" || extension=="mov") &&
+            <ScreenDesktopVideo src={src} ext={extension} color={color}/>}
         </>
     )
 }

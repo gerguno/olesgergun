@@ -156,6 +156,11 @@ main {
     display:block;
 }
 
+.post-fullsize video {
+    width: inherit;
+    display:block;
+}
+
 .screen-desktop {
     width: $screen-desktop-width;
     border: $border $black solid;
@@ -179,7 +184,8 @@ main {
 
 .screen-desktop-full {
     margin: 44px 44px;
-    width: $screen-desktop-width + ($border*2);
+    //width: $screen-desktop-width + ($border*2);
+    width: $screen-desktop-width * 1.45;
 }
 
 .cut {
@@ -194,6 +200,12 @@ main {
 }
 
 .post-halfscreens img {
+    width: inherit;
+    display: block;
+    border-radius: 28px;
+}
+
+.post-halfscreens video {
     width: inherit;
     display: block;
     border-radius: 28px;

@@ -85,6 +85,7 @@ query PostBySlug($slug: String) {
           url
         }
         cut
+        customColor
       }
       ... on ScreensIphone6Record {
         id

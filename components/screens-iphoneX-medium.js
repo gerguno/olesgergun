@@ -1,24 +1,21 @@
 import {ScreenIphoneXImage} from "./screen-iphoneX-image";
+import {ScreenIphoneXVideo} from "./screen-iphoneX-video";
 
 export function ScreensIphoneXMedium(mediaArray) {
     mediaArray = [...mediaArray?.src] //cut array
-    // let extension = []
+    let extension = []
 
     return (
         <div className="post-halfscreens">
             {mediaArray.map((media) => (
+                extension = media.url.split('.').pop(),
                 <>
-                    <ScreenIphoneXImage src={media.url}/>
+                    {(extension=="png" || extension=="jpg") &&
+                    <ScreenIphoneXImage src={media.url}/>}
 
-                    {/*<div className='hidden'>{extension = media.url.split('.').pop()}</div>*/}
-
-                    {/*{(extension=="png" || extension=="jpg") &&*/}
-                    {/*<HalfscreenImage src={media.url}/>}*/}
-
-                    {/*{(extension=="mp4" || extension=="mov") &&*/}
-                    {/*<HalfscreenVideo src={media.url} ext={extension}/>}*/}
+                    {(extension=="mp4" || extension=="mov") &&
+                    <ScreenIphoneXVideo src={media.url} ext={extension}/>}
                 </>
-
             ))}
         </div>
     )
