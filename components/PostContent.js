@@ -20,7 +20,7 @@ export function PostContent({contentArray}) {
                 <Story name={content.storyName} text={content.storyText} />}
 
                 {content.screenDesktop &&
-                <ScreenDesktopMedium src={content.screenDesktop.url} color={content.customColor}/>}
+                <ScreenDesktopMedium media={content.screenDesktop} color={content.customColor}/>}
 
                 {content.screenDesktopFull &&
                 <ScreenDesktopImageFull src={content.screenDesktopFull.url} cut={content.cut} color={content.customColor}/>}

@@ -7,6 +7,7 @@ $border: 18px;
 $border-radius: 18px;
 
 $screen-desktop-width: 846px;
+$screen-desktop-height: 592px;
 $fullsize-height: 704px;
 $fullsize-padding-bottom: 3px;
 
@@ -163,9 +164,10 @@ main {
 
 .screen-desktop {
     width: $screen-desktop-width;
+    height: $screen-desktop-height;
     border: $border $black solid;
     border-radius: $border-radius;
-    background: $black;
+    background: $white;
 }
 
 .post-fullsize-full {
@@ -224,6 +226,71 @@ main {
     border: 10px $black solid;
     border-radius: 38px;
     background: $black;
+}
+
+//________________________________
+.slideshow {
+    width: 100%;
+    height: $fullsize-height;
+    padding: 0 0 $fullsize-padding-bottom 0;
+    background: $lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideshow img {
+    width: inherit;
+    display:block;
+    //position: absolute;
+    //animation: slide 25s infinite;
+    //opacity: 1;
+}
+
+//.screen-desktop > img:nth-child(2) {
+//    animation-delay: 5s;
+//}
+//.screen-desktop > img:nth-child(3) {
+//    animation-delay: 10s;
+//}
+//.screen-desktop > img:nth-child(4) {
+//    animation-delay: 15s;
+//}
+//
+//@keyframes slide {
+//    0%{
+//        opacity: 1;
+//    }
+//    15% {
+//        opacity:1;
+//    }
+//    25% {
+//        opacity: 0;
+//    }
+//    90% {
+//        opacity:0;
+//    }
+//    100% {
+//        opacity:1;
+//    }
+//}
+
+
+
+//.slideshow {
+//    position: relative;
+//}
+//
+//.slideshow > div {
+//    position: absolute;
+//}
+
+.invisible {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
 }
 
 
