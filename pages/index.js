@@ -2,7 +2,7 @@ import Link from 'next/link'
 import {request} from '../lib/api'
 import {MainLayout} from "../components/MainLayout"
 import {FullsizeMedium} from "../components/FullsizeMedium";
-import {PostTitle} from "../components/PostTitle";
+import {PostTitleForIndex} from "../components/post-title-for-index";
 
 export default function Index({ posts }) {
 	return (
@@ -10,7 +10,7 @@ export default function Index({ posts }) {
 			{posts.map(post => (
 					<Link href={`/[slug]`} as={`/${post.slug}`}>
 						<a>
-							<PostTitle title={post.title} afterTitle={post.afterTitle}/>
+							<PostTitleForIndex title={post.title} afterTitle={post.afterTitle}/>
 							<FullsizeMedium src={post.coverMedium.url}/>
 						</a>
 					</Link>
