@@ -11,9 +11,21 @@ export function MainLayout({children, title='Oleś Gergun'}) {
                 <meta charSet="utf-8"/>
             </Head>
             <nav>
-                <Link href={'/'}><a>Workbench</a></Link>
-                <Link href={'/texts'}><a>Texts</a></Link>
-                <Link href={'/about'}><a>About</a></Link>
+                <div>
+                    <Link href={'/'}><a>Workbench</a></Link>
+                </div>
+                <div>
+                    <Link href={'/texts'}><a>Texts</a></Link>
+                </div>
+                <div>
+                    <Link href={'/about'}><a>About</a></Link>
+                </div>
+                <div>
+                    <Link href={'/contact'}><a>Contact</a></Link>
+                </div>
+                <div>
+                    <span className="dark-grey">(Info)</span> Oleś Gergun is a designer & developer with cultural studies background. Strategic user experiences, type and code.
+                </div>
             </nav>
             <main>
                 {children}

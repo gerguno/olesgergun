@@ -1,15 +1,23 @@
+@import './responsives';
+
 $black: black;
+$darkgrey: #6E6E6E;
 $grey: #9C9C9C;
 $lightgrey: #E2E2E2;
 $white: white;
 
-$border: 18px;
-$border-radius: 18px;
+
+$fullsize-height: 704px;
+$fullsize-padding-bottom: 3px;
 
 $screen-desktop-width: 846px;
 $screen-desktop-height: 592px;
-$fullsize-height: 704px;
-$fullsize-padding-bottom: 3px;
+$screen-desktop-border: 18px;
+$screen-desktop-border-radius: 18px;
+
+$screen-iphoneX-width: 277px;
+$screen-iphoneX-height: 600px;
+
 
 
 * {
@@ -50,6 +58,10 @@ a:visited {
     color: $grey;
 }
 
+.dark-grey {
+    color: $darkgrey;
+}
+
 .inline {
     display: inline-block;
 }
@@ -79,18 +91,34 @@ body {
 nav {
     position: fixed;
     z-index: 999;
-    width:100%;
-    height: 60px;
+    height: auto;
     top: 0;
     left: 0;
     right: 0;
     background: $black;
+    color: $white;
     display: flex;
     justify-content: space-between;
     font-size: 20px;
     line-height: 22px;
     letter-spacing: -0.02em;
+    padding: 2px 8px 8px 8px;
 }
+
+nav > div:last-child {
+    @include md {
+        width: 261px;
+    }
+
+    @include lg {
+        width: 299px;
+    }
+
+    @include xl {
+        width: 402px;
+    }
+}
+
 nav a {
     color: $white;
     text-decoration: none;
@@ -103,7 +131,17 @@ nav a:visited {
 
 // Main container
 main {
-    margin-top: 60px;
+    @include md {
+        margin-top: 120px;
+    }
+
+    @include lg {
+        margin-top: 98px;
+    }
+
+    @include xl {
+        margin-top: 76px;
+    }
 }
 
 // Elements
@@ -111,20 +149,20 @@ main {
     height: 32px;
     font-size: 16px;
     letter-spacing: -0.01em;
-    line-height: 27px;
+    line-height: 29px;
 }
 
 .post-title img {
     float: right;
-    margin: 7px 0 0 0;
+    margin: 8px 0 0 0;
 }
 
 .description {
-    padding-bottom: 80px;
+    padding: 4px 8px 80px 8px;
 }
 
 .story {
-    padding-bottom: 70px;
+    padding: 4px 8px 70px 8px;
 }
 
 .story-name, .story-text {
@@ -152,22 +190,22 @@ main {
     align-items: center;
 }
 
-.post-fullsize img {
-    width: inherit;
-    display:block;
-}
-
-.post-fullsize video {
-    width: inherit;
-    display:block;
-}
-
 .screen-desktop {
     width: $screen-desktop-width;
     height: $screen-desktop-height;
-    border: $border $black solid;
-    border-radius: $border-radius;
-    background: $white;
+    border: $screen-desktop-border $black solid;
+    border-radius: $screen-desktop-border-radius;
+    background: $black;
+}
+
+.screen-desktop img {
+    width: inherit;
+    display:block;
+}
+
+.screen-desktop video {
+    width: inherit;
+    display:block;
 }
 
 .post-fullsize-full {
@@ -179,15 +217,15 @@ main {
     align-items: center;
 }
 
-.post-fullsize-full img {
-    width: inherit;
-    display: block;
-}
-
 .screen-desktop-full {
     margin: 44px 44px;
-    //width: $screen-desktop-width + ($border*2);
     width: $screen-desktop-width * 1.45;
+    //width: $screen-desktop-width + ($screen-desktop-border-radius*2);
+}
+
+.screen-desktop-full img {
+    width: inherit;
+    display: block;
 }
 
 .cut {
@@ -195,104 +233,53 @@ main {
 }
 
 .post-halfscreens {
-    width: 100%;
-    display: flex;
-    background: $lightgrey;
-    padding: 0 0 $fullsize-padding-bottom 0;
-}
-
-.post-halfscreens img {
-    width: inherit;
-    display: block;
-    border-radius: 28px;
-}
-
-.post-halfscreens video {
-    width: inherit;
-    display: block;
-    border-radius: 28px;
+    width: 50%;
+    display: inline-block;
 }
 
 .post-halfscreen {
-    width: 50%;
+    width: 100%;
     height: $fullsize-height;
+    background: $lightgrey;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 0 $fullsize-padding-bottom 0;
 }
 
 .screen-iphoneX {
-    width: 277px;
+    width: $screen-iphoneX-width;
+    height: $screen-iphoneX-height;
     border: 10px $black solid;
     border-radius: 38px;
     background: $black;
 }
 
-//________________________________
-.slideshow {
-    width: 100%;
-    height: $fullsize-height;
-    padding: 0 0 $fullsize-padding-bottom 0;
-    background: $lightgrey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slideshow img {
+.screen-iphoneX img {
     width: inherit;
-    display:block;
-    //position: absolute;
-    //animation: slide 25s infinite;
-    //opacity: 1;
+    display: block;
+    border-radius: 28px;
 }
 
-//.screen-desktop > img:nth-child(2) {
-//    animation-delay: 5s;
-//}
-//.screen-desktop > img:nth-child(3) {
-//    animation-delay: 10s;
-//}
-//.screen-desktop > img:nth-child(4) {
-//    animation-delay: 15s;
-//}
-//
-//@keyframes slide {
-//    0%{
-//        opacity: 1;
-//    }
-//    15% {
-//        opacity:1;
-//    }
-//    25% {
-//        opacity: 0;
-//    }
-//    90% {
-//        opacity:0;
-//    }
-//    100% {
-//        opacity:1;
-//    }
-//}
-
-
-
-//.slideshow {
-//    position: relative;
-//}
-//
-//.slideshow > div {
-//    position: absolute;
-//}
-
-.invisible {
-    opacity: 0;
+.screen-iphoneX video {
+    width: inherit;
+    display: block;
+    border-radius: 28px;
 }
 
-.visible {
-    opacity: 1;
+
+//________________________________
+.card-desktop {
+    width: $screen-desktop-width;
+    height: $screen-desktop-height;
+    position: absolute;
 }
 
+.card-iphoneX {
+    width: $screen-iphoneX-width;
+    height: $screen-iphoneX-height;
+    position: absolute;
+}
 
 //________________________________
 .fullsize {
@@ -310,14 +297,6 @@ main {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
-
-//.fullsize-image > img {
-//    width: 100%;
-//}
-//
-//.fullsize-video > video {
-//    width: 100%;
-//}
 
 .halfscreen-image {
     display: inline-block;

@@ -1,22 +1,8 @@
-function Card({media}) {
+export default function Card({device, media}) {
     return (
-        <div style={styles.card}>
+        <div className={`card-${device}`}>
             <img src={media}/>
         </div>
     )
 }
 
-const styles = {
-    card: {
-        width: '846px',
-        height: '592px',
-        backgroundColor: 'white',
-        position: 'absolute'
-    },
-    img: {
-        width: 'inherit',
-        display: 'block'
-    }
-}
-
-export default React.memo(Card)

@@ -3,15 +3,9 @@ import ErrorPage from 'next/error'
 import {MainLayout} from "../components/MainLayout"
 import {request} from "../lib/api"
 import {PostTitle} from "../components/PostTitle";
-import {FullsizeMedium} from "../components/FullsizeMedium";
-import {Description} from "../components/description";
 import {PostContent} from "../components/PostContent";
-import {ScreenDesktopImage} from "../components/screen-desktop-image";
 
 export default function Post({ post }) {
-	if (!post?.slug) {
-		return <ErrorPage statusCode={404} />
-	}
 	console.log(post)
 	return (
 		<MainLayout title={post.title}>
@@ -42,7 +36,7 @@ export async function getStaticPaths() {
 	})
 	return {
 		paths: data.allPosts?.map((post) => `/${post.slug}`) || [],
-		fallback: true,
+		fallback: false,
 	}
 }
 
@@ -87,26 +81,20 @@ query PostBySlug($slug: String) {
         cut
         customColor
       }
-      ... on ScreensIphone6Record {
-        id
-        screenIphone6 {
-          url
-        }
-      }
-      ... on ScreensIphonexRecord {
-        id
-        screenIphonex {
-          url
-        }
-      }
       ... on DescriptionRecord {
         id
         description
       }
+      ... on ScreenIphonexRecord {
+        id
+        customColor
+        screenIphonex {
+          url
+        }
+      }
     }
   }
 }
-
 		`,
 		variables:  { slug }
 	})
