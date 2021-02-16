@@ -92,6 +92,22 @@ query PostBySlug($slug: String) {
           url
         }
       }
+      ... on SuperMediumRecord {
+        title
+        full
+        deviceType
+        deviceMedia {
+          url
+          mimeType
+        }
+        backgroundColor {
+          hex
+        }
+        backgroundMedium {
+          url
+          mimeType
+        }
+      }
     }
   }
 }

@@ -5,31 +5,41 @@ import {ScreenIphoneX} from "./screen-iphoneX";
 import {ScreenDesktop} from "./screen-desktop";
 import {ScreenDesktopImageFull} from "./screen-desktop-image-full";
 import {Description} from "./description";
+import SuperMedium from "./SuperMedium";
 
 export function PostContent({contentArray}) {
     return (
-        contentArray.map((content) => (
+        contentArray.map(c => (
             <>
-                {content.fullsizeMedium &&
-                <FullsizeMedium src={content.fullsizeMedium.url}/>}
+                {c.title === "supermedium" &&
+                <SuperMedium
+                    full={c.full}
+                    deviceType={c.deviceType}
+                    deviceMedia={c.deviceMedia}
+                    backgroundColor={c.backgroundColor}
+                    backgroundMedium={c.backgroundMedium}
+                />}
 
-                {content.description &&
-                <Description content={content.description}/>}
+                {c.fullsizeMedium &&
+                <FullsizeMedium src={c.fullsizeMedium.url}/>}
 
-                {content.storyName &&
-                <Story name={content.storyName} text={content.storyText} />}
+                {c.description &&
+                <Description content={c.description}/>}
 
-                {content.screenDesktop &&
-                <ScreenDesktop src={content.screenDesktop} color={content.customColor}/>}
+                {c.storyName &&
+                <Story name={c.storyName} text={c.storyText} />}
 
-                {content.screenDesktopFull &&
-                <ScreenDesktopImageFull src={content.screenDesktopFull.url} cut={content.cut} color={content.customColor}/>}
+                {c.screenDesktop &&
+                <ScreenDesktop src={c.screenDesktop} color={c.customColor}/>}
 
-                {content.screenIphonex &&
-                <ScreenIphoneX src={content.screenIphonex} color={content.customColor}/>}
+                {c.screenDesktopFull &&
+                <ScreenDesktopImageFull src={c.screenDesktopFull.url} cut={c.cut} color={c.customColor}/>}
 
-                {content.halfscreenMedium &&
-                <HalfscreensMedium mediaArray={content.halfscreenMedium}/>}
+                {c.screenIphonex &&
+                <ScreenIphoneX src={c.screenIphonex} color={c.customColor}/>}
+
+                {c.halfscreenMedium &&
+                <HalfscreensMedium mediaArray={c.halfscreenMedium}/>}
 
             </>
         ))

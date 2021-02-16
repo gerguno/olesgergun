@@ -11,7 +11,6 @@ export default function Index({ posts }) {
 					<Link href={`/[slug]`} as={`/${post.slug}`}>
 						<a>
 							<PostTitleForIndex title={post.title} afterTitle={post.afterTitle}/>
-							<FullsizeMedium src={post.coverMedium.url}/>
 						</a>
 					</Link>
 			))}
@@ -27,15 +26,12 @@ export async function getStaticProps() {
 			slug
 			title
 			afterTitle
-			 coverMedium {
-			  url
-			}
 		  }
 		}`
 	})
 	return {
 		props: {
-			posts: [...data?.allPosts] //return cut array (posts = data.allPosts)
+			posts: data.allPosts
 		}
 	}
 }

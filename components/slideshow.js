@@ -1,10 +1,10 @@
-import FadeCarousel from './FadeCarousel'
+import FadeCarouselOld from './FadeCarouselOld'
 
 export function SlideShow({device, src}){
     return (
         <>
             <div className={`screen-${device}`}>
-                <FadeCarousel device={device} media={src}/>
+                <FadeCarouselOld device={device} media={src}/>
             </div>
         </>
     )

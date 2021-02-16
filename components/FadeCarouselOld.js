@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import Card from './Card'
 
-export default class FadeCarousel extends Component {
+export default class FadeCarouselOld extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -26,7 +27,7 @@ export default class FadeCarousel extends Component {
             let new_current_card = this.state.current_card +1
 
             this.setState({current_card: new_current_card}, () => {
-                this.card_container.children[(this.card_container.children.length)-this.state.current_card].style.transitionDuration = "0.2s"
+                this.card_container.children[(this.card_container.children.length)-this.state.current_card].style.transitionDuration = "0.5s"
                 this.card_container.children[(this.card_container.children.length)-this.state.current_card].style.opacity = `0`
 
                 if (this.state.current_card === this.card_container.children.length-1) {
@@ -47,10 +48,10 @@ export default class FadeCarousel extends Component {
     render() {
         return (
             <>
-                <div ref={ref_id => this.card_container = ref_id} className="__media">
+                <div ref={ref_id => this.card_container = ref_id} className="card-container">
                     {this.props.media.slice(0).reverse().map((medium) => (
                         <>
-                            <img src={medium.url}/>
+                            <Card device={this.props.device} media={medium.url}/>
                         </>
                     ))}
                 </div>
