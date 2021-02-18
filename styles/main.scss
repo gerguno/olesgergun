@@ -91,58 +91,66 @@ body {
 nav {
     position: fixed;
     z-index: 999;
-    height: auto;
+    height: 32px;
     top: 0;
     left: 0;
     right: 0;
-    background: $black;
-    color: $white;
+    background: transparent;
+    color: black;
+    display: -webkit-flex;
     display: flex;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
-    font-size: 20px;
-    line-height: 22px;
+    font-size: 16px;
+    line-height: 24px;
     letter-spacing: -0.02em;
-    padding: 2px 8px 8px 8px;
-}
+    padding: 0 8px;
+    transition: all 0.25s linear;
 
-nav > div:last-child {
-    @include md {
-        width: 261px;
+    a {
+        color: black;
+        text-decoration: none;
+
+        &:visited {
+            color: black;
+            text-decoration: none;
+        }
     }
 
-    @include lg {
-        width: 299px;
+    & > div {
+        border-top: 2px solid transparent;
     }
 
-    @include xl {
-        width: 402px;
+    & > div.__active {
+        border-top: 2px solid transparent;
+        border-image: url('/checker.png') 8 0 0 0 round;
+        //border-top: 2px solid white;
     }
 }
 
-nav a {
-    color: $white;
-    text-decoration: none;
+.__black {
+    background: black;
+    color: white;
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:visited {
+            color: white;
+            text-decoration: none;
+        }
+    }
 }
 
-nav a:visited {
-    color: $white;
-    text-decoration: none;
+.__white {
+    background: white;
+    color: black;
 }
+
+
 
 // Main container
-main {
-    @include md {
-        margin-top: 120px;
-    }
-
-    @include lg {
-        margin-top: 98px;
-    }
-
-    @include xl {
-        margin-top: 76px;
-    }
-}
 
 // Elements
 .post-title {
@@ -191,10 +199,11 @@ main {
 .supermedium {
     position: relative;
     overflow: hidden;
+    background: $lightgrey;
     height: 760px;
     display: inline-flex;
     align-items: center;
-    border-bottom: 1px solid black;
+    float: left; // removes unexpl. gap
 
     video {
         position: absolute;
@@ -334,6 +343,15 @@ main {
     }
 }
 
+.highlight {
+    background: black;
+    color: white;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -0.02em;
+    padding: 12px 0 180px 8px
+}
+
 .post-fullsize {
     width: 100%;
     height: $fullsize-height;
@@ -362,29 +380,34 @@ main {
     display:block;
 }
 
-.post-fullsize-full {
+.fullpage {
     width: 100%;
     height: auto;
     background: $lightgrey;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & > div {
+        margin: 44px 44px;
+        width: $screen-desktop-width * 1.45;
+
+        img {
+            width: inherit;
+            display: block;
+        }
+    }
+
+    .__cut {
+        margin: 48px 0 0 0 !important;
+    }
+
+    .__more-padding {
+        padding: 0 0 $fullsize-padding-bottom 0;
+    }
 }
 
-.screen-desktop-full {
-    margin: 44px 44px;
-    width: $screen-desktop-width * 1.45;
-    //width: $screen-desktop-width + ($screen-desktop-border-radius*2);
-}
 
-.screen-desktop-full img {
-    width: inherit;
-    display: block;
-}
-
-.cut {
-    margin: 48px 0 0 0 !important;
-}
 
 .post-halfscreens {
     width: 50%;

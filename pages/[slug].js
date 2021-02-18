@@ -1,17 +1,46 @@
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
 import {MainLayout} from "../components/MainLayout"
 import {request} from "../lib/api"
-import {PostTitle} from "../components/PostTitle";
-import {PostContent} from "../components/PostContent";
+import SuperMedium from "../components/SuperMedium";
+import {Fullpage} from "../components/Fullpage";
+import {Description} from "../components/description";
+import {Story} from "../components/story";
+import Highlight from "../components/Highlight";
+import Menu from "../components/Menu";
 
 export default function Post({ post }) {
 	console.log(post)
 	return (
-		<MainLayout title={post.title}>
-			<PostTitle title={post.title} afterTitle={post.afterTitle}/>
-			<PostContent contentArray={post.postContent} />
-		</MainLayout>
+		<>
+			<Menu color={post.menu}/>
+			<MainLayout title={post.title}>
+				{post.postContent.map(c => {
+					return (
+						<>
+							{c.title === "supermedium" &&
+							<SuperMedium
+								full={c.full}
+								deviceType={c.deviceType}
+								deviceMedia={c.deviceMedia}
+								backgroundColor={c.backgroundColor}
+								backgroundMedium={c.backgroundMedium}
+							/>}
+
+							{c.fullpage &&
+							<Fullpage src={c.fullpage.url} cut={c.cut} color={c.customColor && c.customColor.hex}/>}
+
+							{c.description &&
+							<Description content={c.description}/>}
+
+							{c.storyName &&
+							<Story name={c.storyName} text={c.storyText} />}
+
+							{c.highlight &&
+							<Highlight src={c.highlight}/>}
+						</>
+					)
+				})}
+			</MainLayout>
+		</>
 	)
 }
 
@@ -45,6 +74,7 @@ export async function getPost(slug) {
 		query: `
 query PostBySlug($slug: String) {
   post(filter: {slug: {eq: $slug}}) {
+  	menu
     title
     afterTitle
     slug
@@ -54,43 +84,18 @@ query PostBySlug($slug: String) {
         storyName
         storyText
       }
-      ... on FullsizeMediumRecord {
-        id
-        fullsizeMedium {
-          url
-        }
-      }
-      ... on HalfscreensMediumRecord {
-        id
-        halfscreenMedium {
-          url
-        }
-      }
-      ... on ScreenDesktopRecord {
-        id
-        customColor
-        screenDesktop {
-          url
-        }
-      }
-      ... on ScreenDesktopFullRecord {
-        id
-        screenDesktopFull {
+      ... on FullpageRecord {
+        fullpage {
           url
         }
         cut
-        customColor
+        customColor {
+          hex
+        }
       }
       ... on DescriptionRecord {
         id
         description
-      }
-      ... on ScreenIphonexRecord {
-        id
-        customColor
-        screenIphonex {
-          url
-        }
       }
       ... on SuperMediumRecord {
         title
@@ -107,6 +112,9 @@ query PostBySlug($slug: String) {
           url
           mimeType
         }
+      }
+      ... on HighlightRecord {
+        highlight
       }
     }
   }

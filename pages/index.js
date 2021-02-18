@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import {request} from '../lib/api'
 import {MainLayout} from "../components/MainLayout"
-import {FullsizeMedium} from "../components/FullsizeMedium";
-import {PostTitleForIndex} from "../components/post-title-for-index";
 
 export default function Index({ posts }) {
 	return (

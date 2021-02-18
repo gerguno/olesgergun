@@ -1,12 +1,12 @@
 import {MainLayout} from "../components/MainLayout";
 import Menu from "../components/Menu";
 
-export default function About() {
+export default function Contact() {
     return (
         <>
             <Menu/>
-            <MainLayout title={'About'}>
-                <h1>About page</h1>
+            <MainLayout title={'Contact'}>
+                <h1>Contact page</h1>
             </MainLayout>
         </>
     )
