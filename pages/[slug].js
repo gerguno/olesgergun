@@ -2,13 +2,13 @@ import {MainLayout} from "../components/MainLayout"
 import {request} from "../lib/api"
 import SuperMedium from "../components/SuperMedium";
 import {Fullpage} from "../components/Fullpage";
-import {Description} from "../components/description";
-import {Story} from "../components/story";
+import {BigTitle} from "../components/BigTitle";
+import {Story} from "../components/Story";
 import Highlight from "../components/Highlight";
 import Menu from "../components/Menu";
+import NextPost from "../components/NextPost"
 
-export default function Post({ post }) {
-	console.log(post)
+export default function Post({ post, allPosts }) {
 	return (
 		<>
 			<Menu color={post.menu}/>
@@ -29,7 +29,7 @@ export default function Post({ post }) {
 							<Fullpage src={c.fullpage.url} cut={c.cut} color={c.customColor && c.customColor.hex}/>}
 
 							{c.description &&
-							<Description content={c.description}/>}
+							<BigTitle title={post.title} afterTitle={post.afterTitle} description={c.description}/>}
 
 							{c.storyName &&
 							<Story name={c.storyName} text={c.storyText} />}
@@ -39,6 +39,7 @@ export default function Post({ post }) {
 						</>
 					)
 				})}
+				<NextPost arr={allPosts}/>
 			</MainLayout>
 		</>
 	)
@@ -48,7 +49,8 @@ export async function getStaticProps({ params }) {
 	const data = await getPost(params.slug)
 	return {
 		props: {
-			post: {...data?.post} //return cut object (post = data.post)
+			post: data.post,
+			allPosts: data.allPosts,
 		}
 	}
 }
@@ -117,6 +119,11 @@ query PostBySlug($slug: String) {
         highlight
       }
     }
+  }
+  
+  allPosts(orderBy: date_DESC) {
+     title
+     slug
   }
 }
 		`,

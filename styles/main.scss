@@ -5,6 +5,7 @@ $darkgrey: #6E6E6E;
 $grey: #9C9C9C;
 $lightgrey: #E2E2E2;
 $white: white;
+$horizontal-padding: 8px;
 
 
 $fullsize-height: 704px;
@@ -28,7 +29,13 @@ $screen-iphoneX-height: 600px;
 h1 {
     font-size: 48px;
     line-height: 48px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    font-size: 38px;
+    line-height: 38px;
+    letter-spacing: -0.03em;
 }
 
 h3 {
@@ -45,12 +52,6 @@ a {
 a:visited {
     color: $black;
     text-decoration: none;
-}
-
-// Columns
-.col-12 {
-    //width: 100%;
-    padding: 0 8px 0 8px;
 }
 
 // Props
@@ -128,7 +129,7 @@ nav {
 
     & > div.__active {
         border-top: 2px solid transparent;
-        border-image: url('/checker.png') 8 0 0 0 round;
+        border-image: url(/checker.png) 8 0 0 0 round;
         //border-top: 2px solid white;
     }
 }
@@ -162,25 +163,47 @@ nav {
 // Main container
 
 // Elements
+.title {
+    display: flex;
+    padding: 14px $horizontal-padding 11px $horizontal-padding;
+
+    img {
+        margin-right: 16px;
+    }
+}
+
+.next-post {
+    width: 100%;
+    display: flex;
+    padding: 11px $horizontal-padding 13px $horizontal-padding;
+    background: black;
+
+    h2 a {
+        color: white !important;
+    }
+
+    img {
+        filter: invert(1);
+        margin-right: 16px;
+    }
+}
+
 .description {
-    padding: 4px 8px 80px 8px;
+    padding: 0px $horizontal-padding 100px $horizontal-padding;
 }
 
 .story {
-    padding: 4px 8px 70px 8px;
+    padding: 4px $horizontal-padding 75px $horizontal-padding;
+    display: grid;
+    grid-template-columns: 50% 476px calc(50% - 476px);
 }
 
-.story-name, .story-text {
-    display: inline-block;
-    vertical-align: top;
-}
 
-.story-name {
-    width: 768px;
-}
-
-.story-text {
-    width: 468px;
+.highlight {
+    display: flex;
+    background: black;
+    color: white;
+    padding: 4px $horizontal-padding 180px $horizontal-padding;
 }
 
 //________________________________
@@ -338,15 +361,6 @@ nav {
             }
         }
     }
-}
-
-.highlight {
-    background: black;
-    color: white;
-    font-size: 48px;
-    line-height: 48px;
-    letter-spacing: -0.02em;
-    padding: 12px 0 180px 8px
 }
 
 .fullpage {

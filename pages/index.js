@@ -25,7 +25,8 @@ export async function getStaticProps() {
 			title
 			afterTitle
 		  }
-		}`
+		}
+		`
 	})
 	return {
 		props: {
