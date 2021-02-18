@@ -46,7 +46,13 @@ export default function Menu({ color }) {
                 <Link href={'/contact'}><a>Contact</a></Link>
             </div>
             <div>
-                <span className="dark-grey">(Info)</span> Oleś Gergun is a digital designer and developer
+                {color === 'black'
+                    ?
+                        <><span className="dark-grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
+                    :
+                        <><span className="grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
+                }
+
             </div>
         </nav>
     )
