@@ -24,6 +24,7 @@ export default function Post({ post, allPosts }) {
 								deviceMedia={c.deviceMedia}
 								backgroundColor={c.backgroundColor}
 								backgroundMedium={c.backgroundMedium}
+								backgroundMediumMobile={c.backgroundMediumMobile}
 							/>}
 
 							{c.fullpage &&
@@ -113,6 +114,10 @@ query PostBySlug($slug: String) {
           hex
         }
         backgroundMedium {
+          url
+          mimeType
+        }
+        backgroundMediumMobile {
           url
           mimeType
         }

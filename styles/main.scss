@@ -381,6 +381,44 @@ nav {
             }
         }
     }
+
+    .nomediaH {
+        position: relative;
+        height: 610px;
+        width: 100%;
+
+        .__media {
+            position: absolute;
+            height: inherit;
+            width: inherit;
+
+            img, video {
+                height: inherit;
+                position: inherit;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    .nomediaW {
+        position: relative;
+        width: 1108px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .__media {
+            position: absolute;
+            width: inherit;
+            display: flex;
+            align-items: center;
+
+            img, video {
+                position: inherit;
+                width: inherit;
+            }
+        }
+    }
 }
 
 .fullpage {
