@@ -4,31 +4,28 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Footer({ color }) {
 
-    const nav = useRef(null)
-    const workbench = useRef(null)
-    const about = useRef(null)
-    const contact = useRef(null)
-
     return (
-        <div className={color && `__${color}`} ref={nav}>
+        <div className={`footer${color==='black' ? ` __${color}` : ''}`}>
             <div>
-                <Link href={'/'}><a>Workbench</a></Link>
+                © 2021 Kyiv, Ukraine
             </div>
             <div>
-                <Link href={'/about'}><a>About</a></Link>
+                <Link href={`https://www.instagram.com/olesgergun/`}>
+                    <a target="_blank">
+                        Instagram
+                    </a>
+                </Link>
+                <Link href={`https://www.facebook.com/oles.gergun/`}>
+                    <a target="_blank">
+                        Facebook
+                    </a>
+                </Link>
+                <Link href={`https://github.com/gerguno`}>
+                    <a target="_blank">
+                        GitHub
+                    </a>
+                </Link>
             </div>
-            <div>
-                <Link href={'/contact'}><a>Contact</a></Link>
-            </div>
-            <div>
-                {color === 'black'
-                    ?
-                    <><span className="dark-grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                    :
-                    <><span className="grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                }
-
-            </div>
-        </>
+        </div>
     )
 }

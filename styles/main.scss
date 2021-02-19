@@ -94,7 +94,8 @@ body {
 
 // Header
 nav {
-    position: fixed;
+    //position: fixed;
+    position: absolute;
     z-index: 999;
     height: 32px;
     top: 0;
@@ -173,7 +174,6 @@ nav {
 }
 
 .next-post {
-    width: 100%;
     display: flex;
     padding: 11px $horizontal-padding 13px $horizontal-padding;
     background: black;
@@ -185,6 +185,22 @@ nav {
     img {
         filter: invert(1);
         margin-right: 16px;
+    }
+}
+
+.__next-post-white {
+    background: white !important;
+
+    span {
+        color: $grey;
+    }
+
+    h2 a {
+        color: black !important;
+    }
+
+    img {
+        filter: invert(0);
     }
 }
 
@@ -220,7 +236,7 @@ nav {
     position: relative;
     overflow: hidden;
     background: $lightgrey;
-    height: 760px;
+    height: 717px;
     display: inline-flex;
     align-items: center;
     float: left; // removes unexpl. gap
@@ -387,5 +403,18 @@ nav {
 
     .__more-padding {
         padding: 0 0 $fullsize-padding-bottom 0;
+    }
+}
+
+.footer {
+    padding: 150px $horizontal-padding 9px $horizontal-padding;
+    display: flex;
+
+    & > div:last-child {
+        margin: 0 0 0 auto;
+
+        a {
+            margin-left: 10px;
+        }
     }
 }

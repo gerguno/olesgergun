@@ -6,6 +6,7 @@ import {BigTitle} from "../components/BigTitle";
 import {Story} from "../components/Story";
 import Highlight from "../components/Highlight";
 import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 import NextPost from "../components/NextPost"
 
 export default function Post({ post, allPosts }) {
@@ -39,7 +40,8 @@ export default function Post({ post, allPosts }) {
 						</>
 					)
 				})}
-				<NextPost arr={allPosts}/>
+				<NextPost arr={allPosts} color={post.menu}/>
+				<Footer color={post.menu}/>
 			</MainLayout>
 		</>
 	)

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function NextPost({ arr }) {
+export default function NextPost({ arr, color }) {
     const router = useRouter()
     const { asPath } = useRouter()
     const [link, setLink] = useState()
@@ -29,7 +29,7 @@ export default function NextPost({ arr }) {
     }, [router])
 
     return (
-        <div className="next-post">
+        <div className={`next-post${color==='black' ? ` __next-post-white` : ''}`}>
                 <img src="/bullet.svg"/>
                 {link}
         </div>

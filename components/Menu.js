@@ -19,20 +19,20 @@ export default function Menu({ color }) {
         router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
     }, [router])
 
-    if (!color) {
-        useEffect(() => {
-            window.onscroll = () => {
-                window.pageYOffset > 5 ? setScrolled(true) : setScrolled(false)
-            }
-            return () => {
-                window.onscroll = null
-            }
-        }, [])
-
-        useEffect(() => {
-            scrolled ? nav.current.className = '__black' : nav.current.className = ''
-        }, [scrolled])
-    }
+    // if (!color) {
+    //     useEffect(() => {
+    //         window.onscroll = () => {
+    //             window.pageYOffset > 5 ? setScrolled(true) : setScrolled(false)
+    //         }
+    //         return () => {
+    //             window.onscroll = null
+    //         }
+    //     }, [])
+    //
+    //     useEffect(() => {
+    //         scrolled ? nav.current.className = '__black' : nav.current.className = ''
+    //     }, [scrolled])
+    // }
 
     return (
         <nav className={color && `__${color}`} ref={nav}>
