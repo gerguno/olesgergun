@@ -135,6 +135,10 @@ nav {
     }
 }
 
+.__fixed {
+    position: fixed !important;
+}
+
 .__black {
     background: black;
     color: white;
@@ -407,14 +411,14 @@ nav {
 }
 
 .footer {
-    padding: 150px $horizontal-padding 9px $horizontal-padding;
+    padding: 120px $horizontal-padding 9px $horizontal-padding;
     display: flex;
 
     & > div:last-child {
         margin: 0 0 0 auto;
 
         a {
-            margin-left: 10px;
+            margin-left: 11px;
         }
     }
 }

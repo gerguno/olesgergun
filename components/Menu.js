@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 export default function Menu({ color }) {
-
     const router = useRouter()
 
     const nav = useRef(null)
@@ -11,7 +10,7 @@ export default function Menu({ color }) {
     const about = useRef(null)
     const contact = useRef(null)
 
-    const [scrolled, setScrolled] = useState(false);
+    const [scrollDir, setScrollDir] = useState("scrolling down");
 
     useEffect(() => {
         (router.pathname === "/" || router.pathname === "/[slug]") ? workbench.current.className = "__active" : workbench.current.className = ""
@@ -19,20 +18,50 @@ export default function Menu({ color }) {
         router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
     }, [router])
 
-    // if (!color) {
-    //     useEffect(() => {
-    //         window.onscroll = () => {
-    //             window.pageYOffset > 5 ? setScrolled(true) : setScrolled(false)
-    //         }
-    //         return () => {
-    //             window.onscroll = null
-    //         }
-    //     }, [])
-    //
-    //     useEffect(() => {
-    //         scrolled ? nav.current.className = '__black' : nav.current.className = ''
-    //     }, [scrolled])
-    // }
+    useEffect(() => {
+        const threshold = 5;
+        let lastScrollY = window.pageYOffset;
+        let nowScrollY = window.pageYOffset;
+        let ticking = false;
+
+        const updateScrollDir = () => {
+            const scrollY = window.pageYOffset;
+
+            if (Math.abs(scrollY - lastScrollY) < threshold) {
+                ticking = false;
+                return;
+            }
+            if (scrollY < 5) {
+                setScrollDir("on top")
+            } else {
+                scrollY > lastScrollY ? setScrollDir("scrolling down") : setScrollDir("scrolling up")
+            }
+            lastScrollY = scrollY > 5 ? scrollY : 5;
+            ticking = false;
+        };
+
+        const onScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateScrollDir);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener("scroll", onScroll);
+        // console.log(scrollDir);
+
+        if (scrollDir === "on top") {
+            !color ? nav.current.className = '' : ''
+        }
+        if (scrollDir === "scrolling up") {
+            !color ? nav.current.className = '__fixed __white' : nav.current.className = `__fixed __${color}`
+        }
+        if (scrollDir === "scrolling down") {
+            nav.current.className = ''
+        }
+
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [scrollDir]);
 
     return (
         <nav className={color && `__${color}`} ref={nav}>
