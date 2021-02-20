@@ -7,7 +7,6 @@ $lightgrey: #E2E2E2;
 $white: white;
 $horizontal-padding: 8px;
 
-
 $fullsize-height: 704px;
 $fullsize-padding-bottom: 3px;
 
@@ -130,7 +129,7 @@ nav {
 
     & > div.__active {
         border-top: 2px solid transparent;
-        border-image: url(/checker.png) 8 0 0 0 round;
+        border-image: url('/checker.png') 8 0 0 0 round;
         //border-top: 2px solid white;
     }
 }
@@ -458,5 +457,128 @@ nav {
         a {
             margin-left: 11px;
         }
+    }
+}
+
+.home-medium {
+    width: 100%;
+    height: calc(100vh - 30px);
+    position: relative;
+    overflow: hidden;
+    background: $lightgrey;
+    display: flex;
+    align-items: center;
+    float: left; // removes unexpl. gap
+
+    .ipad-screen {
+        position: relative;
+        width: 860px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .__device {
+            width: inherit;
+            img {
+                width: inherit;
+            }
+        }
+
+        .__media {
+            position: absolute;
+            top: 34px;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: 787px;
+            height: 550px;
+            border-radius: 10px;
+            overflow: hidden;
+
+            img, video {
+                width: inherit;
+                height: inherit;
+                position: inherit;
+            }
+        }
+    }
+}
+
+.home-intro {
+    padding: 14px $horizontal-padding 100px $horizontal-padding;
+    font-size: 96px;
+    line-height: 92px;
+    letter-spacing: -0.03em;
+}
+
+.home-projects {
+    font-size: 96px;
+    line-height: 92px;
+    letter-spacing: -0.03em;
+    padding-bottom: 100px;
+
+    & > div {
+        display: flex;
+        align-items: baseline;
+        padding: 11px $horizontal-padding 13px $horizontal-padding;
+
+        img {
+            margin-right: 16px;
+        }
+    }
+}
+
+.home-footer {
+    height: 717px;
+    width: 100%;
+    background: url('/userflow2.png') center center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+
+    .footer {
+        margin-top: auto;
+        color: white;
+
+        a {
+            color: white;
+        }
+    }
+}
+
+nav.home-menu {
+    position: relative;
+    z-index: 999;
+    height: 32px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    color: black;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    padding: 0 8px;
+    transition: all 0.2s linear;
+
+    a {
+        color: black;
+        text-decoration: none;
+
+        &:visited {
+            color: black;
+            text-decoration: none;
+        }
+    }
+
+    & > div {
+        border-top: 2px solid transparent;
+    }
+
+    & > div.__active {
+        border-top: 2px solid transparent;
+        border-image: url('/checker.png') 8 0 0 0 round;
+        //border-top: 2px solid white;
     }
 }
