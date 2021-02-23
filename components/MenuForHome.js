@@ -20,12 +20,10 @@ export default function MenuForHome() {
 
     useEffect(() => {
         const threshold = 5;
-        const homeMediumHeight = document.querySelector(".home-medium").offsetHeight;
+        const homeMediumHeight = document.querySelector(".home-medium").offsetHeight
+        const homeIntroText = document.querySelector(".home-intro-text")
         let lastScrollY = window.pageYOffset;
-        let nowScrollY = window.pageYOffset;
         let ticking = false;
-
-        console.log(homeMediumHeight)
 
         const updateScrollDir = () => {
             const scrollY = window.pageYOffset;
@@ -34,7 +32,7 @@ export default function MenuForHome() {
                 ticking = false;
                 return;
             }
-            if (scrollY < 5) {
+            if (scrollY < homeMediumHeight) {
                 setScrollDir("on top")
             } else {
                 scrollY > lastScrollY ? setScrollDir("scrolling down") : setScrollDir("scrolling up")
@@ -51,13 +49,19 @@ export default function MenuForHome() {
         };
 
         window.addEventListener("scroll", onScroll);
-        console.log(scrollDir);
+        // console.log(scrollDir);
 
+        if (scrollDir === "on top") {
+            nav.current.className = 'home-menu'
+            homeIntroText.style = ''
+        }
         if (scrollDir === "scrolling up") {
-            nav.current.className = 'home-menu __fixed'
+            nav.current.className = 'home-menu __fixed __white'
+            homeIntroText.style = 'padding-top: 92px !important' // remove dancing
         }
         if (scrollDir === "scrolling down") {
             nav.current.className = 'home-menu'
+            homeIntroText.style = ''
         }
 
         return () => window.removeEventListener("scroll", onScroll);

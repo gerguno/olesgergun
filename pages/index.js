@@ -4,12 +4,17 @@ import {MainLayout} from "../components/MainLayout"
 import {IpadScreen} from "../components/IpadScreen";
 import Footer from "../components/Footer";
 import MenuForHome from "../components/MenuForHome";
+import MenuForHomeMobile from "../components/MenuForHomeMobile";
+import useWindowDimensions from "../components/useWindowDimensions";
+
 
 export default function Index({ posts }) {
+	const { height, width } = useWindowDimensions()
+
 	const media = [
 		{
-			url: '/home/ktf_website.png',
-			mimeType: 'image/png'
+			url: '/home/ktf_website.mov',
+			mimeType: 'video/quicktime'
 		}
 	]
 	return (
@@ -18,22 +23,20 @@ export default function Index({ posts }) {
 				<IpadScreen src={media}/>
 			</div>
 			<div className="home-intro">
-				<MenuForHome/>
-				Litigation and courts search service that helps you to find platform unites a wide audience of researchers by building connection creating the consistancy between design
-				& code.
+				{width > 768 ? <MenuForHome/> : <MenuForHomeMobile/>}
+				<div className="home-intro-text">
+					Litigation and courts search service that helps you to find platform unites a wide audience of researchers by building connection creating the consistancy between design
+					& code.
+				</div>
 			</div>
 			<div className="home-projects">
 				{posts.map(post => (
-					<div>
-						<img src="/bullet.svg"/>
-						<h2>
 							<Link href={`/[slug]`} as={`/${post.slug}`}>
 								<a>
-									{post.title} <span className="grey">{post.afterTitle}</span>
+									<img src="/bullet.svg"/>
+									<h2>{post.title} <span className="grey">{post.afterTitle}</span></h2>
 								</a>
 							</Link>
-						</h2>
-					</div>
 				))}
 			</div>
 			<div className="home-footer">

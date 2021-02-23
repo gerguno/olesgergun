@@ -5,14 +5,18 @@ import {Fullpage} from "../components/Fullpage";
 import {BigTitle} from "../components/BigTitle";
 import {Story} from "../components/Story";
 import Highlight from "../components/Highlight";
-import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import NextPost from "../components/NextPost"
+import useWindowDimensions from "../components/useWindowDimensions";
+import Menu from "../components/Menu";
+import MenuMobile from "../components/MenuMobile";
 
 export default function Post({ post, allPosts }) {
+	const { height, width } = useWindowDimensions()
+
 	return (
 		<>
-			<Menu color={post.menu}/>
+			{width > 768 ? <Menu color={post.menu}/> : <MenuMobile color={post.menu}/>}
 			<MainLayout title={post.title}>
 				{post.postContent.map(c => {
 					return (

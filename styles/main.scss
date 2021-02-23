@@ -33,7 +33,7 @@ h1 {
 
 h2 {
     font-size: 38px;
-    line-height: 38px;
+    line-height: 36px;
     letter-spacing: -0.03em;
 }
 
@@ -51,6 +51,10 @@ a {
 a:visited {
     color: $black;
     text-decoration: none;
+}
+
+div::selection {
+    background: rgba(0,0,0,0.1);
 }
 
 // Props
@@ -170,6 +174,7 @@ nav {
 .title {
     display: flex;
     padding: 14px $horizontal-padding 11px $horizontal-padding;
+    align-items: baseline;
 
     img {
         margin-right: 16px;
@@ -213,8 +218,15 @@ nav {
 
 .story {
     padding: 4px $horizontal-padding 75px $horizontal-padding;
-    display: grid;
-    grid-template-columns: 50% 476px calc(50% - 476px);
+
+    @include xs {
+        display: block;
+    }
+
+    @include m {
+        display: grid;
+        grid-template-columns: 50% 476px calc(50% - 476px);
+    }
 }
 
 
@@ -455,20 +467,32 @@ nav {
         margin: 0 0 0 auto;
 
         a {
-            margin-left: 11px;
+            @include xs {
+                margin-right: 11px;
+            }
+
+            @include m {
+                margin-left: 11px;
+            }
         }
     }
 }
 
 .home-medium {
     width: 100%;
-    height: calc(100vh - 30px);
-    position: relative;
+    //height: 717px;
     overflow: hidden;
     background: $lightgrey;
     display: flex;
     align-items: center;
-    float: left; // removes unexpl. gap
+
+    @include xs {
+        height: calc(100vh - 50px);
+    }
+
+    @include m {
+        height: calc(100vh - 32px);
+    }
 
     .ipad-screen {
         position: relative;
@@ -503,10 +527,21 @@ nav {
 }
 
 .home-intro {
-    padding: 14px $horizontal-padding 100px $horizontal-padding;
-    font-size: 96px;
-    line-height: 92px;
-    letter-spacing: -0.03em;
+    .home-intro-text {
+        letter-spacing: -0.03em;
+
+        @include xs {
+            font-size: 64px;
+            line-height: 62px;
+            padding: 50px $horizontal-padding 80px $horizontal-padding;
+        }
+
+        @include m {
+            font-size: 96px;
+            line-height: 92px;
+            padding: 60px $horizontal-padding 80px $horizontal-padding;
+        }
+    }
 }
 
 .home-projects {
@@ -515,13 +550,27 @@ nav {
     letter-spacing: -0.03em;
     padding-bottom: 100px;
 
-    & > div {
+    a {
         display: flex;
         align-items: baseline;
         padding: 11px $horizontal-padding 13px $horizontal-padding;
+        transition: 0.15s;
 
         img {
             margin-right: 16px;
+        }
+
+        &:hover {
+            background: black;
+            color: white !important;
+
+            img {
+                filter: invert(1);
+            }
+
+            span {
+                color: $darkgrey !important;
+            }
         }
     }
 }
@@ -529,7 +578,7 @@ nav {
 .home-footer {
     height: 717px;
     width: 100%;
-    background: url('/userflow2.png') center center / cover no-repeat;
+    background: url('/userflow2.png') center 10% / cover no-repeat;
     display: flex;
     flex-direction: column;
 
@@ -540,35 +589,57 @@ nav {
         a {
             color: white;
         }
+
+        @include xs {
+            display: block;
+        }
+
+        @include m {
+            display: flex;
+        }
     }
 }
 
 nav.home-menu {
     position: relative;
     z-index: 999;
-    height: 32px;
     top: 0;
     left: 0;
     right: 0;
-    background: white;
     color: black;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 18px;
+    //line-height: 24px;
     letter-spacing: -0.02em;
     padding: 0 8px;
     transition: all 0.2s linear;
+    display: flex;
+    justify-content: space-between;
+
+    @include xs {
+        height: 50px;
+    }
+
+    @include m {
+        height: 32px;
+    }
+
+    & > div {
+        padding-top: 3px;
+    }
 
     a {
         color: black;
         text-decoration: none;
+        transition: all 0.2s linear;
 
         &:visited {
             color: black;
             text-decoration: none;
+        }
+
+        &:hover {
+            color: $grey;
         }
     }
 
@@ -579,6 +650,98 @@ nav.home-menu {
     & > div.__active {
         border-top: 2px solid transparent;
         border-image: url('/checker.png') 8 0 0 0 round;
-        //border-top: 2px solid white;
+    }
+
+    .home-menu-info {
+        @include xs {
+            margin-left: auto;
+            width: 210px;
+        }
+
+        @include m {
+            margin-left: auto;
+            width: 400px;
+            text-align: right;
+        }
+
+        @include l {
+            margin-left: 0;
+            width: auto;
+        }
+    }
+
+    #open {
+        background: 0;
+        border: 0;
+        height: 6px;
+        margin-top: 4px;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+}
+
+.menu-pop {
+    padding: 5px 8px;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    height: 100vh;
+    width: calc(100% - 16px);
+
+    .menu-pop-top {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        #close {
+            background: 0;
+            border: 0;
+            height: 6px;
+            margin-top: -3px;
+
+            &:focus {
+                outline: 0;
+            }
+        }
+
+        .menu-info {
+            line-height: 18px;
+
+            @include xs {
+                margin-left: auto;
+                width: 210px;
+            }
+
+            @include m {
+                margin-left: auto;
+                width: 400px;
+                text-align: right;
+            }
+        }
+    }
+
+    .menu-pop-opts {
+        width: 100%;
+        margin-top: 50px;
+
+        div {
+            padding: 4px 0 8px 0;
+            border-top: 1px solid $lightgrey;
+
+            h2 {
+                color: $grey;
+            }
+        }
+
+        .__active {
+            border-top: 4px solid transparent;
+            border-image: url('/checker-mob.png') 16 0 0 0 round;
+
+            h2 {
+                color: black;
+            }
+        }
     }
 }

@@ -21,7 +21,6 @@ export default function Menu({ color }) {
     useEffect(() => {
         const threshold = 5;
         let lastScrollY = window.pageYOffset;
-        let nowScrollY = window.pageYOffset;
         let ticking = false;
 
         const updateScrollDir = () => {
