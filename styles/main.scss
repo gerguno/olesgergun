@@ -6,19 +6,7 @@ $grey: #9C9C9C;
 $lightgrey: #E2E2E2;
 $white: white;
 $horizontal-padding: 8px;
-
-$fullsize-height: 704px;
 $fullsize-padding-bottom: 3px;
-
-$screen-desktop-width: 846px;
-$screen-desktop-height: 592px;
-$screen-desktop-border: 18px;
-$screen-desktop-border-radius: 18px;
-
-$screen-iphoneX-width: 277px;
-$screen-iphoneX-height: 600px;
-
-
 
 * {
     margin: 0;
@@ -117,7 +105,7 @@ nav {
         height: 50px;
     }
 
-    @include m {
+    @include s {
         height: 32px;
     }
 
@@ -151,7 +139,7 @@ nav {
             width: 210px;
         }
 
-        @include m {
+        @include s {
             margin-left: auto;
             width: 400px;
             text-align: right;
@@ -167,7 +155,14 @@ nav {
         background: 0;
         border: 0;
         height: 6px;
-        margin-top: 4px;
+
+        @include xs {
+            margin-top: 4px;
+        }
+
+        @include s {
+            margin-top: 6px;
+        }
 
         &:focus {
             outline: 0;
@@ -240,6 +235,7 @@ nav {
 
 .next-post {
     display: flex;
+    align-items: baseline;
     padding: 11px $horizontal-padding 13px $horizontal-padding;
     background: black;
 
@@ -278,11 +274,29 @@ nav {
 
     @include xs {
         display: block;
+        width: 80%;
     }
 
     @include m {
         display: grid;
+        grid-template-columns: 50% 350px calc(50% - 350px);
+        width: auto;
+    }
+
+    @include l {
+        display: grid;
         grid-template-columns: 50% 476px calc(50% - 476px);
+        width: auto;
+    }
+
+    .story-text {
+        @include xs {
+            margin-top: 16px;
+        }
+
+        @include m {
+            margin-top: 0;
+        }
     }
 }
 
@@ -301,7 +315,13 @@ nav {
 }
 
 .__half {
-    width: 50%;
+    @include xs {
+        width: 100%;
+    }
+
+    @include s {
+        width: 50%;
+    }
 }
 
 .supermedium {
@@ -311,7 +331,27 @@ nav {
     height: 717px;
     display: inline-flex;
     align-items: center;
-    float: left; // removes unexpl. gap
+
+    @include xs {
+        height: 110vw;
+    }
+
+    @include s {
+        height: 80vw;
+    }
+
+    @include m {
+        height: 75vw;
+        float: left; // removes unexpl. gap
+    }
+
+    @include xm {
+        height: 64vw;
+    }
+
+    @include l {
+        height: 717px;
+    }
 
     video {
         position: absolute;
@@ -325,9 +365,16 @@ nav {
 
     .desktop-screen {
         position: relative;
-        width: 1108px;
         left: 50%;
         transform: translateX(-50%);
+
+        @include xs {
+            width: 93vw;
+        }
+
+        @include l {
+            width: 1108px;
+        }
 
         .__device {
             width: inherit;
@@ -338,11 +385,20 @@ nav {
 
         .__media {
             position: absolute;
-            top: 26px;
             left: 50%;
             transform: translateX(-50%) translateY(0);
-            width: 850px;
-            height: 532px;
+
+            @include xs {
+                top: 2.1vw;
+                width: 71.3vw;
+                height: 44.6vw;
+            }
+
+            @include l {
+                top: 26px;
+                width: 850px;
+                height: 532px;
+            }
 
             img, video {
                 width: inherit;
@@ -354,9 +410,20 @@ nav {
 
     .ipad-screen {
         position: relative;
-        width: 860px;
         left: 50%;
         transform: translateX(-50%);
+
+        @include xs {
+            width: 76vw;
+        }
+
+        @include s {
+            width: 73vw;
+        }
+
+        @include l {
+            width: 860px;
+        }
 
         .__device {
             width: inherit;
@@ -367,13 +434,30 @@ nav {
 
         .__media {
             position: absolute;
-            top: 34px;
             left: 50%;
             transform: translateX(-50%) translateY(0);
-            width: 787px;
-            height: 550px;
-            border-radius: 10px;
             overflow: hidden;
+
+            @include xs {
+                top: 3vw;
+                width: 69.6vw;
+                height: 48.4vw;
+                border-radius: 1.05vw;
+            }
+
+            @include s {
+                top: 2.9vw;
+                width: 66.85vw;
+                height: 46.7vw;
+                border-radius: 1.05vw;
+            }
+
+            @include l {
+                top: 34px;
+                width: 787px;
+                height: 550px;
+                border-radius: 10px;
+            }
 
             img, video {
                 width: inherit;
@@ -385,9 +469,20 @@ nav {
 
     .iphonex-screen {
         position: relative;
-        width: 304px;
         left: 50%;
         transform: translateX(-50%);
+
+        @include xs {
+            width: 41vw;
+        }
+
+        @include s {
+            width: 26vw;
+        }
+
+        @include l {
+            width: 304px;
+        }
 
         .__device {
             width: inherit;
@@ -404,13 +499,30 @@ nav {
 
         .__media {
             position: absolute;
-            top: 13px;
             left: 50%;
             transform: translateX(-50%) translateY(0);
-            width: 274px;
-            height: 596px;
-            border-radius: 35px;
             overflow: hidden;
+
+            @include xs {
+                top: 1.9vw;
+                width: 36.8vw;
+                height: 80.2vw;
+                border-radius: 4.4vw;
+            }
+
+            @include s {
+                top: 1.1vw;
+                width: 23.35vw;
+                height: 50.9vw;
+                border-radius: 3vw;
+            }
+
+            @include l {
+                top: 13px;
+                width: 274px;
+                height: 596px;
+                border-radius: 35px;
+            }
 
             img, video {
                 width: inherit;
@@ -422,9 +534,20 @@ nav {
 
     .iphone6-screen {
         position: relative;
-        width: 304px;
         left: 50%;
         transform: translateX(-50%);
+
+        @include xs {
+            width: 41vw;
+        }
+
+        @include s {
+            width: 26vw;
+        }
+
+        @include l {
+            width: 304px;
+        }
 
         .__device {
             width: inherit;
@@ -435,12 +558,27 @@ nav {
 
         .__media {
             position: absolute;
-            top: 70px;
             left: 50%;
             transform: translateX(-50%) translateY(0);
-            width: 268px;
-            height: 476px;
             overflow: hidden;
+
+            @include xs {
+                top: 9.3vw;
+                width: 36vw;
+                height: 64.25vw;
+            }
+
+            @include s {
+                top: 6vw;
+                width: 22.9vw;
+                height: 40.7vw;
+            }
+
+            @include l {
+                top: 70px;
+                width: 268px;
+                height: 476px;
+            }
 
             img, video {
                 width: inherit;
@@ -452,8 +590,19 @@ nav {
 
     .nomediaH {
         position: relative;
-        height: 610px;
         width: 100%;
+
+        @include xs {
+            height: 83vw;
+        }
+
+        @include s {
+            height: 51.5vw;
+        }
+
+        @include l {
+            height: 610px;
+        }
 
         .__media {
             position: absolute;
@@ -471,9 +620,16 @@ nav {
 
     .nomediaW {
         position: relative;
-        width: 1108px;
         left: 50%;
         transform: translateX(-50%);
+
+        @include xs {
+            width: 92vw;
+        }
+
+        @include l {
+            width: 1108px;
+        }
 
         .__media {
             position: absolute;
@@ -499,7 +655,7 @@ nav {
 
     & > div {
         margin: 44px 44px;
-        width: $screen-desktop-width * 1.45;
+        width: 87vw;
 
         img {
             width: inherit;
@@ -518,7 +674,14 @@ nav {
 
 .footer {
     padding: 120px $horizontal-padding 9px $horizontal-padding;
-    display: flex;
+
+    @include xs {
+        display: block;
+    }
+
+    @include m {
+        display: flex;
+    }
 
     & > div:last-child {
         margin: 0 0 0 auto;
@@ -553,9 +716,20 @@ nav {
 
     .ipad-screen {
         position: relative;
-        width: 860px;
         left: 50%;
         transform: translateX(-50%);
+
+        @include xs {
+            width: 76vw;
+        }
+
+        @include s {
+            width: 73vw;
+        }
+
+        @include l {
+            width: 860px;
+        }
 
         .__device {
             width: inherit;
@@ -566,13 +740,30 @@ nav {
 
         .__media {
             position: absolute;
-            top: 34px;
             left: 50%;
             transform: translateX(-50%) translateY(0);
-            width: 787px;
-            height: 550px;
-            border-radius: 10px;
             overflow: hidden;
+
+            @include xs {
+                top: 3vw;
+                width: 69.6vw;
+                height: 48.4vw;
+                border-radius: 1.05vw;
+            }
+
+            @include s {
+                top: 2.9vw;
+                width: 66.85vw;
+                height: 46.7vw;
+                border-radius: 1.05vw;
+            }
+
+            @include l {
+                top: 34px;
+                width: 787px;
+                height: 550px;
+                border-radius: 10px;
+            }
 
             img, video {
                 width: inherit;
@@ -715,7 +906,7 @@ nav.home-menu {
             width: 210px;
         }
 
-        @include m {
+        @include s {
             margin-left: auto;
             width: 400px;
             text-align: right;
@@ -731,7 +922,14 @@ nav.home-menu {
         background: 0;
         border: 0;
         height: 6px;
-        margin-top: 4px;
+
+        @include xs {
+            margin-top: 4px;
+        }
+
+        @include s {
+            margin-top: 6px;
+        }
 
         &:focus {
             outline: 0;
@@ -756,7 +954,14 @@ nav.home-menu {
             background: 0;
             border: 0;
             height: 6px;
-            margin-top: -3px;
+
+            @include xs {
+                margin-top: -3px;
+            }
+
+            @include s {
+                margin-top: 1px;
+            }
 
             &:focus {
                 outline: 0;
@@ -771,10 +976,15 @@ nav.home-menu {
                 width: 210px;
             }
 
-            @include m {
+            @include s {
                 margin-left: auto;
                 width: 400px;
                 text-align: right;
+            }
+
+            @include l {
+                margin-left: 0;
+                width: auto;
             }
         }
     }
