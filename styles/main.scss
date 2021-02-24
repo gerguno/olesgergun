@@ -100,22 +100,30 @@ nav {
     //position: fixed;
     position: absolute;
     z-index: 999;
-    height: 32px;
     top: 0;
     left: 0;
     right: 0;
     background: transparent;
     color: black;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
     font-size: 16px;
-    //font-size: 17px; //better?
-    line-height: 24px;
+    line-height: 18px;
     letter-spacing: -0.02em;
     padding: 0 8px;
     transition: all 0.2s linear;
+    display: flex;
+    justify-content: space-between;
+
+    @include xs {
+        height: 50px;
+    }
+
+    @include m {
+        height: 32px;
+    }
+
+    & > div {
+        padding-top: 3px;
+    }
 
     a {
         color: black;
@@ -135,6 +143,35 @@ nav {
         border-top: 2px solid transparent;
         border-image: url('/checker.png') 8 0 0 0 round;
         //border-top: 2px solid white;
+    }
+
+    .menu-info {
+        @include xs {
+            margin-left: auto;
+            width: 210px;
+        }
+
+        @include m {
+            margin-left: auto;
+            width: 400px;
+            text-align: right;
+        }
+
+        @include l {
+            margin-left: 0;
+            width: auto;
+        }
+    }
+
+    #open {
+        background: 0;
+        border: 0;
+        height: 6px;
+        margin-top: 4px;
+
+        &:focus {
+            outline: 0;
+        }
     }
 }
 
@@ -156,14 +193,34 @@ nav {
         }
     }
 
+    img {
+        filter: invert(1);
+    }
+
     span {
         color: $darkgrey !important;
+    }
+
+    .__active {
+        span {
+           color: white !important;
+        }
     }
 }
 
 .__white {
     background: white;
     color: black;
+
+    span {
+        color: $grey !important;
+    }
+
+    .__active {
+        span {
+            color: black !important;
+        }
+    }
 }
 
 
@@ -729,17 +786,17 @@ nav.home-menu {
         div {
             padding: 4px 0 8px 0;
             border-top: 1px solid $lightgrey;
+        }
 
-            h2 {
-                color: $grey;
-            }
+        span {
+            color: $grey;
         }
 
         .__active {
             border-top: 4px solid transparent;
             border-image: url('/checker-mob.png') 16 0 0 0 round;
 
-            h2 {
+            span {
                 color: black;
             }
         }

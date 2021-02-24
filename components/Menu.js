@@ -50,13 +50,13 @@ export default function Menu({ color }) {
         // console.log(scrollDir);
 
         if (scrollDir === "on top") {
-            !color ? nav.current.className = '' : ''
+            !color ? nav.current.className = '' : nav.current.className = `__${color}`
         }
         if (scrollDir === "scrolling up") {
             !color ? nav.current.className = '__fixed __white' : nav.current.className = `__fixed __${color}`
         }
         if (scrollDir === "scrolling down") {
-            nav.current.className = ''
+            !color ? nav.current.className = '' : nav.current.className = `__${color}`
         }
 
         return () => window.removeEventListener("scroll", onScroll);
@@ -80,7 +80,6 @@ export default function Menu({ color }) {
                     :
                         <><span className="grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
                 }
-
             </div>
         </nav>
     )

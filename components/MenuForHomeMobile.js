@@ -61,7 +61,7 @@ export default function MenuForHomeMobile() {
         // console.log(scrollDir);
 
         if (scrollDir === "on top") {
-            nav.current.className = 'home-menu'
+            nav.current.className = 'home-menu __white'
             homeIntroText.style = ''
         }
         if (scrollDir === "scrolling up") {
@@ -69,7 +69,7 @@ export default function MenuForHomeMobile() {
             homeIntroText.style = 'padding-top: 100px !important' // remove dancing
         }
         if (scrollDir === "scrolling down") {
-            nav.current.className = 'home-menu'
+            nav.current.className = 'home-menu __white'
             homeIntroText.style = ''
         }
 
@@ -100,17 +100,29 @@ export default function MenuForHomeMobile() {
                     <div className='menu-pop-opts'>
                         <div ref={workbench}>
                             <Link href={'/'}>
-                                <a><h2>Workbench</h2></a>
+                                <a>
+                                    <h2>
+                                        <span>Workbench</span>
+                                    </h2>
+                                </a>
                             </Link>
                         </div>
                         <div ref={about}>
                             <Link href={'/about'}>
-                                <a><h2>About</h2></a>
+                                <a>
+                                    <h2>
+                                        <span>About</span>
+                                    </h2>
+                                </a>
                             </Link>
                         </div>
                         <div ref={contact}>
                             <Link href={'/contact'}>
-                                <a><h2>Contact</h2></a>
+                                <a>
+                                    <h2>
+                                        <span>Contact</span>
+                                    </h2>
+                                </a>
                             </Link>
                         </div>
                     </div>
