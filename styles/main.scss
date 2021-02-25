@@ -5,7 +5,7 @@ $darkgrey: #6E6E6E;
 $grey: #9C9C9C;
 $lightgrey: #E2E2E2;
 $white: white;
-$horizontal-padding: 8px;
+$horizontal-padding: 12px;
 $horizontal-padding-mob: 12px;
 $fullsize-padding-bottom: 3px;
 
@@ -313,7 +313,8 @@ nav {
     }
 
     @include s {
-        padding: 4px $horizontal-padding 75px $horizontal-padding;
+        //padding: 4px $horizontal-padding 75px $horizontal-padding;
+        padding: 5px $horizontal-padding 75px $horizontal-padding;
     }
 
     @include m {
@@ -350,7 +351,8 @@ nav {
     }
 
     @include s {
-        padding: 4px $horizontal-padding 180px $horizontal-padding;
+        //padding: 4px $horizontal-padding 180px $horizontal-padding;
+        padding: 8px $horizontal-padding 180px $horizontal-padding;
     }
 }
 
@@ -761,6 +763,43 @@ nav {
         height: calc(100vh - 32px);
     }
 
+    .iphonex-screen {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 65vh;
+
+        .__device {
+            height: inherit;
+            img {
+                height: inherit;
+            }
+            .__notch {
+                position: absolute;
+                height: inherit;
+                top: 0;
+                z-index: 1;
+            }
+        }
+
+        .__media {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            overflow: hidden;
+            top: 1.35vh;
+            width: 28.9vh;
+            height: 62.3vh;
+            border-radius: 3.6vh;
+
+            img, video {
+                width: inherit;
+                height: inherit;
+                position: inherit;
+            }
+        }
+    }
+
     .ipad-screen {
         position: relative;
         left: 50%;
@@ -775,7 +814,7 @@ nav {
         }
 
         @include l {
-            width: 860px;
+            width: 960px;
         }
 
         .__device {
@@ -806,9 +845,9 @@ nav {
             }
 
             @include l {
-                top: 34px;
-                width: 787px;
-                height: 550px;
+                top: 38px;
+                width: 880px;
+                height: 615px;
                 border-radius: 10px;
             }
 
@@ -828,7 +867,7 @@ nav {
         @include xs {
             font-size: 64px;
             line-height: 62px;
-            padding: 50px $horizontal-padding 80px $horizontal-padding;
+            padding: 50px $horizontal-padding-mob 80px $horizontal-padding-mob;
         }
 
         @include m {
@@ -848,8 +887,15 @@ nav {
     a {
         display: flex;
         align-items: baseline;
-        padding: 11px $horizontal-padding 15px $horizontal-padding;
         transition: 0.15s;
+
+        @include xs {
+            padding: 11px $horizontal-padding-mob 15px $horizontal-padding-mob;
+        }
+
+        @include m {
+            padding: 11px $horizontal-padding 15px $horizontal-padding;
+        }
 
         img {
             margin-right: 16px;

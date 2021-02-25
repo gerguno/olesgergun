@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import MenuForHome from "../components/MenuForHome";
 import MenuForHomeMobile from "../components/MenuForHomeMobile";
 import useWindowDimensions from "../components/useWindowDimensions";
+import {IphoneXScreen} from "../components/IphoneXScreen";
 
 
 export default function Index({ posts }) {
@@ -13,14 +14,21 @@ export default function Index({ posts }) {
 
 	const media = [
 		{
-			url: '/home/ktf_website.mov',
-			mimeType: 'video/quicktime'
+			url: '/home/ktf_website.mp4',
+			mimeType: 'video/mp4'
+		}
+	]
+
+	const mediaMob = [
+		{
+			url: '/home/ktf_website_mob.mp4',
+			mimeType: 'video/mp4'
 		}
 	]
 	return (
 		<MainLayout title={'Workbench'}>
 			<div className="home-medium">
-				<IpadScreen src={media}/>
+				{width > 768 ? <IpadScreen src={media}/> : <IphoneXScreen src={mediaMob}/>}
 			</div>
 			<div className="home-intro">
 				{width > 768 ? <MenuForHome/> : <MenuForHomeMobile/>}
