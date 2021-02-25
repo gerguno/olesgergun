@@ -20,7 +20,7 @@ export default function SuperMedium({ full, deviceType, deviceMedia, backgroundC
                 :
                     width > 760
                         ?
-                            (<div
+                            <div
                                 className={`supermedium ${full ? `__full` : `__half`}`}
                                 style={{ background: backgroundColor && backgroundColor.hex || backgroundMedium && `url('${backgroundMedium.url}') center center / cover no-repeat` }}
                             >
@@ -30,11 +30,11 @@ export default function SuperMedium({ full, deviceType, deviceMedia, backgroundC
                                 {deviceType==='iphone6' && <Iphone6Screen src={deviceMedia}/>}
                                 {deviceType==='nomediaH' && <NoMediaH src={deviceMedia}/>}
                                 {deviceType==='nomediaW' && <NoMediaW src={deviceMedia}/>}
-                            </div>)
+                            </div>
                         :
-                            (<div
+                            <div
                                 className={`supermedium ${full ? `__full` : `__half`}`}
-                                style={{ background: backgroundColor && backgroundColor.hex || backgroundMediumMobile[0] && `url('${backgroundMediumMobile[0].url}') center center / cover no-repeat` }}
+                                style={{ background: backgroundColor && backgroundColor.hex || backgroundMediumMobile[0] && `url('${backgroundMediumMobile[0].url}') center center / cover no-repeat` || backgroundMedium && `url('${backgroundMedium.url}') center center / cover no-repeat` }}
                             >
                                 {deviceType==='desktop' && <DesktopScreen src={deviceMedia}/>}
                                 {deviceType==='ipad' && <IpadScreen src={deviceMedia}/>}
@@ -42,7 +42,7 @@ export default function SuperMedium({ full, deviceType, deviceMedia, backgroundC
                                 {deviceType==='iphone6' && <Iphone6Screen src={deviceMedia}/>}
                                 {deviceType==='nomediaH' && <NoMediaH src={deviceMedia}/>}
                                 {deviceType==='nomediaW' && <NoMediaW src={deviceMedia}/>}
-                            </div>)
+                            </div>
 
             }
         </>

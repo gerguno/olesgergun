@@ -87,8 +87,7 @@ export default function MenuMobile({ color }) {
                 </div>
             </nav>
 
-            {open &&
-            <div className={`menu-pop ${color ? `__${color}` : `__white`}`}>
+            <div className={`menu-pop ${color ? `__${color}` : `__white`} ${open ? `__menu-opened` : `__menu-closed`} `}>
                 <div className="menu-pop-top">
                     <button id="close" onClick={toggleMenu}>
                         <img src="/close.svg"/>
@@ -132,7 +131,6 @@ export default function MenuMobile({ color }) {
                     </div>
                 </div>
             </div>
-            }
         </>
     )
 }

@@ -6,6 +6,7 @@ $grey: #9C9C9C;
 $lightgrey: #E2E2E2;
 $white: white;
 $horizontal-padding: 8px;
+$horizontal-padding-mob: 12px;
 $fullsize-padding-bottom: 3px;
 
 * {
@@ -85,7 +86,6 @@ body {
 
 // Header
 nav {
-    //position: fixed;
     position: absolute;
     z-index: 999;
     top: 0;
@@ -97,7 +97,6 @@ nav {
     line-height: 18px;
     letter-spacing: -0.02em;
     padding: 0 8px;
-    transition: all 0.2s linear;
     display: flex;
     justify-content: space-between;
 
@@ -172,6 +171,21 @@ nav {
 
 .__fixed {
     position: fixed !important;
+    animation: slidetop 0.2s ease-out forwards;
+
+    @include xs {
+        top: -50px;
+    }
+
+    @include s {
+        top: -32px;
+    }
+}
+
+@keyframes slidetop {
+    to {
+        top: 0px;
+    }
 }
 
 .__black {
@@ -225,19 +239,35 @@ nav {
 // Elements
 .title {
     display: flex;
-    padding: 14px $horizontal-padding 11px $horizontal-padding;
     align-items: baseline;
+
+    @include xs {
+        padding: 14px $horizontal-padding-mob 26px $horizontal-padding-mob;
+    }
+
+    @include s {
+        padding: 14px $horizontal-padding 11px $horizontal-padding;
+    }
 
     img {
         margin-right: 16px;
     }
+
+
 }
 
 .next-post {
     display: flex;
     align-items: baseline;
-    padding: 11px $horizontal-padding 13px $horizontal-padding;
     background: black;
+
+    @include xs {
+        padding: 11px $horizontal-padding-mob 15px $horizontal-padding-mob;
+    }
+
+    @include s {
+        padding: 11px $horizontal-padding 15px $horizontal-padding;
+    }
 
     h2 a {
         color: white !important;
@@ -266,15 +296,24 @@ nav {
 }
 
 .description {
-    padding: 0px $horizontal-padding 100px $horizontal-padding;
+    @include xs {
+        padding: 0px $horizontal-padding-mob 100px $horizontal-padding-mob;
+    }
+
+    @include s {
+        padding: 0px $horizontal-padding 100px $horizontal-padding;
+    }
 }
 
 .story {
-    padding: 4px $horizontal-padding 75px $horizontal-padding;
-
     @include xs {
         display: block;
         width: 80%;
+        padding: 8px $horizontal-padding-mob 75px $horizontal-padding-mob;
+    }
+
+    @include s {
+        padding: 4px $horizontal-padding 75px $horizontal-padding;
     }
 
     @include m {
@@ -305,16 +344,26 @@ nav {
     display: flex;
     background: black;
     color: white;
-    padding: 4px $horizontal-padding 180px $horizontal-padding;
+
+    @include xs {
+        padding: 8px $horizontal-padding-mob 180px $horizontal-padding-mob;
+    }
+
+    @include s {
+        padding: 4px $horizontal-padding 180px $horizontal-padding;
+    }
 }
 
 //________________________________
 
 .__full {
+    display: flex;
     width: 100%;
 }
 
 .__half {
+    display: inline-flex;
+
     @include xs {
         width: 100%;
     }
@@ -329,7 +378,6 @@ nav {
     overflow: hidden;
     background: $lightgrey;
     height: 717px;
-    display: inline-flex;
     align-items: center;
 
     @include xs {
@@ -342,7 +390,6 @@ nav {
 
     @include m {
         height: 75vw;
-        float: left; // removes unexpl. gap
     }
 
     @include xm {
@@ -801,7 +848,7 @@ nav {
     a {
         display: flex;
         align-items: baseline;
-        padding: 11px $horizontal-padding 13px $horizontal-padding;
+        padding: 11px $horizontal-padding 15px $horizontal-padding;
         transition: 0.15s;
 
         img {
@@ -851,16 +898,11 @@ nav {
 nav.home-menu {
     position: relative;
     z-index: 999;
-    top: 0;
-    left: 0;
-    right: 0;
     color: black;
     font-size: 16px;
     line-height: 18px;
-    //line-height: 24px;
     letter-spacing: -0.02em;
     padding: 0 8px;
-    transition: all 0.2s linear;
     display: flex;
     justify-content: space-between;
 
@@ -942,7 +984,6 @@ nav.home-menu {
     position: fixed;
     z-index: 9999;
     top: 0;
-    height: 100vh;
     width: calc(100% - 16px);
 
     .menu-pop-top {
@@ -1009,6 +1050,35 @@ nav.home-menu {
             span {
                 color: black;
             }
+        }
+    }
+}
+
+.__menu-opened {
+    height: 0vh;
+    animation: openmenu 0.2s ease-out forwards;
+
+    @keyframes openmenu {
+        to {
+            height: 100vh;
+        }
+    }
+}
+
+.__menu-closed {
+    animation: closemenu 0.2s ease-in forwards;
+    overflow: hidden;
+
+    @keyframes closemenu {
+        0% {
+            height: 100vh;
+
+        }
+        99% {
+            height: 0vh;
+        }
+        100% {
+            visibility: hidden;
         }
     }
 }
