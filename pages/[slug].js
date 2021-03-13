@@ -5,6 +5,7 @@ import {Fullpage} from "../components/Fullpage";
 import {BigTitle} from "../components/BigTitle";
 import {Story} from "../components/Story";
 import Highlight from "../components/Highlight";
+import Code from "../components/Code";
 import Footer from "../components/Footer";
 import NextPost from "../components/NextPost"
 import useWindowDimensions from "../components/useWindowDimensions";
@@ -13,7 +14,6 @@ import MenuMobile from "../components/MenuMobile";
 
 export default function Post({ post, allPosts }) {
 	const { height, width } = useWindowDimensions()
-
 	return (
 		<>
 			{width > 768 ? <Menu color={post.menu}/> : <MenuMobile color={post.menu}/>}
@@ -42,6 +42,9 @@ export default function Post({ post, allPosts }) {
 
 							{c.highlight &&
 							<Highlight src={c.highlight}/>}
+
+							{c.codeLine1 &&
+							<Code src={[c.codeLine1, c.codeLine2, c.codeLine3, c.codeLine4, c.codeLine5]}/>}
 						</>
 					)
 				})}
@@ -83,7 +86,7 @@ export async function getPost(slug) {
 		query: `
 query PostBySlug($slug: String) {
   post(filter: {slug: {eq: $slug}}) {
-  	menu
+    menu
     title
     afterTitle
     slug
@@ -129,14 +132,21 @@ query PostBySlug($slug: String) {
       ... on HighlightRecord {
         highlight
       }
+      ... on CodeRecord {
+        codeLine1
+        codeLine2
+        codeLine3
+        codeLine4
+        codeLine5
+      }
     }
   }
-  
   allPosts(orderBy: date_DESC) {
-     title
-     slug
+    title
+    slug
   }
 }
+
 		`,
 		variables:  { slug }
 	})

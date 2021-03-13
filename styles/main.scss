@@ -2,7 +2,7 @@
 
 $black: black;
 $darkgrey: #6E6E6E;
-$grey: #9C9C9C;
+$grey: #A6A6A6;
 $lightgrey: #E2E2E2;
 $white: white;
 $horizontal-padding: 12px;
@@ -18,6 +18,7 @@ h1 {
     font-size: 48px;
     line-height: 48px;
     letter-spacing: -0.03em;
+    word-break: break-word;
 }
 
 h2 {
@@ -314,7 +315,7 @@ nav {
 
     @include s {
         //padding: 4px $horizontal-padding 75px $horizontal-padding;
-        padding: 5px $horizontal-padding 75px $horizontal-padding;
+        padding: 5px 9px 75px 9px;
     }
 
     @include m {
@@ -331,7 +332,7 @@ nav {
 
     .story-text {
         @include xs {
-            margin-top: 16px;
+            margin-top: 10px;
         }
 
         @include m {
@@ -360,18 +361,26 @@ nav {
 
 .__full {
     display: flex;
+    align-items: center;
     width: 100%;
 }
 
 .__half {
-    display: inline-flex;
+    & > div {
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
 
     @include xs {
+        display: block;
         width: 100%;
     }
 
     @include s {
+        display: inline-block;
         width: 50%;
+        margin-bottom: -4px;
     }
 }
 
@@ -380,7 +389,6 @@ nav {
     overflow: hidden;
     background: $lightgrey;
     height: 717px;
-    align-items: center;
 
     @include xs {
         height: 110vw;
@@ -518,8 +526,6 @@ nav {
 
     .iphonex-screen {
         position: relative;
-        left: 50%;
-        transform: translateX(-50%);
 
         @include xs {
             width: 41vw;
@@ -583,8 +589,6 @@ nav {
 
     .iphone6-screen {
         position: relative;
-        left: 50%;
-        transform: translateX(-50%);
 
         @include xs {
             width: 41vw;
@@ -721,6 +725,29 @@ nav {
     }
 }
 
+.code {
+    position: relative;
+    overflow: hidden;
+    background: $lightgrey;
+    height: 717px;
+
+    .code-field {
+        display: none;
+    }
+
+    .__active {
+        display: block !important;
+    }
+
+    .code-tab {
+        color: $darkgrey;
+    }
+
+    .__on {
+        color: black !important;
+    }
+}
+
 .footer {
     padding: 120px $horizontal-padding 9px $horizontal-padding;
 
@@ -742,6 +769,7 @@ nav {
 
             @include m {
                 margin-left: 11px;
+                margin-right: 0;
             }
         }
     }
