@@ -791,17 +791,18 @@ nav {
         display: flex;
         height: 52px;
         margin-left: 86px;
-        font-size: 13px;
+        font-size: 14px;
         letter-spacing: -0.01em;
 
         .code-tab {
             margin-right: 30px;
             border-top: 2px solid transparent;
-            padding-top: 2px;
+            padding-top: 1px;
 
             a {
                 color: $darkgrey;
                 cursor: pointer;
+                padding-bottom: 10px;
             }
         }
 

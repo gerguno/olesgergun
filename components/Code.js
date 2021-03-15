@@ -44,7 +44,7 @@ export default function Code({ src }) {
                                                            style={darcula}
                                                            showLineNumbers={true}
                                                            customStyle={{fontFamily: 'inherit', color: 'inherit', lineHeight: '20px', padding: 0, margin: '-2px 0 0 0', overflow: 'inherit', background: '#262626'}}
-                                                           codeTagProps={{style: { fontFamily: 'SF Mono', fontSize: '14px', fontWeight: 500, filter: 'contrast(125%)' }}}
+                                                           codeTagProps={{style: { fontFamily: 'SF Mono', fontSize: '14px', fontWeight: 500, filter: 'contrast(130%)' }}}
                                                            lineNumberStyle={{fontSize: '11px', padding: '0 18px 0 9px', marginBottom: -2, textAlign: 'left', background: '#2f2f2f' }}
                                                            wrapLines={true}
                                         >
