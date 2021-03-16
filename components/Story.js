@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown"
+
 export function Story({name, text}) {
     return (
         <>
@@ -6,7 +8,7 @@ export function Story({name, text}) {
                     <h3>{name}</h3>
                 </div>
                 <div className="story-text">
-                    <p>{text}</p>
+                    <ReactMarkdown source={text}/>
                 </div>
             </div>
         </>

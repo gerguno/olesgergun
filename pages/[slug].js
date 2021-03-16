@@ -44,7 +44,7 @@ export default function Post({ post, allPosts }) {
 							<Highlight src={c.highlight}/>}
 
 							{c.codeLine1 &&
-							<Code src={[c.codeLine1, c.codeLine2, c.codeLine3, c.codeLine4, c.codeLine5]}/>}
+							<Code src={[c.codeLine1, c.codeLine2, c.codeLine3, c.codeLine4, c.codeLine5]} link={c.githublink}/>}
 						</>
 					)
 				})}
@@ -138,6 +138,7 @@ query PostBySlug($slug: String) {
         codeLine3
         codeLine4
         codeLine5
+        githublink
       }
     }
   }

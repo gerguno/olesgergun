@@ -331,6 +331,16 @@ nav {
     }
 
     .story-text {
+        a {
+            text-decoration: underline;
+            text-decoration-color: black;
+            transition: all 0.2s linear;
+
+            &:hover {
+                text-decoration-color: transparent;
+            }
+        }
+
         @include xs {
             margin-top: 10px;
         }
@@ -346,6 +356,27 @@ nav {
     display: flex;
     background: black;
     color: white;
+
+    a {
+        color: white;
+        text-decoration: underline;
+        text-decoration-color: white;
+        transition: all 0.2s linear;
+
+        &:hover {
+            text-decoration-color: transparent;
+        }
+
+        &::after {
+            content: '';
+            width: 35px;
+            height: 32px;
+            position: absolute;
+            margin-top: 14px;
+            margin-left: 4px;
+            background: url('/upright.svg') no-repeat center;
+        }
+    }
 
     @include xs {
         padding: 8px $horizontal-padding-mob 180px $horizontal-padding-mob;
@@ -738,22 +769,96 @@ nav {
     }
 
     .code-container {
-        position: relative;
         height: 600px;
-        width: 885px;
-        background: #000000;
+        position: relative;
+        background: #090909;
         border-radius: 25px;
         left: 50%;
         transform: translateX(-50%);
+
+        @include xs {
+            width: 76vw;
+            .code-tabs {
+                div:nth-child(1){
+                    margin-left: -60px;
+                }
+                div:nth-child(2), div:nth-child(3), div:nth-child(4),  div:nth-child(5) {
+                    display: none;
+                }
+            }
+            .linenumber {
+                display: none !important;
+            }
+            code {
+                font-size: 11px !important;
+            }
+            pre {
+                line-height: 13px !important;
+            }
+        }
+
+        @include s {
+            .code-tabs {
+                div:nth-child(1){
+                    margin-left: 0;
+                }
+                div:nth-child(2), div:nth-child(3), div:nth-child(4),  div:nth-child(5) {
+                    display: block;
+                }
+            }
+            .linenumber {
+                display: inline-block !important;
+            }
+
+            code {
+                font-size: 14px !important;
+            }
+            pre {
+                line-height: 20px !important;
+            }
+        }
+
+        @include l {
+            width: 885px;
+        }
     }
 
     .code-fields-container {
-        width: 839px;
         height: 526px;
+        width: calc(100% - 50px);
         background: #262626;
         overflow-y: scroll;
         display: flex;
         margin: 0 auto;
+
+        &:hover {
+            .viewGithub {
+                display: flex;
+                opacity: 0.4;
+                visibility: visible;
+            }
+        }
+
+        .viewGithub {
+            display: flex;
+            color: #8F8F8F;
+            opacity: 0;
+            font-size: 13px;
+            position: absolute;
+            z-index: 9999;
+            right: 28px;
+            bottom: 28px;
+            padding: 5px 7px;
+            letter-spacing: -0.01em;
+            visibility: hidden;
+            transition: all 0.1s linear;
+
+            img {
+                width: 16px;
+                height: 16px;
+                margin-right: 6px;
+            }
+        }
     }
 
     .code-numeration {
@@ -820,7 +925,7 @@ nav {
 code {
     span:nth-child(1) {
         span:nth-child(1) {
-            padding: 7px 18px 0 9px !important;
+            padding: 7px 0 0 9px !important;
         }
     }
 
@@ -928,9 +1033,9 @@ code {
             width: 73vw;
         }
 
-        @include l {
-            width: 960px;
-        }
+        //@include l {
+        //    width: 960px;
+        //}
 
         .__device {
             width: inherit;
@@ -959,12 +1064,12 @@ code {
                 border-radius: 1.05vw;
             }
 
-            @include l {
-                top: 38px;
-                width: 880px;
-                height: 615px;
-                border-radius: 10px;
-            }
+            //@include l {
+            //    top: 38px;
+            //    width: 880px;
+            //    height: 615px;
+            //    border-radius: 10px;
+            //}
 
             img, video {
                 width: inherit;
