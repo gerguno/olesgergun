@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown"
+
 export function BigTitle({ title, afterTitle, description }) {
     return (
         <>
@@ -8,7 +10,7 @@ export function BigTitle({ title, afterTitle, description }) {
                 </h2>
             </div>
             <div className="description">
-                <h1>{description}</h1>
+                <h1><ReactMarkdown source={description}/></h1>
             </div>
         </>
 

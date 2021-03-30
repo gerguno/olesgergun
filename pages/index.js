@@ -43,6 +43,7 @@ export default function Index({ posts }) {
 								<a>
 									<img src="/bullet.svg"/>
 									<h2>{post.title} <span className="grey">{post.afterTitle}</span></h2>
+									{/*<img className='arrow' src="/arrow-forward.svg"/>*/}
 								</a>
 							</Link>
 				))}

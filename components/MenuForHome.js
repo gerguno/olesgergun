@@ -52,15 +52,16 @@ export default function MenuForHome() {
         // console.log(scrollDir);
 
         if (scrollDir === "on top") {
-            nav.current.className = 'home-menu'
+            nav.current.className = 'home-menu __white'
             homeIntroText.style = ''
         }
         if (scrollDir === "scrolling up") {
+            // nav.current.className = 'home-menu __fixed __white'
             nav.current.className = 'home-menu __fixed __white'
-            homeIntroText.style = 'padding-top: 92px !important' // remove dancing
+            homeIntroText.style = 'padding-top: 68px !important' // remove dancing (x + 32px)
         }
         if (scrollDir === "scrolling down") {
-            nav.current.className = 'home-menu'
+            nav.current.className = 'home-menu __white'
             homeIntroText.style = ''
         }
 
@@ -68,7 +69,7 @@ export default function MenuForHome() {
     }, [scrollDir]);
 
     return (
-        <nav className='home-menu' ref={nav}>
+        <nav className='home-menu __white' ref={nav}>
             <div ref={workbench}>
                 <Link href={'/'}><a>Workbench</a></Link>
             </div>
