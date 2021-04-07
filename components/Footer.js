@@ -7,7 +7,7 @@ export default function Footer({ color }) {
     return (
         <div className={`footer${color==='black' ? ` __${color}` : ''}`}>
             <div>
-                © 2021 Kyiv, Ukraine
+                © 2021 Oleś Gergun. All rights reserved, unless otherwise indicated
             </div>
             <div>
                 <Link href={`https://www.instagram.com/olesgergun/`}>

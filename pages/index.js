@@ -30,27 +30,31 @@ export default function Index({ posts }) {
 			<div className="home-medium">
 				{width > 768 ? <IpadScreen src={media}/> : <IphoneXScreen src={mediaMob}/>}
 			</div>
-			<div className="home-intro">
+			<div>
 				{width > 768 ? <MenuForHome/> : <MenuForHomeMobile/>}
-				<div className="home-intro-text">
-					Litigation and courts search service that helps you to find platform unites a wide audience of researchers by building connection creating the consistancy between design
-					& code.
-				</div>
-			</div>
-			<div className="home-projects">
-				{posts.map(post => (
+				<div style={{ display: 'flex'}}>
+					<div className="home-intro">
+						<div className="home-intro-text">
+							<h1>
+								Oleś Gergun is a digital designer and developer removing the gap between design and code, transmitting graphic design values to digital services design. Selected projects:
+							</h1>
+						</div>
+					</div>
+					<div className="home-projects">
+						{posts.map(post => (
 							<Link href={`/[slug]`} as={`/${post.slug}`}>
 								<a>
-									<img src="/bullet.svg"/>
-									<h2>{post.title} <span className="grey">{post.afterTitle}</span></h2>
+									<h1><img src="/bullet.svg"/> {post.title} <span className="grey">{post.afterTitle}</span></h1>
 									{/*<img className='arrow' src="/arrow-forward.svg"/>*/}
 								</a>
 							</Link>
-				))}
+						))}
+					</div>
+				</div>
 			</div>
-			<div className="home-footer">
+			{/*<div className="home-footer">*/}
 				<Footer/>
-			</div>
+			{/*</div>*/}
 		</MainLayout>
 	)
 }

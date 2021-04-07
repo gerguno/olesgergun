@@ -18,7 +18,7 @@ export default function SuperMedium({ full, deviceType, deviceMedia, backgroundC
                         <video src={backgroundMedium.url} type={backgroundMedium.mimeType} loop autoPlay muted/>
                     </div>
                 :
-                    width > 760
+                    width > 768
                         ?
                             <div
                                 className={`supermedium ${full ? `__full` : `__half`}`}
