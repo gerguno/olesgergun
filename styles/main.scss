@@ -143,10 +143,42 @@ about {
     }
 }
 
+.back-mob {
+    position: absolute;
+    border-radius: 5px;
+    top: 8px;
+    right: 8px;
+    height: 28px;
+    width: 28px;
+    overflow: hidden;
+    align-items: center;
+    display: none;
+
+    img {
+        margin: -1px 0 0 6px;
+    }
+
+    span {
+        margin: -4px 0 0 5px;
+    }
+}
+
 .paint {
     position: absolute;
     border-radius: 100px;
     top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.paint-mob {
+    position: absolute;
+    border-radius: 100px;
+    top: 42px;
     right: 8px;
     width: 28px;
     height: 28px;
