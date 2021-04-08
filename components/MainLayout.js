@@ -40,6 +40,15 @@ export function MainLayout({children, title='Oleś Gergun'}) {
         if (clicked) {
             aboutBlack ? black.className = "black fadeIn" : black.className = "black fadeOut"
         }
+
+        let rightTitles = document.querySelectorAll('.right-title')
+        Array.from(rightTitles).map(rt => {
+            if (aboutBlack) {
+                rt.style.color = '#676767'
+            } else {
+                rt.style.color = '#b2b2b2'
+            }
+        })
     }, [aboutBlack])
 
     return (

@@ -44,6 +44,7 @@ main {
 }
 
 .__pushed {
+    position: fixed;
     @include xs {
         margin-left: calc(100% * -1);
     }
@@ -59,11 +60,89 @@ main {
 }
 
 about {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: fixed;
     top: 0;
     z-index: -9999;
+
+    .about-container {
+        position: absolute;
+        overflow-y: scroll;
+        height: calc(100% - 56px);
+        color: white;
+        mix-blend-mode: exclusion;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        @include xs {
+            padding: 16px 56px 0 26px;
+            display: block;
+        }
+        @include m {
+            padding: 16px 154px 0 calc(60px + 26px);
+            display: flex;
+        }
+        @include xm {
+            padding: 16px 154px 0 calc(72px + 26px);
+        }
+        @include l {
+            padding: 16px 154px 0 calc(124px + 26px);
+        }
+    }
+
+    .left, .right {
+        @include xs {
+            width: 100%;
+        }
+        @include m {
+            width: 50%;
+        }
+    }
+
+    .right {
+        @include xs {
+            padding-bottom: 20px;
+            padding-top: 38px;
+        }
+        @include m {
+            padding-top: 0;
+            padding-left: 80px;
+        }
+
+        .right-block {
+            padding-bottom: 20px;
+
+            .right-title {
+                // Overrides at About.js
+                color: $grey;
+            }
+
+            p {
+                padding-bottom: 12px;
+
+                img {
+                    filter: invert(1);
+                    width: 0.7em;
+                }
+            }
+
+            a {
+                color: white;
+                text-decoration: underline;
+                text-decoration-color: white;
+                transition: all 0.2s linear;
+
+                &:hover {
+                    text-decoration: transparent;
+                }
+            }
+        }
+    }
 }
 
 .color {
@@ -274,8 +353,8 @@ h1 {
 }
 
 h2 {
-    font-size: 38px;
-    line-height: 36px;
+    font-size: 36px;
+    line-height: 38px;
     letter-spacing: -0.03em;
 }
 
