@@ -61,7 +61,6 @@ export default function MenuMobile() {
 
         window.addEventListener("scroll", onScroll);
 
-        console.log(scrollDir)
         if (scrollDir === "on top") {
             logo.current.className = 'logo __margined'
             nav.current.className === '__fixed __pushed' ? nav.current.className = "__pushed" : nav.current.className = ''
@@ -80,53 +79,34 @@ export default function MenuMobile() {
 
     return (
         <>
-            <nav ref={nav}>
-                <button id="open" onClick={toggleMenu}>
-                    <img src="/open.svg"/>
-                </button>
-                <div className="logo __margined" ref={logo}>
-                    Oleś Gergun
-                </div>
-            </nav>
-
-            <div className={`menu-pop ${open ? `__menu-opened` : `__menu-closed`} `}>
-                <div className="menu-pop-top">
-                    <button id="close" onClick={toggleMenu}>
-                        <img src="/close.svg"/>
+            <nav ref={nav} style={open ? { height: '254px', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' } : { height: '42px' }}>
+                <div className='menu-group'>
+                    <button id="open" onClick={toggleMenu}>
+                        {!open ? <img src="/open.svg"/> : <img src="/close.svg"/>}
                     </button>
-                    <div className='menu-info'>
+                    <div className="logo __margined" ref={logo}>
+                        Oleś Gergun
                     </div>
                 </div>
+
                 <div className='menu-pop-opts'>
                     <div ref={workbench}>
                         <Link href={'/'}>
-                            <a>
-                                <h2>
-                                    <span>Workbench</span>
-                                </h2>
-                            </a>
+                            <a><h2><span>Workbench</span></h2></a>
                         </Link>
                     </div>
                     <div ref={texts}>
                         <Link href={'/texts'}>
-                            <a>
-                                <h2>
-                                    <span>Texts</span>
-                                </h2>
-                            </a>
+                            <a><h2><span>Texts</span></h2></a>
                         </Link>
                     </div>
                     <div ref={contact}>
                         <Link href={'/contact'}>
-                            <a>
-                                <h2>
-                                    <span>Contact</span>
-                                </h2>
-                            </a>
+                            <a><h2><span>Contact</span></h2></a>
                         </Link>
                     </div>
                 </div>
-            </div>
+            </nav>
         </>
     )
 }

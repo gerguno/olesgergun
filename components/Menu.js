@@ -63,19 +63,21 @@ export default function Menu() {
 
     return (
         <nav ref={nav}>
-            <div className="menu">
-                <div ref={workbench}>
-                    <Link href={'/'}><a>Workbench</a></Link>
+            <div className="menu-group">
+                <div className="menu">
+                    <div ref={workbench}>
+                        <Link href={'/'}><a>Workbench</a></Link>
+                    </div>
+                    <div ref={texts}>
+                        <Link href={'/texts'}><a>Texts</a></Link>
+                    </div>
+                    <div ref={contact}>
+                        <Link href={'/contact'}><a>Contact</a></Link>
+                    </div>
                 </div>
-                <div ref={texts}>
-                    <Link href={'/texts'}><a>Texts</a></Link>
+                <div className="logo">
+                    Oleś Gergun
                 </div>
-                <div ref={contact}>
-                    <Link href={'/contact'}><a>Contact</a></Link>
-                </div>
-            </div>
-            <div className="logo">
-                Oleś Gergun
             </div>
         </nav>
     )
