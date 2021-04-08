@@ -1,19 +1,30 @@
 import Link from 'next/link'
 import Head from "next/head";
 import { useRef, useState, useEffect } from "react";
+import Menu from "./Menu";
+import MenuMobile from "./MenuMobile";
+import useWindowDimensions from "./useWindowDimensions";
 
 export function MainLayout({children, title='Oleś Gergun'}) {
     const [clicked, setClicked] = useState(false)
     const [pushed, setPushed] = useState(false)
     const [aboutBlack, setAboutBlack] = useState(false)
 
+    const { height, width } = useWindowDimensions()
+
     const push = () => {
         !clicked && setClicked(true)
         setPushed(true)
+
+        let nav = document.querySelector('nav')
+        nav.className = "__pushed"
     }
 
     const unpush = () => {
         setPushed(false)
+        let nav = document.querySelector('nav')
+        nav.className = ""
+
         let black = document.querySelector('about').lastChild
         if (aboutBlack) {
             black.className = "black fadeOut"
@@ -24,7 +35,6 @@ export function MainLayout({children, title='Oleś Gergun'}) {
     const toggleAboutBackground = () => {
         setAboutBlack(!aboutBlack)
     }
-
     useEffect(() => {
         let black = document.querySelector('about').lastChild
         if (clicked) {
@@ -40,6 +50,8 @@ export function MainLayout({children, title='Oleś Gergun'}) {
                 <meta name="description" content='oles, gergun, ui, design, type, typography, code'/>
                 <meta charSet="utf-8"/>
             </Head>
+            {width > 768 ? <Menu/> : <MenuMobile/>}
+
             <main className={pushed ? '__pushed': ''}>
                 {children}
             </main>

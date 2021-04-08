@@ -5,7 +5,7 @@ $darkgrey: #6E6E6E;
 $grey: #A6A6A6;
 $lightgrey: #E2E2E2;
 $white: white;
-$horizontal-padding: 12px;
+$horizontal-padding: 13px;
 $horizontal-padding-mob: 12px;
 $fullsize-padding-bottom: 3px;
 
@@ -45,7 +45,7 @@ main {
 
 .__pushed {
     @include xs {
-        margin-left: 0;
+        margin-left: calc(100% * -1);
     }
     @include m {
         margin-left: calc(calc(100% - 120px) * -1);
@@ -109,6 +109,7 @@ about {
 
 .open-about {
     position: absolute;
+    z-index: 3;
     border-radius: 5px;
     top: 8px;
     right: 8px;
@@ -293,73 +294,79 @@ div::selection {
 
 // Header
 nav {
-    z-index: 999;
+    z-index: 2;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    background: transparent;
+    background: white;
     color: black;
     font-size: 16px;
     line-height: 18px;
     letter-spacing: -0.02em;
-    padding: 0 8px;
     display: flex;
     justify-content: space-between;
-
+    height: 40px;
+    transition: all 0.4s linear;
 
     @include xs {
-        height: 50px;
+        width: 100%;
+    }
+    @include m {
+        width: calc(100% - 60px);
+    }
+    @include xm {
+        width: calc(100% - 72px);
+    }
+    @include l {
+        width: calc(100% - 124px);
     }
 
-    @include s {
-        height: 32px;
-    }
+    .menu {
+        display: flex;
+        padding: 0 $horizontal-padding;
 
-    & > div {
-        padding-top: 3px;
-    }
+        & > div {
+            padding-top: 3px;
+            margin-right: 32px;
+        }
 
-    a {
-        color: black;
-        text-decoration: none;
-        transition: all 0.2s linear;
-
-        &:visited {
+        a {
             color: black;
             text-decoration: none;
+            transition: all 0.2s linear;
+
+            &:visited {
+                color: black;
+                text-decoration: none;
+            }
+
+            &:hover {
+                color: $grey;
+            }
         }
 
-        &:hover {
-            color: $grey;
+        & > div {
+            border-top: 4px solid transparent;
+        }
+
+        & > div.__active {
+            border-top: 4px solid transparent;
+            border-image: url('/checker.png') 16 0 0 0 round;
         }
     }
 
-    & > div {
-        border-top: 2px solid transparent;
+    .logo {
+        font-size: 23px;
+        line-height: 18px;
+        text-align: right;
+        letter-spacing: -0.03em;
+        padding: 11px $horizontal-padding;
+        transition: all 0.2s linear;
     }
 
-    & > div.__active {
-        border-top: 2px solid transparent;
-        border-image: url('/checker.png') 8 0 0 0 round;
-        //border-top: 2px solid white;
-    }
-
-    .menu-info {
-        @include xs {
-            margin-left: auto;
-            width: 210px;
-        }
-
-        @include s {
-            margin-left: auto;
-            width: 400px;
-            text-align: right;
-        }
-
-        @include l {
-            margin-left: 0;
-            width: auto;
-        }
+    .__margined {
+        margin-right: 36px;
     }
 
     #open {
@@ -434,20 +441,6 @@ nav {
     }
 }
 
-.__white {
-    background: white;
-    color: black;
-
-    span {
-        color: $grey !important;
-    }
-
-    .__active {
-        span {
-            color: black !important;
-        }
-    }
-}
 
 
 
@@ -1252,7 +1245,7 @@ code {
 .home-intro {
     align-items: center;
     border-bottom: 3px black solid;
-    padding: 100px 21px 120px 21px;
+    padding: 120px 21px 120px 21px;
 
     @include xs {
         display: block;

@@ -2,13 +2,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-export default function MenuMobile({ color }) {
+export default function MenuMobile() {
     const router = useRouter()
 
-    const nav = useRef()
-    const workbench = useRef()
-    const about = useRef()
-    const contact = useRef()
+    const nav = useRef(null)
+    const workbench = useRef(null)
+    const texts = useRef(null)
+    const contact = useRef(null)
+    const logo = useRef(null)
 
     const [open, setOpen] = useState(false)
 
@@ -21,14 +22,17 @@ export default function MenuMobile({ color }) {
     useEffect(() => {
         workbench.current && (
             (router.pathname === "/" || router.pathname === "/[slug]") ? workbench.current.className = "__active" : workbench.current.className = "",
-                router.pathname === "/about" ? about.current.className = "__active" : about.current.className = "",
+                router.pathname === "/texts" ? texts.current.className = "__active" : texts.current.className = "",
                 router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
         )
-        open ? document.body.style = "overflow: hidden;" : document.body.style = ""
     }, [router, open])
 
     useEffect(() => {
-        const threshold = 5;
+        setScrollDir("on top")
+    }, [])
+
+    useEffect(() => {
+        const threshold = 1;
         let lastScrollY = window.pageYOffset;
         let ticking = false;
 
@@ -39,12 +43,12 @@ export default function MenuMobile({ color }) {
                 ticking = false;
                 return;
             }
-            if (scrollY < 5) {
+            if (scrollY < 10) {
                 setScrollDir("on top")
             } else {
                 scrollY > lastScrollY ? setScrollDir("scrolling down") : setScrollDir("scrolling up")
             }
-            lastScrollY = scrollY > 5 ? scrollY : 5;
+            lastScrollY = scrollY > 0 ? scrollY : 0;
             ticking = false;
         };
 
@@ -56,16 +60,19 @@ export default function MenuMobile({ color }) {
         };
 
         window.addEventListener("scroll", onScroll);
-        // console.log(scrollDir);
 
+        console.log(scrollDir)
         if (scrollDir === "on top") {
-            !color ? nav.current.className = '' : nav.current.className = `__${color}`
+            logo.current.className = 'logo __margined'
+            nav.current.className === '__fixed __pushed' ? nav.current.className = "__pushed" : nav.current.className = ''
         }
         if (scrollDir === "scrolling up") {
-            !color ? nav.current.className = '__fixed __white' : nav.current.className = `__fixed __${color}`
+            nav.current.className === "__pushed" ? nav.current.className = '__fixed __pushed' : nav.current.className = '__fixed'
+            logo.current.className = 'logo'
         }
         if (scrollDir === "scrolling down") {
-            !color ? nav.current.className = '' : nav.current.className = `__${color}`
+            nav.current.className === "__pushed" ? nav.current.className = "__pushed" : nav.current.className = ''
+            logo.current.className = 'logo'
         }
 
         return () => window.removeEventListener("scroll", onScroll);
@@ -73,32 +80,21 @@ export default function MenuMobile({ color }) {
 
     return (
         <>
-            <nav className={color && `__${color}`} ref={nav}>
+            <nav ref={nav}>
                 <button id="open" onClick={toggleMenu}>
                     <img src="/open.svg"/>
                 </button>
-                <div className='menu-info'>
-                    {color === 'black'
-                        ?
-                        <><span className="dark-grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                        :
-                        <><span className="grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                    }
+                <div className="logo __margined" ref={logo}>
+                    Oleś Gergun
                 </div>
             </nav>
 
-            <div className={`menu-pop ${color ? `__${color}` : `__white`} ${open ? `__menu-opened` : `__menu-closed`} `}>
+            <div className={`menu-pop ${open ? `__menu-opened` : `__menu-closed`} `}>
                 <div className="menu-pop-top">
                     <button id="close" onClick={toggleMenu}>
                         <img src="/close.svg"/>
                     </button>
                     <div className='menu-info'>
-                        {color === 'black'
-                            ?
-                            <><span className="dark-grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                            :
-                            <><span className="grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                        }
                     </div>
                 </div>
                 <div className='menu-pop-opts'>
@@ -111,11 +107,11 @@ export default function MenuMobile({ color }) {
                             </a>
                         </Link>
                     </div>
-                    <div ref={about}>
-                        <Link href={'/about'}>
+                    <div ref={texts}>
+                        <Link href={'/texts'}>
                             <a>
                                 <h2>
-                                    <span>About</span>
+                                    <span>Texts</span>
                                 </h2>
                             </a>
                         </Link>

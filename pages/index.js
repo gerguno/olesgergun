@@ -12,7 +12,6 @@ export default function Index({ posts }) {
 
 	return (
 		<MainLayout title={'Workbench'}>
-			{width > 576 ? <Menu/> : <MenuMobile/>}
 			<div className="home-intro">
 				<div className="home-intro-logo">
 					<img src="/oi.png"/>

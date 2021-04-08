@@ -16,7 +16,6 @@ export default function Post({ post, allPosts }) {
 	const { height, width } = useWindowDimensions()
 	return (
 		<>
-			{width > 768 ? <Menu color={post.menu}/> : <MenuMobile color={post.menu}/>}
 			<MainLayout title={post.title}>
 				{post.postContent.map(c => {
 					return (

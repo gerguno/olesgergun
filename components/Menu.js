@@ -2,17 +2,19 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-export default function Menu({ color }) {
+export default function Menu() {
     const router = useRouter()
 
     const nav = useRef(null)
     const workbench = useRef(null)
+    const texts = useRef(null)
     const contact = useRef(null)
 
     const [scrollDir, setScrollDir] = useState("scrolling down");
 
     useEffect(() => {
         (router.pathname === "/" || router.pathname === "/[slug]") ? workbench.current.className = "__active" : workbench.current.className = ""
+        router.pathname === "/texts" ? texts.current.className = "__active" : texts.current.className = ""
         router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
     }, [router])
 
@@ -45,36 +47,35 @@ export default function Menu({ color }) {
         };
 
         window.addEventListener("scroll", onScroll);
-        // console.log(scrollDir);
 
         if (scrollDir === "on top") {
-            !color ? nav.current.className = '' : nav.current.className = `__${color}`
+            nav.current.className === '__fixed __pushed' ? nav.current.className = "__pushed" : nav.current.className = ''
         }
         if (scrollDir === "scrolling up") {
-            !color ? nav.current.className = '__fixed __white' : nav.current.className = `__fixed __${color}`
+            nav.current.className === "__pushed" ? nav.current.className = '__fixed __pushed' : nav.current.className = '__fixed'
         }
         if (scrollDir === "scrolling down") {
-            !color ? nav.current.className = '' : nav.current.className = `__${color}`
+            nav.current.className === "__pushed" ? nav.current.className = "__pushed" : nav.current.className = ''
         }
 
         return () => window.removeEventListener("scroll", onScroll);
     }, [scrollDir]);
 
     return (
-        <nav className={color && `__${color}`} ref={nav}>
-            <div ref={workbench}>
-                <Link href={'/'}><a>Workbench</a></Link>
+        <nav ref={nav}>
+            <div className="menu">
+                <div ref={workbench}>
+                    <Link href={'/'}><a>Workbench</a></Link>
+                </div>
+                <div ref={texts}>
+                    <Link href={'/texts'}><a>Texts</a></Link>
+                </div>
+                <div ref={contact}>
+                    <Link href={'/contact'}><a>Contact</a></Link>
+                </div>
             </div>
-            <div ref={contact}>
-                <Link href={'/contact'}><a>Contact</a></Link>
-            </div>
-            <div>
-                {color === 'black'
-                    ?
-                        <><span className="dark-grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                    :
-                        <><span className="grey">(Info)</span> Oleś Gergun is a digital designer and developer</>
-                }
+            <div className="logo">
+                Oleś Gergun
             </div>
         </nav>
     )
