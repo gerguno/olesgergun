@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Menu from "./Menu";
 import MenuMobile from "./MenuMobile";
 import useWindowDimensions from "./useWindowDimensions";
+import { useRouter } from 'next/router'
 
 export function MainLayout({children, title='Oleś Gergun'}) {
     const [clicked, setClicked] = useState(false)

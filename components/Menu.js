@@ -13,7 +13,7 @@ export default function Menu() {
     const [scrollDir, setScrollDir] = useState("scrolling down");
 
     useEffect(() => {
-        (router.pathname === "/" || router.pathname === "/[slug]") ? workbench.current.className = "__active" : workbench.current.className = ""
+        (router.pathname === "/" || router.pathname === "/work/[slug]") ? workbench.current.className = "__active" : workbench.current.className = ""
         router.pathname === "/texts" ? texts.current.className = "__active" : texts.current.className = ""
         router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
     }, [router])

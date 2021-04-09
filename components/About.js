@@ -1,4 +1,22 @@
 export default function About() {
+    const downloadFile = () => {
+        fetch('/api/fileServer', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                response.blob().then(blob => {
+                    let url = window.URL.createObjectURL(blob);
+                    let a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Oleś Gergun CV.pdf';
+                    a.click();
+                })
+            })
+    }
+
     return (
         <about className="color">
             <div className="about-container">
@@ -11,13 +29,13 @@ export default function About() {
                         <br/><br/>
                         He has an expertise in a wide range of practises with horizontal deepening into creating digital products:
                         <br/><br/>
-                        (1) User experience design
+                        (1) User experience design<br/>
                         Big fan of UX strategy, user flows, algorhitmics, inventing new UI patterns as well as replicating conventional ones, generating tone of voice and design language.
                         <br/><br/>
-                        (2) Type design
+                        (2) Type design<br/>
                         Paying attention to type as a fundamental to design. Exploring type forms of the past as well as of today’s street visual culture (predominantly of Eastern Europe origin).
                         <br/><br/>
-                        (3) Web development
+                        (3) Web development<br/>
                         HTML, CSS (incl. preprocessors Sass, Less), advanced JavaScript (ES5, ES6+), RestAPI, GraphQL, ReactJS (Context API, React hooks), NextJS, Node.js (basics, incl. Express.js)
                     </h2>
                 </div>
@@ -34,7 +52,7 @@ export default function About() {
                             <img src="/bullet.svg"/> 2016–2020 <br/>
                             Method Bureau <br/>
                             Design Lead (full time) <br/>
-                            Leading a team of four designers in creating various client experiences: UI/UX design, branding and communication design. Taking part in creating client strategies and conducting workshops. Coordinating up to 3 projects simultaneously, communicating with clients including business owners.
+                            Leading a team of four designers in creating various client experiences: UI/UX design, branding and communication design. Taking part in creating client strategies and conducting workshops. Coordinating up to 3 projects simultaneously, communicating with clients including business owners.<br/>
                             Clients: Naftogaz of Ukraine, SkyUp Airlines, Kyiv School of Economics, Ukrainian Judiciary, International Renaissance Foundation, Aequo, Ukrainian Fashion Week, One Philosophy Group of Companies, Republic, Passage, Bolshakova Interiors
                         </p>
                         <p>
@@ -47,7 +65,7 @@ export default function About() {
                             <img src="/bullet.svg"/> 2013 <br/>
                             Havas Worldwide <br/>
                             Graphic Designer (full time) <br/>
-                            Сreating communication designs, landings, branding concepts, generating ideas for advertising campaigns
+                            Сreating communication designs, landings, branding concepts, generating ideas for advertising campaigns <br/>
                             Clients: Ukrsibbank, Forum Bank, Red Bull
                         </p>
                         <p>
@@ -63,7 +81,7 @@ export default function About() {
                             <img src="/bullet.svg"/> 2007–2013 <br/>
                             National University of Kyiv-Mohyla Academy • Kyiv, Ukraine <br/>
                             Master of Arts in Cultural Studies <br/>
-                            Thesis on “Contemporary Art After Social Media”
+                            Thesis on “Contemporary Art After Social Media” <br/>
                             Studying cultural phenomena in various societies and historical periods with critical approaches drawn including semiotics, art history/criticism, Marxism, archeology, ethnography, critical race theory, philosophy (predominantly post-structuralism), social theory, political theory, history, literary theory, media theory, film/video studies, communication studies, political economy, translation studies, museum studies
                         </p>
                     </div>
@@ -96,6 +114,9 @@ export default function About() {
                             Developing components for large scale projects. Creating corporate websites, experimental websites, small size e-stores, browser extensions, landing pages.
                         </p>
                     </div>
+                    <a className="download-pdf" onClick={downloadFile}>
+                        <img src="/download.svg"/>Download PDF
+                    </a>
                 </div>
             </div>
             <div className="black"></div>

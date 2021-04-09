@@ -117,13 +117,27 @@ about {
         .right-block {
             padding-bottom: 20px;
 
+            @include xs {
+                font-size: 22px;
+                line-height: 24px;
+            }
+            @include m {
+                font-size: 16px;
+                line-height: 18px;
+            }
+
             .right-title {
                 // Overrides at About.js
                 color: $grey;
             }
 
             p {
-                padding-bottom: 12px;
+                @include xs {
+                    padding-bottom: 20px;
+                }
+                @include m {
+                    padding-bottom: 12px;
+                }
 
                 img {
                     filter: invert(1);
@@ -142,12 +156,35 @@ about {
                 }
             }
         }
+
+        .download-pdf {
+            color: white;
+            font-size: 20px;
+            line-height: 22px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-content: center;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: all 0.2s linear;
+            cursor: pointer;
+            width: 166px;
+
+            img {
+                padding: 0 5px 0 0;
+                margin-left: -3px;
+            }
+
+            &:hover {
+                text-decoration-color: white;
+            }
+        }
     }
 }
 
 .color {
     background: url('/home/ktf_violet.jpg') center center / cover no-repeat;
-    background-size: 200% 200%;
+    //background-size: 100% 100%;
     background-blend-mode: difference;
     animation: colorful 60s linear infinite;
 
@@ -336,10 +373,8 @@ h0 {
 }
 
 h1 {
-    //font-size: 48px;
-    //line-height: 48px;
-    font-size: 52px;
-    line-height: 51px;
+    font-size: 48px;
+    line-height: 46px;
     letter-spacing: -0.03em;
     word-break: break-word;
 
@@ -1417,7 +1452,7 @@ code {
             width: 100%;
             font-size: 36px;
             line-height: 38px;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
         }
         //@include m {
         //    margin-top: -4px;
@@ -1432,7 +1467,7 @@ code {
             width: 642px;
             font-size: 31px;
             line-height: 33px;
-            letter-spacing: -0.025em;
+            letter-spacing: -0.02em;
         }
 
         @include l {
@@ -1440,7 +1475,7 @@ code {
             width: 735px;
             font-size: 36px;
             line-height: 38px;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
         }
 
         @include xl {
@@ -1448,7 +1483,7 @@ code {
             width: 775px;
             font-size: 38px;
             line-height: 40px;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
         }
 
         @include xxl {
@@ -1517,4 +1552,35 @@ code {
             display: flex;
         }
     }
+}
+
+.Modal {
+    position: absolute;
+    background: white;
+    outline: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - 100px);
+    overflow-y: scroll;
+    animation: slide 0.4s linear forwards;
+}
+
+@keyframes slide {
+    0% {
+        margin-right: calc(calc(100% - 100px) * -1);
+    }
+    100% {
+        margin-right: 0px;
+    }
+}
+
+.Overlay {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
 }
