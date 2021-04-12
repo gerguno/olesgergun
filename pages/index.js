@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {request} from '../lib/api'
 import {MainLayout} from "../components/MainLayout"
+import {PostLayout} from "../components/PostLayout"
 import Footer from "../components/Footer";
 import useWindowDimensions from "../components/useWindowDimensions";
 import { useRouter } from 'next/router'
@@ -11,8 +12,6 @@ import Modal from "react-modal";
 Modal.setAppElement("#__next");
 
 export default function Index({ posts }) {
-	console.log(posts)
-
 	const router = useRouter()
 	const { height, width } = useWindowDimensions()
 
@@ -29,7 +28,7 @@ export default function Index({ posts }) {
 
 	useEffect(() => {
 		let main = document.querySelector('main')
-		// !!router.query.slug ? main.style.position = 'fixed' : main.style.position = ''
+		!!router.query.slug ? main.className = 'hide-scrollbar' : main.className = ''
 	}, [router])
 
 	return (
@@ -46,9 +45,9 @@ export default function Index({ posts }) {
 				{posts.map(post => (
 					<div className="home-project">
 						<div className="home-project-title">
-							<img src="/bullet.svg"/>
 							<Link href={`/?slug=${post.slug}`} as={`/work/${post.slug}`}>
 								<a>
+									<img src="/bullet.svg"/>
 									{post.title}
 									<span className="grey">&nbsp;{post.afterTitle.split(',')[0]}</span>
 								</a>
@@ -68,8 +67,9 @@ export default function Index({ posts }) {
 				className="Modal"
 				overlayClassName="Overlay"
 			>
-
-				<Post src={selectedPost()}/>
+				<PostLayout title={selectedPost().title}>
+					<Post src={selectedPost()}/>
+				</PostLayout>
 			</Modal>
 
 		</MainLayout>

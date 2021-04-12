@@ -27,7 +27,7 @@ body {
 main {
     z-index: 1;
     background: white;
-    transition: all 0.4s linear;
+    //transition: all 0.4s linear;
 
     @include xs {
         width: 100%;
@@ -55,7 +55,7 @@ main {
         margin-left: calc(calc(100% - 144px) * -1);
     }
     @include l {
-        margin-left: calc(calc(100% - 248px) * -1);
+        margin-left: calc(calc(100% - 200px) * -1);
     }
 }
 
@@ -91,7 +91,7 @@ about {
             padding: 16px 154px 0 calc(72px + 26px);
         }
         @include l {
-            padding: 16px 154px 0 calc(124px + 26px);
+            padding: 16px 154px 0 calc(100px + 26px);
         }
     }
 
@@ -444,7 +444,7 @@ nav {
     letter-spacing: -0.02em;
     height: 42px;
     overflow: hidden;
-    transition: all 0.4s linear;
+    //transition: all 0.4s linear;
 
     @include xs {
         width: 100%;
@@ -704,7 +704,7 @@ nav {
     }
 
     @include s {
-        padding: 0px $horizontal-padding 100px $horizontal-padding;
+        padding: 8px $horizontal-padding 100px $horizontal-padding;
     }
 }
 
@@ -1369,7 +1369,7 @@ code {
 }
 
 .footer {
-    padding: 120px $horizontal-padding 9px $horizontal-padding;
+    padding: 20px $horizontal-padding 9px $horizontal-padding;
 
     @include xs {
         display: block;
@@ -1489,7 +1489,6 @@ code {
 }
 
 .home-projects {
-    padding-bottom: 30px;
     overflow: visible !important;
 
     .home-project {
@@ -1569,10 +1568,10 @@ code {
     outline: 0;
     top: 0;
     bottom: 0;
-    width: calc(100% - 100px);
+    width: calc(100% - 72px);
     overflow-y: scroll;
     right: 0;
-    animation: slide 0.2s linear forwards;
+    //animation: slide 0.2s linear forwards;
 }
 
 @keyframes slide {
@@ -1594,15 +1593,100 @@ code {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.9);
-    animation: blackened 0.1s linear forwards;
+    //animation: blackened 0.2s linear forwards;
+}
+//
+//@keyframes blackened {
+//    0% {
+//        background-color: rgba(0,0,0,0);
+//    }
+//
+//    100% {
+//        background-color: rgba(0,0,0,0.9);
+//    }
+//}
+
+
+.hide-scrollbar {
+    position: fixed;
 }
 
-@keyframes blackened {
-    0% {
-        background-color: rgba(0,0,0,0);
+.post {
+    margin-top: 44px;
+}
+
+.post-bar {
+    position: fixed;
+    z-index: 9999;
+    width: calc(100% - 98px);
+    top: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 $horizontal-padding 0 $horizontal-padding;
+    height: 44px;
+    //border-bottom: 3px solid black;
+
+    .post-bar-left {
+        display: flex;
+        .post-bar-title {
+            font-size: 18px;
+            line-height: 18px;
+            letter-spacing: -0.02em;
+            margin: 12px 0 0 23px;
+
+            img {
+                //margin-bottom: -0.3%;
+                width: 0.8em;
+                padding-right: 0.05em;
+            }
+        }
+
+        .post-bar-back {
+            border-radius: 5px;
+            margin-top: 8px;
+            height: 28px;
+            width: 83px;
+            display: flex;
+            align-items: center;
+
+            img {
+                margin: -3px 0 0 4px;
+            }
+
+            span {
+                margin: -6px 0 0 5px;
+            }
+        }
+
+        .post-bar-back-mob {
+            position: absolute;
+            border-radius: 5px;
+            height: 28px;
+            width: 28px;
+            overflow: hidden;
+            align-items: center;
+            display: none;
+
+            img {
+                margin: -1px 0 0 6px;
+            }
+
+            span {
+                margin: -4px 0 0 5px;
+            }
+        }
     }
 
-    100% {
-        background-color: rgba(0,0,0,0.9);
+    .post-bar-right {
+        .post-bar-logo {
+            font-size: 23px;
+            line-height: 18px;
+            text-align: right;
+            letter-spacing: -0.03em;
+            padding: 12px 0;
+            transition: all 0.2s linear;
+        }
     }
 }

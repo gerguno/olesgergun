@@ -1,16 +1,35 @@
 import {MainLayout} from "../../components/MainLayout"
 import Post from "../../components/Post";
 import {request} from "../../lib/api";
+import { useRouter } from 'next/router'
+import Modal from "react-modal";
+import { useEffect } from "react";
+
+Modal.setAppElement("#__next");
 
 export default function Slug({ post }) {
+	const router = useRouter()
+
+	useEffect(() => {
+		router.prefetch('/')
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
 	return (
 		<>
-			<MainLayout title={post.title}>
+			<Modal
+				isOpen={true}
+				onRequestClose={() => router.push("/")}
+				className="Modal"
+				overlayClassName="Overlay"
+			>
+
 				<Post src={post}/>
-			</MainLayout>
+			</Modal>
 		</>
 	)
 }
+
 export async function getStaticProps({ params }) {
 	const data = await getPost(params.slug)
 	return {

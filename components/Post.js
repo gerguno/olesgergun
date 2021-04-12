@@ -1,4 +1,3 @@
-import {MainLayout} from "../components/MainLayout"
 import {request} from "../lib/api"
 import SuperMedium from "../components/SuperMedium";
 import {Fullpage} from "../components/Fullpage";
@@ -9,11 +8,14 @@ import Code from "../components/Code";
 import Footer from "../components/Footer";
 import NextPost from "../components/NextPost"
 import useWindowDimensions from "../components/useWindowDimensions";
+import PostBar from "./PostBar";
+import PostBarMobile from "./PostBarMobile";
 
 export default function Post({ src }) {
     const { height, width } = useWindowDimensions()
     return (
-        <>
+        <div className='post'>
+            {width > 767 ? <PostBar title={src.title} afterTitle={src.afterTitle}/> : <PostBarMobile title={src.title} afterTitle={src.afterTitle}/>}
             {src.postContent.map(c => {
                 return (
                     <>
@@ -46,6 +48,6 @@ export default function Post({ src }) {
             })}
             {/*<NextPost arr={allPosts} color={post.menu}/>*/}
             <Footer color={src.menu}/>
-        </>
+        </div>
     )
 }

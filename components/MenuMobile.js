@@ -13,8 +13,6 @@ export default function MenuMobile() {
 
     const [open, setOpen] = useState(false)
 
-    const [scrollDir, setScrollDir] = useState("scrolling down");
-
     const toggleMenu = () => {
         setOpen(!open)
     }
@@ -26,56 +24,6 @@ export default function MenuMobile() {
                 router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
         )
     }, [router, open])
-
-    useEffect(() => {
-        setScrollDir("on top")
-    }, [])
-
-    useEffect(() => {
-        const threshold = 1;
-        let lastScrollY = window.pageYOffset;
-        let ticking = false;
-
-        const updateScrollDir = () => {
-            const scrollY = window.pageYOffset;
-
-            if (Math.abs(scrollY - lastScrollY) < threshold) {
-                ticking = false;
-                return;
-            }
-            if (scrollY < 10) {
-                setScrollDir("on top")
-            } else {
-                scrollY > lastScrollY ? setScrollDir("scrolling down") : setScrollDir("scrolling up")
-            }
-            lastScrollY = scrollY > 0 ? scrollY : 0;
-            ticking = false;
-        };
-
-        const onScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateScrollDir);
-                ticking = true;
-            }
-        };
-
-        window.addEventListener("scroll", onScroll);
-
-        if (scrollDir === "on top") {
-            logo.current.className = 'logo __margined'
-            nav.current.className === '__fixed __pushed' ? nav.current.className = "__pushed" : nav.current.className = ''
-        }
-        if (scrollDir === "scrolling up") {
-            nav.current.className === "__pushed" ? nav.current.className = '__fixed __pushed' : nav.current.className = '__fixed'
-            logo.current.className = 'logo'
-        }
-        if (scrollDir === "scrolling down") {
-            nav.current.className === "__pushed" ? nav.current.className = "__pushed" : nav.current.className = ''
-            logo.current.className = 'logo'
-        }
-
-        return () => window.removeEventListener("scroll", onScroll);
-    }, [scrollDir]);
 
     return (
         <>
