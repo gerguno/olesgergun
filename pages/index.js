@@ -11,6 +11,8 @@ import Modal from "react-modal";
 Modal.setAppElement("#__next");
 
 export default function Index({ posts }) {
+	console.log(posts)
+
 	const router = useRouter()
 	const { height, width } = useWindowDimensions()
 
@@ -27,7 +29,7 @@ export default function Index({ posts }) {
 
 	useEffect(() => {
 		let main = document.querySelector('main')
-		!!router.query.slug ? main.style.position = 'fixed' : main.style.position = ''
+		// !!router.query.slug ? main.style.position = 'fixed' : main.style.position = ''
 	}, [router])
 
 	return (
@@ -37,16 +39,25 @@ export default function Index({ posts }) {
 					<img src="/oi.png"/>
 				</div>
 				<div className="home-intro-text">
-					Design and development with an analytical approach. Creating user experiences, developing web user interfaces and drawing typefaces
+					Digital designer and developer with an analytical mindset. Creating user experiences and graphical user interfaces with an eye on type and code
 				</div>
 			</div>
 			<div className="home-projects">
 				{posts.map(post => (
-					<Link href={`/?slug=${post.slug}`} as={`/work/${post.slug}`}>
-						<a>
-							<h1><img src="/bullet.svg"/> {post.title} <span className="grey">{post.afterTitle}</span></h1>
-						</a>
-					</Link>
+					<div className="home-project">
+						<div className="home-project-title">
+							<img src="/bullet.svg"/>
+							<Link href={`/?slug=${post.slug}`} as={`/work/${post.slug}`}>
+								<a>
+									{post.title}
+									<span className="grey">&nbsp;{post.afterTitle.split(',')[0]}</span>
+								</a>
+							</Link>
+						</div>
+						<div className="home-project-description">
+							<h1>{post.shortDescription}</h1>
+						</div>
+					</div>
 				))}
 			</div>
 			<Footer/>
@@ -75,6 +86,7 @@ export async function getStaticProps() {
             title
             afterTitle
             slug
+            shortDescription
             postContent {
               ... on StoryRecord {
                 id
