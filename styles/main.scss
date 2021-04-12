@@ -699,13 +699,7 @@ nav {
 }
 
 .description {
-    @include xs {
-        padding: 0px $horizontal-padding-mob 100px $horizontal-padding-mob;
-    }
-
-    @include s {
-        padding: 8px $horizontal-padding 100px $horizontal-padding;
-    }
+    padding: 8px $horizontal-padding 100px $horizontal-padding;
 }
 
 .story {
@@ -1571,17 +1565,13 @@ code {
     width: calc(100% - 72px);
     overflow-y: scroll;
     right: 0;
-    //animation: slide 0.2s linear forwards;
-}
 
-@keyframes slide {
-    0% {
-        right: calc(5% * -1);
-        opacity: 0;
+    @include xs {
+        width: 100%;
     }
-    100% {
-        right: 0%;
-        opacity: 1;
+
+    @include m {
+        width: calc(100% - 72px);
     }
 }
 
@@ -1593,18 +1583,7 @@ code {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.9);
-    //animation: blackened 0.2s linear forwards;
 }
-//
-//@keyframes blackened {
-//    0% {
-//        background-color: rgba(0,0,0,0);
-//    }
-//
-//    100% {
-//        background-color: rgba(0,0,0,0.9);
-//    }
-//}
 
 
 .hide-scrollbar {
@@ -1618,75 +1597,131 @@ code {
 .post-bar {
     position: fixed;
     z-index: 9999;
-    width: calc(100% - 98px);
     top: 0;
     right: 0;
     background: white;
     display: flex;
     justify-content: space-between;
-    padding: 0 $horizontal-padding 0 $horizontal-padding;
-    height: 44px;
+    //height: 44px;
+    padding: 0 0 8px 0;
     border-bottom: 3px solid black;
+
+    @include xs {
+        width: 100%;
+    }
+
+    @include m {
+        width: calc(100% - 72px);
+    }
 
     .post-bar-left {
         display: flex;
+        padding: 0 0 0 $horizontal-padding;
+
         .post-bar-title {
             font-size: 18px;
-            line-height: 18px;
+            line-height: 19px;
             letter-spacing: -0.02em;
-            margin: 12px 0 0 23px;
+            margin-top: 12px;
+            align-items: baseline;
+
+            @include xs {
+                margin-left: 18px;
+                display: block;
+                padding-bottom: 4px;
+            }
+
+            @include s {
+                white-space: nowrap;
+                display: flex;
+                padding-bottom: 0;
+            }
+
+            @include l {
+                margin-left: 23px;
+            }
 
             img {
-                //margin-bottom: -0.3%;
                 width: 0.8em;
-                padding-right: 0.05em;
+
+                @include xs {
+                    padding-right: 0.06em;
+                }
+
+                @include s {
+                    padding-right: 0.28em;
+                }
+            }
+
+            .grey {
+                @include xs {
+                    max-width: 100%;
+                }
+
+                @include s {
+                    max-width: 32vw;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
             }
         }
 
         .post-bar-back {
             border-radius: 5px;
             margin-top: 8px;
-            height: 28px;
-            width: 83px;
             display: flex;
             align-items: center;
-
-            img {
-                margin: -3px 0 0 4px;
-            }
-
-            span {
-                margin: -6px 0 0 5px;
-            }
-        }
-
-        .post-bar-back-mob {
-            position: absolute;
-            border-radius: 5px;
-            height: 28px;
-            width: 28px;
             overflow: hidden;
-            align-items: center;
-            display: none;
 
-            img {
-                margin: -1px 0 0 6px;
+            @include xs {
+                height: 28px;
+                width: 28px;
+                flex: none;
+
+                img {
+                    margin: -3px 0 0 5px;
+                }
+
+                span {
+                    margin: -6px 0 0 10px;
+                }
             }
 
-            span {
-                margin: -4px 0 0 5px;
+            @include l {
+                height: 28px;
+                width: 83px;
+
+                img {
+                    margin: -3px 0 0 4px;
+                }
+
+                span {
+                    margin: -6px 0 0 5px;
+                }
             }
         }
     }
 
     .post-bar-right {
+        padding: 0 $horizontal-padding 0 0;
+
         .post-bar-logo {
             font-size: 23px;
             line-height: 18px;
             text-align: right;
             letter-spacing: -0.03em;
-            padding: 12px 0;
+            padding: 12px 0 0 0;
+            white-space: nowrap;
             transition: all 0.2s linear;
+
+            @include xs {
+                display: none;
+            }
+
+            @include s {
+                display: block;
+            }
         }
     }
 }

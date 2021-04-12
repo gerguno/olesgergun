@@ -14,8 +14,9 @@ export default function PostBar({ title, afterTitle }) {
     return (
         <div className='post-bar'>
             <div className="post-bar-left">
-                <a className={`${width > 767 ? `post-bar-back` : `post-bar-back-mob`} __white-button`} onClick={close}>
-                    <img src="/back.svg"/><span>Back</span>
+                <a className='post-bar-back __white-button' onClick={close}>
+                    <img src="/back.svg"/>
+                    <span>Back</span>
                 </a>
                 <div className="post-bar-title">
                     <img src="/bullet.svg"/> {title}

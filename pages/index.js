@@ -49,7 +49,10 @@ export default function Index({ posts }) {
 								<a>
 									<img src="/bullet.svg"/>
 									{post.title}
-									<span className="grey">&nbsp;{post.afterTitle.split(',')[0]}</span>
+									<span className="grey">
+										{width < 576 ? <br/> : <>&nbsp;</>}
+										{post.afterTitle.split(',')[0]}
+									</span>
 								</a>
 							</Link>
 						</div>
