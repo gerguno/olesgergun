@@ -33,33 +33,36 @@ export default function Index({ posts }) {
 
 	return (
 		<MainLayout title={'Workbench'}>
-			<div className="home-intro">
-				<div className="home-intro-logo">
-					<img src="/oi.png"/>
-				</div>
-				<div className="home-intro-text">
-					Digital designer and developer with an analytical mindset. Creating user experiences and graphical user interfaces with an eye on type and code
-				</div>
-			</div>
 			<div className="home-projects">
 				{posts.map(post => (
-					<div className="home-project">
-						<div className="home-project-title">
-							<Link href={`/?slug=${post.slug}`} as={`/work/${post.slug}`}>
-								<a>
+					<Link href={`/?slug=${post.slug}`} as={`/work/${post.slug}`}>
+						<a>
+							<div className="home-project">
+								<div className="home-project-title">
 									<img src="/bullet.svg"/>
-									{post.title}
-									<span className="grey">
+									<div className="home-title">
+										{post.title}
+										<span className="grey">
 										{width < 576 ? <br/> : <>&nbsp;</>}
-										{post.afterTitle.split(',')[0]}
-									</span>
-								</a>
-							</Link>
-						</div>
-						<div className="home-project-description">
-							<h1>{post.shortDescription}</h1>
-						</div>
-					</div>
+											{post.afterTitle}
+										</span>
+									</div>
+									<div className="tags">
+										{post.tags.split(',').map(t => {
+											return (
+												<div className="tag">
+													{t}
+												</div>
+											)
+										})}
+									</div>
+								</div>
+								<div className="home-project-description">
+									<h1>{post.shortDescription}</h1>
+								</div>
+							</div>
+						</a>
+					</Link>
 				))}
 			</div>
 			<Footer/>
@@ -88,6 +91,7 @@ export async function getStaticProps() {
 			menu
             title
             afterTitle
+            tags
             slug
             shortDescription
             postContent {

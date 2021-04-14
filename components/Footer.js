@@ -6,26 +6,41 @@ export default function Footer({ color }) {
 
     return (
         <div className={`footer${color==='black' ? ` __${color}` : ''}`}>
-            <div>
-                © 2021 Oleś Gergun. All rights reserved, unless otherwise indicated
-            </div>
-            <div>
+            Email: {' '}
+                <Link href={`mailto:hello@olesgergun.com`}>
+                    <a target="_blank">
+                        hello@olesgergun.com
+                    </a>
+                </Link>
+            <br/>
+            Social: {' '}
                 <Link href={`https://www.instagram.com/olesgergun/`}>
                     <a target="_blank">
                         Instagram
                     </a>
-                </Link>
+                </Link>, {' '}
                 <Link href={`https://www.facebook.com/oles.gergun/`}>
                     <a target="_blank">
                         Facebook
                     </a>
-                </Link>
+                </Link>, {' '}
                 <Link href={`https://github.com/gerguno`}>
                     <a target="_blank">
                         GitHub
                     </a>
+                </Link>, {' '}
+                <Link href={`/`}>
+                    <a target="_blank">
+                        Kyiv Type Foundry
+                    </a>
+                </Link>, {' '}
+                <Link href={`/`}>
+                    <a target="_blank">
+                        Kyiv Type Digest
+                    </a>
                 </Link>
-            </div>
+            <br/>
+            © 2021 All rights reserved.
         </div>
     )
 }

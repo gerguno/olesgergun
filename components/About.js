@@ -21,7 +21,7 @@ export default function About() {
         <about className="color">
             <div className="about-container">
                 <div className="left">
-                    <h2>
+                    <h1>
                         Oleś Gergun is a digital designer and developer based in Kyiv. He gained a degree of Master of Arts in Cultural Studies at Kyiv-Mohyla Academy. Subsequently, he became a designer through an autodidact’s will, not least because of his interest in visual culture and creative coding.
                         <br/><br/>
                         In his practice, he applies
@@ -37,7 +37,7 @@ export default function About() {
                         <br/><br/>
                         (3) Web development<br/>
                         HTML, CSS (incl. preprocessors Sass, Less), advanced JavaScript (ES5, ES6+), RestAPI, GraphQL, ReactJS (Context API, React hooks), NextJS, Node.js (basics, incl. Express.js)
-                    </h2>
+                    </h1>
                 </div>
                 <div className="right">
                     <div className="right-block">
