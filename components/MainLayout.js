@@ -66,9 +66,9 @@ export function MainLayout({children, title='Oleś Gergun'}) {
                 {children}
             </main>
 
-            <a className={`open-about __white-button ${clicked ? pushed ? `fadeOut` : `fadeIn` : ''}`} onClick={push}>
-                <img src="/more.svg"/>
-            </a>
+            {/*<a className={`open-about __white-button ${clicked ? pushed ? `fadeOut` : `fadeIn` : ''}`} onClick={push}>*/}
+            {/*    <img src="/more.svg"/>*/}
+            {/*</a>*/}
             <a className={`${width > 767 ? `back` : `back-mob`} ${aboutBlack ? `__black-button` : `__white-button`} ${clicked ? pushed ? `fadeIn` : `fadeOut` : ''}`} onClick={unpush}>
                 <img src="/back.svg"/><span>Back</span>
             </a>

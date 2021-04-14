@@ -27,20 +27,8 @@ body {
 main {
     z-index: 1;
     background: white;
+    width: 100%;
     //transition: all 0.4s linear;
-
-    @include xs {
-        width: 100%;
-    }
-    @include m {
-        width: calc(100% - 60px);
-    }
-    @include xm {
-        width: calc(100% - 72px);
-    }
-    @include l {
-        width: calc(100% - 124px);
-    }
 }
 
 .__pushed {
@@ -444,20 +432,8 @@ nav {
     letter-spacing: -0.02em;
     height: 42px;
     overflow: hidden;
-    //transition: all 0.4s linear;
-
-    @include xs {
-        width: 100%;
-    }
-    @include m {
-        width: calc(100% - 60px);
-    }
-    @include xm {
-        width: calc(100% - 72px);
-    }
-    @include l {
-        width: calc(100% - 124px);
-    }
+    width: 100%;
+    transition: all 0.4s linear;
 
     .menu-group {
         display: flex;
