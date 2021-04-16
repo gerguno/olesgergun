@@ -546,6 +546,10 @@ nav {
 .__nav-scrolled {
     height: 60px;
 
+    .nav-right {
+        padding: 20px 16px 0 28px;
+    }
+
     .nav-right-bottom {
         display: none;
     }

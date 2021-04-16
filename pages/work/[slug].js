@@ -1,32 +1,54 @@
-import {MainLayout} from "../../components/MainLayout"
-import Post from "../../components/Post";
 import {request} from "../../lib/api";
-import { useRouter } from 'next/router'
-import Modal from "react-modal";
-import { useEffect } from "react";
+import {PostLayout} from "../../components/PostLayout";
+import PostBar from "../../components/PostBar";
+import SuperMedium from "../../components/SuperMedium";
+import {Fullpage} from "../../components/Fullpage";
+import {BigTitle} from "../../components/BigTitle";
+import {Story} from "../../components/Story";
+import Highlight from "../../components/Highlight";
+import Code from "../../components/Code";
+import Footer from "../../components/Footer";
 
-Modal.setAppElement("#__next");
 
-export default function Slug({ post }) {
-	const router = useRouter()
-
-	useEffect(() => {
-		router.prefetch('/')
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
-
+export default function Slug({ post, allPosts }) {
 	return (
-		<>
-			<Modal
-				isOpen={true}
-				onRequestClose={() => router.push("/")}
-				className="Modal"
-				overlayClassName="Overlay"
-			>
+			<PostLayout>
+				<div className='post'>
+					<PostBar title={post.title} afterTitle={post.afterTitle}/>
+					{post.postContent.map(c => {
+						return (
+							<>
+								{c.title === "supermedium" &&
+								<SuperMedium
+									full={c.full}
+									deviceType={c.deviceType}
+									deviceMedia={c.deviceMedia}
+									backgroundColor={c.backgroundColor}
+									backgroundMedium={c.backgroundMedium}
+									backgroundMediumMobile={c.backgroundMediumMobile}
+								/>}
 
-				<Post src={post}/>
-			</Modal>
-		</>
+								{c.fullpage &&
+								<Fullpage src={c.fullpage.url} cut={c.cut} color={c.customColor && c.customColor.hex}/>}
+
+								{c.description &&
+								<BigTitle title={post.title} afterTitle={post.afterTitle} description={c.description}/>}
+
+								{c.storyName &&
+								<Story name={c.storyName} text={c.storyText} />}
+
+								{c.highlight &&
+								<Highlight src={c.highlight}/>}
+
+								{c.codeLine1 &&
+								<Code src={[c.codeLine1, c.codeLine2, c.codeLine3, c.codeLine4, c.codeLine5]} link={c.githublink}/>}
+							</>
+						)
+					})}
+					{/*<NextPost arr={allPosts} color={post.menu}/>*/}
+					<Footer color={post.menu}/>
+				</div>
+			</PostLayout>
 	)
 }
 

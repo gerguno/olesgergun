@@ -1,6 +1,6 @@
 export default function About() {
     const downloadFile = () => {
-        fetch('/api/fileServer', {
+        fetch('/lib/fileServer', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

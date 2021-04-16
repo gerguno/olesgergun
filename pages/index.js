@@ -6,10 +6,6 @@ import Footer from "../components/Footer";
 import useWindowDimensions from "../components/useWindowDimensions";
 import { useRouter } from 'next/router'
 import { useEffect } from "react";
-import Post from "../components/Post";
-import Modal from "react-modal";
-
-Modal.setAppElement("#__next");
 
 export default function Index({ posts }) {
 	const router = useRouter()
@@ -35,7 +31,7 @@ export default function Index({ posts }) {
 		<MainLayout title={'Workbench'}>
 			<div className="home-projects">
 				{posts.map(post => (
-					<Link href={`/?slug=${post.slug}`} as={`/work/${post.slug}`}>
+					<Link href={`/work/[slug]`} as={`/work/${post.slug}`}>
 						<a>
 							<div className="home-project">
 								<div className="home-project-title">
@@ -66,18 +62,6 @@ export default function Index({ posts }) {
 				))}
 			</div>
 			<Footer/>
-
-			<Modal
-				isOpen={!!router.query.slug}
-				onRequestClose={() => router.push("/")}
-				className="Modal"
-				overlayClassName="Overlay"
-			>
-				<PostLayout title={selectedPost().title}>
-					<Post src={selectedPost()}/>
-				</PostLayout>
-			</Modal>
-
 		</MainLayout>
 	)
 }

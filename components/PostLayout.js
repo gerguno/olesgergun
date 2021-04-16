@@ -1,11 +1,6 @@
-import Link from 'next/link'
 import Head from "next/head";
-import PostBar from "./PostBar";
-import PostBarMobile from "./PostBarMobile";
-import useWindowDimensions from "./useWindowDimensions";
 
 export function PostLayout({children, title='Oleś Gergun'}) {
-    const { height, width } = useWindowDimensions()
     return (
         <>
             <Head>
