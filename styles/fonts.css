@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'SFMono';
+    font-family: 'SF Mono';
     src: url('/fonts/SFMono-Regular.eot');
     src: url('/fonts/SFMono-Regular.eot?#iefix') format('embedded-opentype'),
     url('/fonts/SFMono-Regular.woff2') format('woff2'),
@@ -11,7 +11,7 @@
 }
 
 @font-face {
-    font-family: 'SFMono';
+    font-family: 'SF Mono';
     src: url('/fonts/SFMono-Medium.eot');
     src: url('/fonts/SFMono-Medium.eot?#iefix') format('embedded-opentype'),
     url('/fonts/SFMono-Medium.woff2') format('woff2'),
@@ -23,7 +23,7 @@
 }
 
 @font-face {
-    font-family: 'SFMono';
+    font-family: 'SF Mono';
     src: url('/fonts/SFMono-Bold.eot');
     src: url('/fonts/SFMono-Bold.eot?#iefix') format('embedded-opentype'),
     url('/fonts/SFMono-Bold.woff2') format('woff2'),
