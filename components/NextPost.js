@@ -8,30 +8,38 @@ export default function NextPost({ arr, color }) {
     const [link, setLink] = useState()
 
     useEffect(() => {
-        const index = arr.findIndex(a => a.slug === asPath.substring(1))
+        const index = arr.findIndex(a => a.slug === asPath.substring(1).split('/')[1])
+
         index < arr.length-1
             ?
                 setLink(
-                    <h2>
-                        <Link href={`/[slug]`} as={`/${arr[index + 1].slug}`}>
-                            <a>Next Project <span className="dark-grey">({arr[index + 1].title})</span></a>
-                        </Link>
-                    </h2>
+                    <Link href={`/work/[slug]`} as={`/work/${arr[index + 1].slug}`}>
+                        <a>
+                            <img src="/bullet.svg"/>
+                            <h2>
+                                Next Project <span className="grey">({arr[index + 1].title})</span>
+                            </h2>
+                            <img src="/forward.svg"/>
+                        </a>
+                    </Link>
                 )
             :
                 setLink(
-                    <h2>
-                        <Link href={`/[slug]`} as={`/${arr[0].slug}`}>
-                            <a>Next Project <span className="dark-grey">({arr[0].title})</span></a>
-                        </Link>
-                    </h2>
+                    <Link href={`/work/[slug]`} as={`/work/${arr[0].slug}`}>
+                        <a>
+                            <img src="/bullet.svg"/>
+                            <h2>
+                                Next Project <span className="grey">({arr[0].title})</span>
+                            </h2>
+                            <img src="/forward.svg"/>
+                        </a>
+                    </Link>
                 )
     }, [router])
 
     return (
-        <div className={`next-post${color==='black' ? ` __next-post-white` : ''}`}>
-                <img src="/bullet.svg"/>
-                {link}
+        <div className="next-post">
+            {link}
         </div>
     )
 }

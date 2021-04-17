@@ -8,6 +8,7 @@ import {ShortDescription} from "../../components/ShortDescription";
 import {Story} from "../../components/Story";
 import Highlight from "../../components/Highlight";
 import Code from "../../components/Code";
+import NextPost from "../../components/NextPost";
 import Footer from "../../components/Footer";
 
 export default function Slug({ post, allPosts }) {
@@ -45,7 +46,7 @@ export default function Slug({ post, allPosts }) {
 						</>
 					)
 				})}
-				{/*<NextPost arr={allPosts} color={post.menu}/>*/}
+				<NextPost arr={allPosts}/>
 				<Footer color={post.menu}/>
 			</PostLayout>
 	)

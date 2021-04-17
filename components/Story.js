@@ -5,10 +5,12 @@ export function Story({name, text}) {
         <>
             <div className="story">
                 <div className="story-name">
-                    <h3>{name}</h3>
+                    {name}
                 </div>
                 <div className="story-text">
-                    <ReactMarkdown source={text}/>
+                    <h1>
+                        <ReactMarkdown source={text}/>
+                    </h1>
                 </div>
             </div>
         </>

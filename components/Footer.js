@@ -2,18 +2,19 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-export default function Footer({ color }) {
+export default function Footer() {
 
     return (
-        <div className={`footer${color==='black' ? ` __${color}` : ''}`}>
-            Email: {' '}
+        <div className="footer">
+            <div>
+                Email: {' '}
                 <Link href={`mailto:hello@olesgergun.com`}>
                     <a target="_blank">
                         hello@olesgergun.com
                     </a>
                 </Link>
-            <br/>
-            Social: {' '}
+                <br/>
+                Social: {' '}
                 <Link href={`https://www.instagram.com/olesgergun/`}>
                     <a target="_blank">
                         Instagram
@@ -39,8 +40,9 @@ export default function Footer({ color }) {
                         Kyiv Type Digest
                     </a>
                 </Link>
-            <br/>
-            © 2021 All rights reserved.
+                <br/>
+                © 2021 All rights reserved.
+            </div>
         </div>
     )
 }
