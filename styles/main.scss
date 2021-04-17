@@ -6,8 +6,8 @@ $darkgrey: #6E6E6E;
 $grey: #A6A6A6;
 $lightgrey: #E2E2E2;
 $white: white;
-$horizontal-padding: 16px;
-$horizontal-padding-mob: 12px;
+$horizontal-padding: 35px;
+$horizontal-padding-mob: 20px;
 $fullsize-padding-bottom: 3px;
 
 * {
@@ -376,7 +376,7 @@ h1 {
 
 h2 {
     font-size: 36px;
-    line-height: 38px;
+    line-height: 36px;
     //font-size: 48px;
     //line-height: 48px;
     letter-spacing: -0.03em;
@@ -638,7 +638,28 @@ nav {
     background: white;
     color: black;
     transition: all 0.15s linear;
-    padding: 28px 35px;
+    padding: 28px $horizontal-padding;
+
+    @include xs {
+        span {
+            display: none;
+        }
+        img:first-child {
+            display: none;
+        }
+    }
+
+    @include s {
+        img:first-child {
+            display: inline-block;
+        }
+    }
+
+    @include m {
+        span {
+            display: inline-block;
+        }
+    }
 
     a {
         display: flex;
@@ -692,7 +713,7 @@ nav {
 }
 
 .story {
-    padding: 34px 35px 43px 35px;
+    padding: 34px $horizontal-padding 43px $horizontal-padding;
     background: black;
     color: white;
 
@@ -718,7 +739,7 @@ nav {
     display: flex;
     background: white;
     color: black;
-    padding: 17px 35px 120px 35px;
+    padding: 24px $horizontal-padding 75px $horizontal-padding;
 
     a {
         color: black;
@@ -1314,7 +1335,7 @@ code {
     & > div {
         width: 283px;
     }
-    padding: 40px 35px;
+    padding: 40px $horizontal-padding;
     background: white;
 
     a {
@@ -1553,29 +1574,26 @@ code {
     color: white;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    box-sizing: border-box;
 
     @include xs {
-        padding: 0px 0 16px 0;
+        padding: 14px 16px 26px $horizontal-padding;
     }
 
     @include s {
-        padding: 0px 0 8px 0;
+        padding: 14px 16px 14px $horizontal-padding;
     }
 
     .post-bar-left {
         display: flex;
-        padding: 0 0 0 35px;
 
         .post-bar-title {
-            padding-bottom: 8px;
-
             @include xs {
                 display: block;
                 margin-left: 28px;
                 font-size: 23px;
                 line-height: 23px;
-                margin-top: 17px;
+                margin-top: 4px;
             }
 
             @include xm {
@@ -1587,7 +1605,7 @@ code {
                 margin-left: 88px;
                 font-size: 36px;
                 line-height: 38px;
-                margin-top: 10px;
+                margin-top: -3px;
             }
 
             .grey {
@@ -1613,7 +1631,7 @@ code {
                 }
 
                 @include xm {
-                    transform: translateY(-4px) !important;
+                    transform: translateY(-4px);
                     margin-left: 42px;
                     margin-top: 0;
                 }
@@ -1667,14 +1685,15 @@ code {
                             width: 20px;
                             height: 14px;
                             margin-left: -30px;
-                            margin-top: -3px;
                             padding: 3px 0;
                         }
 
                         @include l {
+                            width: 24px;
+                            height: 14px;
                             margin-left: -33px;
-                            margin-top: -3px;
                             padding: 5px 0;
+
                         }
                     }
                 }
@@ -1687,10 +1706,12 @@ code {
             }
 
             img {
-                padding-top: 14px !important;
-
                 @include xs {
-                    width: 73px !important;
+                    width: 41px !important;
+                }
+
+                @include s {
+                    width: 81px !important;
                 }
 
                 @include xm {
@@ -1701,16 +1722,14 @@ code {
     }
 
     .post-bar-right {
-        padding: 0 $horizontal-padding 0 0;
-
         .post-bar-logo {
             font-size: 23px;
             line-height: 18px;
             text-align: right;
             letter-spacing: -0.03em;
-            padding: 20px 0 0 0;
             white-space: nowrap;
             transition: all 0.2s linear;
+            margin-top: 6px;
 
             @include xs {
                 display: none;
@@ -1726,6 +1745,7 @@ code {
 
 
 .__post-bar-fixed {
+    width: 100%;
     position: fixed !important;
     animation: slidenavtop 0.4s ease-out forwards;
     top: -60px;
@@ -1734,10 +1754,12 @@ code {
         margin-left: 28px !important;
         font-size: 23px !important;
         line-height: 23px !important;
-        margin-top: 17px !important;
+        margin-top: 4px !important;
 
         .tags {
-            //transform: translateY(-4px) !important;
+            @include xm {
+                transform: translateY(-4px) !important;
+            }
 
             .tag {
                 font-size: 13px !important;
