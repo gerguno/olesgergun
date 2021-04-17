@@ -11,17 +11,6 @@ export default function Index({ posts }) {
 	const router = useRouter()
 	const { height, width } = useWindowDimensions()
 
-	const selectedPost = () => {
-		let k = 0
-		posts.map((post, key) => {
-			if (post.slug === router.query.slug) {
-				k = key
-				return
-			}
-		})
-		return posts[k]
-	}
-
 	useEffect(() => {
 		let main = document.querySelector('main')
 		!!router.query.slug ? main.className = 'hide-scrollbar' : main.className = ''
@@ -78,57 +67,6 @@ export async function getStaticProps() {
             tags
             slug
             shortDescription
-            postContent {
-              ... on StoryRecord {
-                id
-                storyName
-                storyText
-              }
-              ... on FullpageRecord {
-                fullpage {
-                  url
-                }
-                cut
-                customColor {
-                  hex
-                }
-              }
-              ... on DescriptionRecord {
-                id
-                description
-              }
-              ... on SuperMediumRecord {
-                title
-                full
-                deviceType
-                deviceMedia {
-                  url
-                  mimeType
-                }
-                backgroundColor {
-                  hex
-                }
-                backgroundMedium {
-                  url
-                  mimeType
-                }
-                backgroundMediumMobile {
-                  url
-                  mimeType
-                }
-              }
-              ... on HighlightRecord {
-                highlight
-              }
-              ... on CodeRecord {
-                codeLine1
-                codeLine2
-                codeLine3
-                codeLine4
-                codeLine5
-                githublink
-              }
-            }
 		  }
 		}
 		`

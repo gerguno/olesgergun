@@ -1,7 +1,7 @@
 import {request} from "../lib/api"
 import SuperMedium from "../components/SuperMedium";
 import {Fullpage} from "../components/Fullpage";
-import {BigTitle} from "../components/BigTitle";
+import {Description} from "./Description";
 import {Story} from "../components/Story";
 import Highlight from "../components/Highlight";
 import Code from "../components/Code";
@@ -31,7 +31,7 @@ export default function Post({ src }) {
                         <Fullpage src={c.fullpage.url} cut={c.cut} color={c.customColor && c.customColor.hex}/>}
 
                         {c.description &&
-                        <BigTitle title={src.title} afterTitle={src.afterTitle} description={c.description}/>}
+                        <Description title={src.title} afterTitle={src.afterTitle} description={c.description}/>}
 
                         {c.storyName &&
                         <Story name={c.storyName} text={c.storyText} />}
