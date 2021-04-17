@@ -38,7 +38,7 @@ export default function NextPost({ arr, color }) {
     }, [router])
 
     return (
-        <div className="next-post">
+        <div className={`next-post${color === 'grey' ? ' __next-post-grey' : ''}`}>
             {link}
         </div>
     )

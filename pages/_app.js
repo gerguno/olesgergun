@@ -8,7 +8,7 @@ export default function MyApp({Component, pageProps}) {
         <>
             <ProgressBar/>
             <Component {...pageProps} />
-            <About/>
+            {/*<About/>*/}
         </>
     )
 }

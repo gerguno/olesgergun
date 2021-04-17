@@ -35,7 +35,7 @@ export default function Slug({ post, allPosts }) {
 							{c.description &&
 							<Description src={c.description}/>}
 
-							{c.storyName &&
+							{c.storyText &&
 							<Story name={c.storyName} text={c.storyText} />}
 
 							{c.highlight &&
@@ -46,7 +46,7 @@ export default function Slug({ post, allPosts }) {
 						</>
 					)
 				})}
-				<NextPost arr={allPosts}/>
+				<NextPost arr={allPosts} color={post.menu}/>
 				<Footer color={post.menu}/>
 			</PostLayout>
 	)

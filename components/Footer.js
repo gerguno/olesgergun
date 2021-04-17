@@ -2,10 +2,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-export default function Footer() {
+export default function Footer({ color }) {
 
     return (
-        <div className="footer">
+        <div className={`footer${color === 'grey' ? ' __footer-grey' : ''}`}>
             <div>
                 Email: {' '}
                 <Link href={`mailto:hello@olesgergun.com`}>
