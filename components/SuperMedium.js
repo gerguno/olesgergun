@@ -15,7 +15,7 @@ export default function SuperMedium({ full, deviceType, deviceMedia, backgroundC
             {(backgroundMedium && (backgroundMedium.mimeType === "video/quicktime" || backgroundMedium.mimeType === "video/mp4"))
                 ?
                     <div className={`supermedium ${full ? `__full` : `__half`}`}>
-                        <video src={backgroundMedium.url} type={backgroundMedium.mimeType} loop autoPlay muted/>
+                        <video src={backgroundMedium.url} type={backgroundMedium.mimeType} loop autoPlay muted playsinline/>
                     </div>
                 :
                     width > 768
