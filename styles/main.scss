@@ -739,7 +739,7 @@ nav {
     display: flex;
     background: white;
     color: black;
-    padding: 24px $horizontal-padding 75px $horizontal-padding;
+    padding: 24px $horizontal-padding 90px $horizontal-padding;
 
     a {
         color: black;
@@ -1446,7 +1446,7 @@ code {
     overflow: visible !important;
 
     .home-project {
-        padding: 35px;
+        padding: 37px 35px 45px 35px;
         //transition: all 0.2s linear;
 
         &:hover {
