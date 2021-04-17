@@ -695,24 +695,6 @@ nav {
     background: black;
     color: white;
 
-    //@include xs {
-    //    display: block;
-    //    width: 80%;
-    //    background: white;
-    //}
-    //
-    //@include m {
-    //    display: grid;
-    //    grid-template-columns: 50% 350px calc(50% - 350px);
-    //    width: auto;
-    //}
-    //
-    //@include l {
-    //    display: grid;
-    //    grid-template-columns: 50% 516px calc(50% - 516px);
-    //    width: auto;
-    //}
-
     .story-text {
         margin-top: 10px;
         width: 85vw;
@@ -1570,34 +1552,41 @@ code {
     color: white;
     display: flex;
     justify-content: space-between;
-    padding: 0px 0 12px 0;
     width: 100%;
+
+    @include xs {
+        padding: 0px 0 16px 0;
+    }
+
+    @include s {
+        padding: 0px 0 8px 0;
+    }
 
     .post-bar-left {
         display: flex;
         padding: 0 0 0 35px;
 
         .post-bar-title {
-            font-size: 36px;
-            line-height: 38px;
-            letter-spacing: -0.02em;
-            margin-top: 11px;
-            align-items: baseline;
+            padding-bottom: 8px;
 
             @include xs {
-                margin-left: 18px;
                 display: block;
-                padding-bottom: 4px;
+                margin-left: 28px;
+                font-size: 23px;
+                line-height: 23px;
+                margin-top: 17px;
             }
 
-            @include s {
-                white-space: nowrap;
+            @include xm {
                 display: flex;
-                padding-bottom: 0;
+                align-items: baseline;
             }
 
             @include l {
                 margin-left: 88px;
+                font-size: 36px;
+                line-height: 38px;
+                margin-top: 10px;
             }
 
             .grey {
@@ -1615,9 +1604,22 @@ code {
 
             .tags {
                 display: flex;
-                margin-left: 42px;
-                transform: translateY(-7px);
                 transition: opacity 0.2s linear;
+
+                @include xs {
+                    margin-left: 22px;
+                    margin-top: 8px;
+                }
+
+                @include xm {
+                    transform: translateY(-4px) !important;
+                    margin-left: 42px;
+                    margin-top: 0;
+                }
+
+                @include l {
+                    transform: translateY(-7px);
+                }
 
                 .tag {
                     font-size: 16px;
@@ -1630,19 +1632,49 @@ code {
                     border-radius: 7px;
                     margin-right: 46px;
 
+                    @include xs {
+                        font-size: 13px;
+                        line-height: 13px;
+                        letter-spacing: 0em;
+                        padding: 3px 9px 4px 9px;
+                        margin-right: 37px;
+                    }
+
+                    @include l {
+                        font-size: 16px;
+                        line-height: 13px;
+                        letter-spacing: -0.01em;
+                        padding: 3px 9px 8px 9px;
+                        margin-right: 46px;
+                    }
+
                     &::before {
                         content: "#";
                         font-family: "SF Mono";
                         font-weight: bold;
                         color: black;
                         background: white;
-                        width: 24px;
-                        height: 14px;
                         position: absolute;
                         border-radius: 100px;
+                        width: 24px;
+                        height: 14px;
                         margin-left: -33px;
                         margin-top: -3px;
                         padding: 5px 0;
+
+                        @include xs {
+                            width: 20px;
+                            height: 14px;
+                            margin-left: -30px;
+                            margin-top: -3px;
+                            padding: 3px 0;
+                        }
+
+                        @include l {
+                            margin-left: -33px;
+                            margin-top: -3px;
+                            padding: 5px 0;
+                        }
                     }
                 }
             }
@@ -1655,7 +1687,18 @@ code {
 
             img {
                 padding-top: 14px !important;
-                width: 41px !important;
+
+                @include xs {
+                    width: 41px !important;
+                }
+
+                @include s {
+                    width: 75px !important;
+                }
+
+                @include xm {
+                    width: 41px !important;
+                }
             }
         }
     }
@@ -1693,11 +1736,11 @@ code {
     .post-bar-title {
         margin-left: 28px !important;
         font-size: 23px !important;
-        line-height: 18px !important;
-        margin-top: 20px !important;
+        line-height: 23px !important;
+        margin-top: 17px !important;
 
         .tags {
-            transform: translateY(-4px) !important;
+            //transform: translateY(-4px) !important;
 
             .tag {
                 font-size: 13px !important;
