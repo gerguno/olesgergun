@@ -21,7 +21,7 @@ export function NoMediaH({ src }) {
 
                     {(src[0].mimeType === "video/quicktime" || src[0].mimeType === "video/mp4") &&
                         <div className="__media">
-                            <video src={src[0].url} type={src[0].mimeType} loop autoPlay muted/>
+                            <video src={src[0].url} type={src[0].mimeType} loop autoPlay muted playsinline/>
                         </div>
                     }
                 </div>
