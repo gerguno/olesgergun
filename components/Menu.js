@@ -7,14 +7,14 @@ export default function Menu() {
 
     const nav = useRef(null)
     const workbench = useRef(null)
-    const texts = useRef(null)
+    const about = useRef(null)
     const contact = useRef(null)
 
     const [scrollDir, setScrollDir] = useState()
 
     useEffect(() => {
         (router.pathname === "/" || router.pathname === "/work/[slug]") ? workbench.current.className = "__active" : workbench.current.className = ""
-        router.pathname === "/texts" ? texts.current.className = "__active" : texts.current.className = ""
+        router.pathname === "/about" ? about.current.className = "__active" : about.current.className = ""
         router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
     }, [router])
 
@@ -71,8 +71,8 @@ export default function Menu() {
                         <div ref={workbench}>
                             <Link href={'/'}><a>Workbench</a></Link>
                         </div>
-                        <div ref={texts}>
-                            <Link href={'/texts'}><a>Texts</a></Link>
+                        <div ref={about}>
+                            <Link href={'/about'}><a>About</a></Link>
                         </div>
                         <div ref={contact}>
                             <Link href={'/contact'}><a>Contact</a></Link>

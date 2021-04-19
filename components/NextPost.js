@@ -15,8 +15,8 @@ export default function NextPost({ arr, color }) {
                 setLink(
                     <Link href={`/work/[slug]`} as={`/work/${arr[index + 1].slug}`}>
                         <a>
-                            <img src="/bullet.svg"/>
                             <h2>
+                                <img src="/bullet.svg"/>
                                 Next Project <span className="grey">({arr[index + 1].title})</span>
                             </h2>
                             <img src="/forward.svg"/>
@@ -27,8 +27,8 @@ export default function NextPost({ arr, color }) {
                 setLink(
                     <Link href={`/work/[slug]`} as={`/work/${arr[0].slug}`}>
                         <a>
-                            <img src="/bullet.svg"/>
                             <h2>
+                                <img src="/bullet.svg"/>
                                 Next Project <span className="grey">({arr[0].title})</span>
                             </h2>
                             <img src="/forward.svg"/>

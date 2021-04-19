@@ -24,27 +24,40 @@ export default function Index({ posts }) {
 						<a>
 							<div className="home-project">
 								<div className="home-project-title">
-									<img src="/bullet.svg"/>
 									<div className="home-title">
+										<img src="/bullet.svg"/>
 										{post.title}
 										<span className="grey">
 										{width < 576 ? <br/> : <>&nbsp;</>}
 											{post.afterTitle}
 										</span>
 									</div>
-									<div className="tags">
-										{post.tags.split(',').map(t => {
-											return (
-												<div className="tag">
-													{t}
-												</div>
-											)
-										})}
-									</div>
+									{width > 1366 &&
+										<div className="tags">
+											{post.tags.split(',').map(t => {
+												return (
+													<div className="tag">
+														{t}
+													</div>
+												)
+											})}
+										</div>
+									}
 								</div>
 								<div className="home-project-description">
 									<h1>{post.shortDescription}</h1>
 								</div>
+								{width < 1366 &&
+								<div className="tags">
+									{post.tags.split(',').map(t => {
+										return (
+											<div className="tag">
+												{t}
+											</div>
+										)
+									})}
+								</div>
+								}
 							</div>
 						</a>
 					</Link>

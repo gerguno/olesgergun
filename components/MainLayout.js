@@ -65,16 +65,6 @@ export function MainLayout({children, title='Oleś Gergun'}) {
             <main className={pushed ? '__pushed': ''}>
                 {children}
             </main>
-
-            {/*<a className={`open-about __black-button ${clicked ? pushed ? `fadeOut` : `fadeIn` : ''}`} onClick={push}>*/}
-            {/*    <img src="/more.svg"/>*/}
-            {/*</a>*/}
-            {/*<a className={`${width > 767 ? `back` : `back-mob`} ${aboutBlack ? `__black-button` : `__white-button`} ${clicked ? pushed ? `fadeIn` : `fadeOut` : ''}`} onClick={unpush}>*/}
-            {/*    <img src="/back.svg"/><span>Back</span>*/}
-            {/*</a>*/}
-            {/*<a className={`${width > 767 ? `paint` : `paint-mob`} ${aboutBlack ? `__black-button` : `__white-button`} ${clicked ? pushed ? `fadeIn` : `fadeOut` : ''}`} onClick={toggleAboutBackground}>*/}
-            {/*    {aboutBlack ? <img src="/p_fill.svg"/> : <img src="/p_bw.svg"/>}*/}
-            {/*</a>*/}
         </>
     )
 }

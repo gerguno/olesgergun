@@ -30,24 +30,26 @@ main {
     z-index: 1;
     background: white;
     width: 100%;
-    margin-top: 202px;
     transition: all 0.4s ease-in-out;
-}
-
-.__pushed {
-    position: fixed;
 
     @include xs {
-        margin-left: calc(100% * -1);
+        margin-top: 0;
     }
+
     @include m {
-        margin-left: calc(calc(100% - 120px) * -1);
+        margin-top: 147px;
     }
+
     @include xm {
-        margin-left: calc(calc(100% - 144px) * -1);
+        margin-top: 163px;
     }
+
     @include l {
-        margin-left: calc(calc(100%) * -1);
+        margin-top: 178px;
+    }
+
+    @include xl {
+        margin-top: 202px;
     }
 }
 
@@ -439,24 +441,79 @@ nav {
     font-size: 16px;
     line-height: 18px;
     letter-spacing: -0.02em;
-    height: 202px;
     overflow: hidden;
     width: 100%;
-    display: flex;
-    transition: margin 0.4s ease-in-out;
+
+    @include xs {
+        display: block;
+        height: 60px;
+        transition: height 0.4s ease-in-out;
+    }
+
+    @include m {
+        display: flex;
+        height: 147px;
+        transition: none;
+    }
+
+    @include xm {
+        height: 163px;
+    }
+
+    @include l {
+        height: 178px;
+    }
+
+    @include xl {
+        height: 202px;
+    }
 
     .nav-left {
         .nav-logo {
             img {
-                width: 188px;
                 padding: 30px 0 30px 35px;
+
+                @include xs {
+                    width: 119px;
+                }
+
+                @include m {
+                    width: 119px;
+                }
+
+                @include xm {
+                    width: 141px;
+                }
+
+                @include l {
+                    width: 161px;
+                }
+
+                @include xl {
+                    width: 188px;
+                }
             }
         }
     }
 
     .nav-right {
         width: 100%;
-        padding: 20px 16px 0 88px;
+
+        @include xs {
+            padding: 20px 20px 0 52px;
+        }
+
+        @include xm {
+            padding: 20px 20px 0 52px;
+        }
+
+        @include l {
+            padding: 20px 20px 0 60px;
+        }
+
+        @include xl {
+            padding: 20px 20px 0 88px;
+        }
 
         .nav-right-top {
             width: 100%;
@@ -500,25 +557,64 @@ nav {
         }
 
         .nav-right-bottom {
-            font-size: 103px;
             line-height: 90%;
             letter-spacing: -0.045em;
-            margin-top: 40px;
+
+            @include xs {
+                margin-top: 35px;
+                font-size: 53px;
+            }
+
+            @include m {
+                margin-top: 35px;
+                font-size: 53px;
+            }
+
+            @include xm {
+                margin-top: 35px;
+                font-size: 70px;
+            }
+
+            @include l {
+                margin-top: 39px;
+                font-size: 83px;
+            }
+
+            @include xl {
+                margin-top: 40px;
+                font-size: 103px;
+            }
+
+            @include xxl {
+                margin-top: 28px;
+                font-size: 116px;
+            }
         }
     }
 
-    // Mobile
-    .__margined {
-        margin-right: 36px;
-    }
+    .menu-group {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px 0 35px;
+        box-sizing: border-box;
 
-    #open {
-        background: 0;
-        border: 0;
-        padding: 4px $horizontal-padding;
+        #open {
+            background: 0;
+            border: 0;
+            filter: invert(1);
+            margin-top: -6px;
 
-        &:focus {
-            outline: 0;
+            &:focus {
+                outline: 0;
+            }
+        }
+
+        .logo {
+            font-size: 23px;
+            line-height: 18px;
+            text-align: right;
+            letter-spacing: -0.03em;
+            transition: all 0.2s linear;
         }
     }
 
@@ -531,7 +627,7 @@ nav {
         }
 
         span {
-            color: black;
+            color: white;
             text-decoration: underline;
         }
 
@@ -609,7 +705,33 @@ nav {
     }
 }
 
+.logo-separate-group {
+    padding: 35px;
+    background: black;
+    color: white;
+    margin-top: 60px;
 
+    img {
+        width: calc(100vw - 70px);
+    }
+
+    .logo-text {
+        @include xs {
+            font-size: 38px;
+            line-height: 42px;
+            margin: 16px 0 40px 0;
+            letter-spacing: -0.04em;
+        }
+
+
+        @include s {
+            font-size: 54px;
+            line-height: 54px;
+            margin: 20px 0 42px 0;
+            letter-spacing: -0.045em;
+        }
+    }
+}
 
 
 // Main container
@@ -1446,121 +1568,128 @@ code {
     overflow: visible !important;
 
     .home-project {
-        padding: 37px 35px 45px 35px;
+        padding: 40px 35px 45px 35px;
         //transition: all 0.2s linear;
 
         &:hover {
             background: $lightgrey;
 
             .home-title {
-                text-decoration: underline;
+                text-decoration: underline !important;
             }
 
             .tags {
                 text-decoration: none !important;
                 opacity: 1 !important;
+
+                .tag {
+                    background: white !important;
+                }
             }
         }
 
         .home-project-title {
-            display: flex;
-            align-items: baseline;
-
             @include xs {
-                font-size: 60px;
+                font-size: 54px;
                 line-height: 54px;
                 letter-spacing: -0.04em;
+                display: block;
+
+                .home-title {
+                    text-decoration: underline;
+                }
+            }
+
+            @include m {
+                .home-title {
+                    text-decoration: none;
+                }
             }
 
             @include xm {
-                font-size: 68px;
-                line-height: 66px;
-                letter-spacing: -0.04em;
+                font-size: 60px;
+                line-height: 54px;
+                line-height: 64px;
             }
 
             @include l {
                 font-size: 68px;
-                line-height: 72px;
-                letter-spacing: -0.04em;
+                line-height: 64px;
+                letter-spacing: -0.045em;
+            }
+
+            @include xl {
+                display: flex;
+                align-items: baseline;
             }
 
             img {
                 margin-right: 0.2em;
                 width: 0.71em;
             }
-
-            .tags {
-                display: flex;
-                margin-left: 42px;
-                transform: translateY(-7px);
-                transition: opacity 0.2s linear;
-                opacity: 0;
-
-                .tag {
-                    font-size: 16px;
-                    line-height: 13px;
-                    text-align: center;
-                    letter-spacing: -0.01em;
-                    background: white;
-                    padding: 3px 9px 8px 9px;
-                    border-radius: 7px;
-                    margin-right: 46px;
-
-                    &::before {
-                        content: "#";
-                        font-family: "SF Mono";
-                        font-weight: bold;
-                        color: white;
-                        background: black;
-                        width: 24px;
-                        height: 14px;
-                        position: absolute;
-                        border-radius: 100px;
-                        margin-left: -33px;
-                        margin-top: -3px;
-                        padding: 5px 0;
-                    }
-                }
-            }
         }
 
         .home-project-description {
-            padding-top: 12px;
-            width: 75%;
+            padding-top: 18px;
+
+
+            @include xs {
+                width: 100%;
+            }
+
+            @include xm {
+                width: 90%;
+            }
+
+            @include xl {
+                width: 75%;
+            }
+        }
+
+        .tags {
+            display: flex;
+            transform: translateY(-7px);
+            transition: opacity 0.2s linear;
+            opacity: 1;
+
+            @include xs {
+                margin-top: 26px;
+                margin-left: 26px;
+            }
+
+            @include xl {
+                margin-top: 0;
+                margin-left: 42px;
+            }
+
+            .tag {
+                font-size: 16px;
+                line-height: 13px;
+                text-align: center;
+                letter-spacing: -0.01em;
+                background: #E2E2E2;
+                padding: 3px 9px 8px 9px;
+                border-radius: 7px;
+                margin-right: 46px;
+
+                &::before {
+                    content: "#";
+                    font-family: "SF Mono";
+                    font-weight: bold;
+                    color: white;
+                    background: black;
+                    width: 24px;
+                    height: 14px;
+                    position: absolute;
+                    margin-left: -33px;
+                    margin-top: -3px;
+                    padding: 5px 0;
+                    border-radius: 100px;
+                }
+            }
         }
     }
 }
-
-
-.Modal {
-    position: absolute;
-    background: white;
-    outline: 0;
-    top: 0;
-    bottom: 0;
-    width: calc(100% - 72px);
-    overflow-y: scroll;
-    right: 0;
-
-    @include xs {
-        width: 100%;
-    }
-
-    @include m {
-        width: calc(100% - 72px);
-    }
-}
-
-.Overlay {
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.9);
-}
-
 
 .hide-scrollbar {
     position: fixed;
@@ -1577,11 +1706,11 @@ code {
     box-sizing: border-box;
 
     @include xs {
-        padding: 14px 16px 26px $horizontal-padding;
+        padding: 14px 20px 26px $horizontal-padding;
     }
 
     @include s {
-        padding: 14px 16px 14px $horizontal-padding;
+        padding: 14px 20px 14px $horizontal-padding;
     }
 
     .post-bar-left {
