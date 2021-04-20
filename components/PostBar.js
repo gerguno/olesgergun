@@ -58,7 +58,7 @@ export default function PostBar({ title, afterTitle, tags }) {
         <div className='post-bar' ref={postBar}>
             <div className="post-bar-left">
                 <a onClick={close}>
-                    <img src="/oi.png"/>
+                    <img src="/oi_small.png"/>
                 </a>
                 <div className="post-bar-title">
                     {title}
