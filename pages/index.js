@@ -64,6 +64,7 @@ export default function Index({ posts }) {
 				))}
 			</div>
 			<Footer/>
+			<div className="rainbow"></div>
 		</MainLayout>
 	)
 }

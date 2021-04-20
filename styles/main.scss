@@ -176,9 +176,9 @@ about {
     }
 }
 
-.color {
+.rainbow {
+    height: 40px;
     background: url('/home/ktf_violet.jpg') center center / cover no-repeat;
-    //background-size: 100% 100%;
     background-blend-mode: difference;
     animation: colorful 60s linear infinite;
 
