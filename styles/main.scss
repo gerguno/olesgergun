@@ -595,8 +595,15 @@ nav {
     .menu-group {
         display: flex;
         justify-content: space-between;
-        padding: 20px 20px 0 35px;
         box-sizing: border-box;
+
+        @include xs {
+            padding: 20px 20px 0 25px;
+        }
+
+        @include s {
+            padding: 20px 20px 0 $horizontal-padding;
+        }
 
         #open {
             background: 0;
@@ -706,13 +713,26 @@ nav {
 }
 
 .logo-separate-group {
-    padding: 35px;
     background: black;
     color: white;
     margin-top: 60px;
 
+    @include xs {
+        padding: 25px;
+    }
+
+    @include s {
+        padding: $horizontal-padding;
+    }
+
     img {
-        width: calc(100vw - 70px);
+        @include xs {
+            width: calc(100vw - 50px);
+        }
+
+        @include s {
+            width: calc(100vw - 70px);
+        }
     }
 
     .logo-text {
@@ -760,9 +780,10 @@ nav {
     background: white;
     color: black;
     transition: all 0.15s linear;
-    padding: 28px $horizontal-padding;
 
     @include xs {
+        padding: 28px 25px;
+
         span {
             display: none;
         }
@@ -772,6 +793,8 @@ nav {
     }
 
     @include s {
+        padding: 28px $horizontal-padding;
+
         img:first-child {
             display: inline-block;
         }
@@ -825,9 +848,16 @@ nav {
 }
 
 .short-description {
-    padding: 38px 35px;
     background: black;
     color: white;
+
+    @include xs {
+        padding: 30px 25px;
+    }
+
+    @include s {
+        padding: 38px 35px;
+    }
 
     & > div {
         width: 85vw;
@@ -835,9 +865,16 @@ nav {
 }
 
 .story {
-    padding: 34px $horizontal-padding 43px $horizontal-padding;
     background: black;
     color: white;
+
+    @include xs {
+        padding: 24px 25px 33px 25px;
+    }
+
+    @include s {
+        padding: 34px $horizontal-padding 43px $horizontal-padding;
+    }
 
     .story-text {
         margin-top: 10px;
@@ -862,6 +899,14 @@ nav {
     background: white;
     color: black;
     padding: 24px $horizontal-padding 90px $horizontal-padding;
+
+    @include xs {
+        padding: 24px 25px 90px 25px;
+    }
+
+    @include s {
+        padding: 24px $horizontal-padding 90px $horizontal-padding;
+    }
 
     a {
         color: black;
@@ -1454,11 +1499,19 @@ code {
 }
 
 .footer {
+    background: white;
+
+    @include xs {
+        padding: 30px 25px;
+    }
+
+    @include s {
+        padding: 40px $horizontal-padding;
+    }
+
     & > div {
         width: 283px;
     }
-    padding: 40px $horizontal-padding;
-    background: white;
 
     a {
         &:hover {
@@ -1568,8 +1621,15 @@ code {
     overflow: visible !important;
 
     .home-project {
-        padding: 40px 35px 45px 35px;
         //transition: all 0.2s linear;
+
+        @include xs {
+            padding: 40px 25px 45px 25px;
+        }
+
+        @include s {
+            padding: 40px $horizontal-padding 45px $horizontal-padding;
+        }
 
         &:hover {
             background: $lightgrey;
@@ -1706,7 +1766,8 @@ code {
     box-sizing: border-box;
 
     @include xs {
-        padding: 14px 20px 26px $horizontal-padding;
+        padding: 14px 20px 26px 25px;
+        //padding: 14px 20px 26px $horizontal-padding;
     }
 
     @include s {
