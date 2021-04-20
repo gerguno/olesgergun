@@ -23,32 +23,32 @@ body {
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     background: white;
-    background-blend-mode: difference;
-    animation: colorful 60s linear infinite;
-
-    @keyframes colorful {
-        0% {
-            background-color: rgb(255, 0, 0);
-        }
-        16% {
-            background-color: rgb(255, 255, 0);
-        }
-        32% {
-            background-color: rgb(0, 255, 0);
-        }
-        48% {
-            background-color: rgb(0, 255, 255);
-        }
-        64% {
-            background-color: rgb(0, 0, 255);
-        }
-        80% {
-            background-color: rgb(255, 0, 255);
-        }
-        100% {
-            background-color: rgb(255, 0, 0);
-        }
-    }
+    //background-blend-mode: difference;
+    //animation: colorful 60s linear infinite;
+    //
+    //@keyframes colorful {
+    //    0% {
+    //        background-color: rgb(255, 0, 0);
+    //    }
+    //    16% {
+    //        background-color: rgb(255, 255, 0);
+    //    }
+    //    32% {
+    //        background-color: rgb(0, 255, 0);
+    //    }
+    //    48% {
+    //        background-color: rgb(0, 255, 255);
+    //    }
+    //    64% {
+    //        background-color: rgb(0, 0, 255);
+    //    }
+    //    80% {
+    //        background-color: rgb(255, 0, 255);
+    //    }
+    //    100% {
+    //        background-color: rgb(255, 0, 0);
+    //    }
+    //}
 }
 
 main {
