@@ -1803,6 +1803,8 @@ code {
         display: flex;
 
         .post-bar-title {
+            letter-spacing: -0.03em;
+
             @include xs {
                 display: block;
                 margin-left: 28px;

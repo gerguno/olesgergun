@@ -48,6 +48,7 @@ export default function Slug({ post, allPosts }) {
 				})}
 				<NextPost arr={allPosts} color={post.menu}/>
 				<Footer color={post.menu}/>
+				<div className="rainbow"></div>
 			</PostLayout>
 	)
 }
