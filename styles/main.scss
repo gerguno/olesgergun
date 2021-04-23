@@ -1,14 +1,16 @@
 @import './responsives';
 @import './fonts';
 
-$black: black;
+$horizontal-padding: 35px;
+$horizontal-padding-mob: 25px;
+
+$vertical-padding: 18px;
+$vertical-padding-mob: 18px;
+
 $darkgrey: #6E6E6E;
 $grey: #A6A6A6;
 $lightgrey: #E2E2E2;
-$white: white;
-$horizontal-padding: 35px;
-$horizontal-padding-mob: 20px;
-$fullsize-padding-bottom: 3px;
+
 
 * {
     margin: 0;
@@ -16,378 +18,23 @@ $fullsize-padding-bottom: 3px;
 }
 
 body {
-    color: $black;
+    background: black;
+    color: white;
     font-family: 'Helvetica Neue', sans-serif;
     font-weight: bold;
-    letter-spacing: -0.02em;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    background: white;
-    //background-blend-mode: difference;
-    //animation: colorful 60s linear infinite;
-    //
-    //@keyframes colorful {
-    //    0% {
-    //        background-color: rgb(255, 0, 0);
-    //    }
-    //    16% {
-    //        background-color: rgb(255, 255, 0);
-    //    }
-    //    32% {
-    //        background-color: rgb(0, 255, 0);
-    //    }
-    //    48% {
-    //        background-color: rgb(0, 255, 255);
-    //    }
-    //    64% {
-    //        background-color: rgb(0, 0, 255);
-    //    }
-    //    80% {
-    //        background-color: rgb(255, 0, 255);
-    //    }
-    //    100% {
-    //        background-color: rgb(255, 0, 0);
-    //    }
-    //}
 }
 
 main {
-    z-index: 1;
-    background: white;
-    width: 100%;
     transition: all 0.4s ease-in-out;
-
-    @include xs {
-        margin-top: 0;
-    }
-
-    @include m {
-        margin-top: 147px;
-    }
-
-    @include xm {
-        margin-top: 163px;
-    }
-
-    @include l {
-        margin-top: 178px;
-    }
-
-    @include xl {
-        margin-top: 202px;
-    }
-}
-
-about {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    z-index: -9999;
-
-    .about-container {
-        position: absolute;
-        overflow-y: scroll;
-        height: calc(100% - 56px);
-        color: white;
-        mix-blend-mode: exclusion;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-
-        @include xs {
-            padding: 16px 56px 0 26px;
-            display: block;
-        }
-        @include m {
-            padding: 16px 154px 0 calc(60px + 26px);
-            display: flex;
-        }
-        @include xm {
-            padding: 16px 154px 0 calc(72px + 26px);
-        }
-        @include l {
-            padding: 16px 154px 0 50px;
-        }
-    }
-
-    .left, .right {
-        @include xs {
-            width: 100%;
-        }
-        @include m {
-            width: 50%;
-        }
-    }
-
-    .right {
-        @include xs {
-            padding-bottom: 20px;
-            padding-top: 38px;
-        }
-        @include m {
-            padding-top: 0;
-            padding-left: 80px;
-        }
-
-        .right-block {
-            padding-bottom: 20px;
-
-            @include xs {
-                font-size: 22px;
-                line-height: 24px;
-            }
-            @include m {
-                font-size: 16px;
-                line-height: 18px;
-            }
-
-            .right-title {
-                // Overrides at About.js
-                color: $grey;
-            }
-
-            p {
-                @include xs {
-                    padding-bottom: 20px;
-                }
-                @include m {
-                    padding-bottom: 12px;
-                }
-
-                img {
-                    filter: invert(1);
-                    width: 0.7em;
-                }
-            }
-
-            a {
-                color: white;
-                text-decoration: underline;
-                text-decoration-color: white;
-                transition: all 0.2s linear;
-
-                &:hover {
-                    text-decoration: transparent;
-                }
-            }
-        }
-
-        .download-pdf {
-            color: white;
-            font-size: 20px;
-            line-height: 22px;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-content: center;
-            text-decoration: underline;
-            text-decoration-color: transparent;
-            transition: all 0.2s linear;
-            cursor: pointer;
-            width: 166px;
-
-            img {
-                padding: 0 5px 0 0;
-                margin-left: -3px;
-            }
-
-            &:hover {
-                text-decoration-color: white;
-            }
-        }
-    }
-}
-
-.rainbow {
-    height: 40px;
-    background: url('/home/ktf_violet.jpg') center center / cover no-repeat;
-    background-blend-mode: difference;
-    animation: colorful 60s linear infinite;
-
-    @keyframes colorful {
-        0% {
-            background-color: rgb(255, 0, 0);
-        }
-        16% {
-            background-color: rgb(255, 255, 0);
-        }
-        32% {
-            background-color: rgb(0, 255, 0);
-        }
-        48% {
-            background-color: rgb(0, 255, 255);
-        }
-        64% {
-            background-color: rgb(0, 0, 255);
-        }
-        80% {
-            background-color: rgb(255, 0, 255);
-        }
-        100% {
-            background-color: rgb(255, 0, 0);
-        }
-    }
-}
-
-.black {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    z-index: -9998;
-    background: black;
-    display: none;
-}
-
-.open-about {
-    position: absolute;
-    z-index: 3;
-    border-radius: 5px;
-    top: 8px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-        filter: invert(1);
-    }
-}
-
-.back {
-    position: absolute;
-    border-radius: 5px;
-    top: 8px;
-    right: 42px;
-    height: 28px;
-    width: 83px;
-    align-items: center;
-    display: none;
-
-    img {
-        margin: -1px 0 0 4px;
-    }
-
-    span {
-        margin: -4px 0 0 5px;
-    }
-}
-
-.back-mob {
-    position: absolute;
-    border-radius: 5px;
-    top: 8px;
-    right: 8px;
-    height: 28px;
-    width: 28px;
-    overflow: hidden;
-    align-items: center;
-    display: none;
-
-    img {
-        margin: -1px 0 0 6px;
-    }
-
-    span {
-        margin: -4px 0 0 5px;
-    }
-}
-
-.paint {
-    position: absolute;
-    border-radius: 100px;
-    top: 8px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-.paint-mob {
-    position: absolute;
-    border-radius: 100px;
-    top: 42px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-.__white-button {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0), inset -2px -2px 2px rgba(0, 0, 0, 0.17);
-    transition: all 0.2s linear !important;
-
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset -2px -2px 2px rgba(0, 0, 0, 0.17);
-    }
-}
-
-.__black-button {
-    background: #222222;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0), inset 2px 2px 2px rgba(254, 254, 254, 0.3);
-    transition: all 0.2s linear !important;
-    color: white;
-
-    img {
-        filter: invert(0);
-    }
-
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 2px rgba(254, 254, 254, 0.3);
-    }
-}
-
-.fadeIn {
-    opacity: 0;
-    display: flex;
-    visibility: visible;
-    animation: app 0.5s forwards;
-}
-
-@keyframes app {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.fadeOut {
-    opacity: 0;
-    display: flex;
-    animation: disapp 0.5s forwards;
-}
-
-@keyframes disapp {
-    0% {
-        opacity: 1;
-    }
-    99% {
-        opacity: 0;
-    }
-    100% {
-        visibility: hidden;
-    }
 }
 
 h1 {
     font-family: 'SF Mono';
     font-style: normal;
     font-weight: normal;
-    font-size: 21px;
+    font-size: 19px;
     line-height: 26px;
     letter-spacing: -0.03em;
     word-break: break-word;
@@ -402,11 +49,17 @@ h1 {
 }
 
 h2 {
-    font-size: 36px;
-    line-height: 36px;
-    //font-size: 48px;
-    //line-height: 48px;
     letter-spacing: -0.03em;
+
+    @include xs {
+        font-size: 28px;
+        line-height: 30px;
+    }
+
+    @include l {
+        font-size: 36px;
+        line-height: 38px;
+    }
 }
 
 h3 {
@@ -416,13 +69,18 @@ h3 {
 }
 
 a {
-    color: $black;
-    text-decoration: none;
+    color: white !important;
+    text-decoration: underline;
+    text-decoration-color: white;
+    transition: all 0.2s linear;
+
+    &:hover {
+        text-decoration-color: transparent;
+    }
 }
 
 a:visited {
-    color: $black;
-    text-decoration: none;
+    color: white;
 }
 
 div::selection {
@@ -451,7 +109,7 @@ div::selection {
 }
 
 .more-padding {
-    padding: 0 0 $fullsize-padding-bottom 0;
+    padding: 0 0 3px 0;
 }
 
 // Header
@@ -1335,7 +993,7 @@ nav {
     }
 
     .__more-padding {
-        padding: 0 0 $fullsize-padding-bottom 0;
+        padding: 0 0 3px 0;
     }
 }
 
@@ -1549,229 +1207,230 @@ code {
     background: #E2E2E2;
 }
 
-.home-intro {
-    align-items: center;
-    border-bottom: 3px black solid;
-    padding: 100px 21px 100px 21px;
-
+.container {
     @include xs {
-        display: block;
+        padding: $vertical-padding-mob $horizontal-padding-mob;
     }
 
-    @include m {
+    @include s {
+        padding: $vertical-padding $horizontal-padding;
+    }
+}
+
+.rainbow {
+    display: flex;
+    justify-content: space-between;
+    height: 128px;
+    font-size: 16px;
+    line-height: 18px;
+    background: url('/home/ktf_violet.jpg') center center / cover no-repeat;
+    background-blend-mode: difference;
+    animation: colorful 60s linear infinite;
+
+    @keyframes colorful {
+        0% {
+            background-color: rgb(255, 0, 0);
+        }
+        16% {
+            background-color: rgb(255, 255, 0);
+        }
+        32% {
+            background-color: rgb(0, 255, 0);
+        }
+        48% {
+            background-color: rgb(0, 255, 255);
+        }
+        64% {
+            background-color: rgb(0, 0, 255);
+        }
+        80% {
+            background-color: rgb(255, 0, 255);
+        }
+        100% {
+            background-color: rgb(255, 0, 0);
+        }
+    }
+
+    .left, .right {
+        mix-blend-mode: difference;
+        padding: 25px $horizontal-padding;
+    }
+
+    .left {
         display: flex;
+
+        .contacts {
+            margin-left: 160px;
+
+            a {
+                text-decoration-color: transparent !important;
+                text-decoration: underline;
+                transition: all 0.2s linear;
+
+                &:hover {
+                    text-decoration-color: white !important;
+                }
+            }
+        }
     }
 
-    .home-intro-logo {
+    .right {
         img {
-            @include xs {
-                width: calc(100vw - 42px);
-            }
-            //@include m {
-            //    width: 190px;
-            //    margin-right: 42px;
-            //}
-            @include m {
-                //used to be xm
-                width: 175px;
-                margin-right: 62px;
-            }
-
-            @include l {
-                width: 200px;
-                margin-right: 70px;
-            }
-            @include xl {
-                width: 215px;
-                margin-right: 70px;
-            }
-            @include xxl {
-                width: 14vw;
-                margin-right: 4.5vw;
-            }
-        }
-    }
-
-    .home-intro-text {
-        @include xs {
-            margin-top: 36px;
-            width: 100%;
-            font-size: 36px;
-            line-height: 38px;
-            letter-spacing: -0.02em;
-        }
-        //@include m {
-        //    margin-top: -4px;
-        //    width: 437px;
-        //    font-size: 27px;
-        //    line-height: 28px;
-        //    letter-spacing: -0.02em;
-        //}
-        @include m {
-            //used to be xm
-            margin-top: -4px;
-            width: 642px;
-            font-size: 31px;
-            line-height: 33px;
-            letter-spacing: -0.02em;
-        }
-
-        @include l {
-            margin-top: -4px;
-            width: 735px;
-            font-size: 36px;
-            line-height: 38px;
-            letter-spacing: -0.02em;
-        }
-
-        @include xl {
-            margin-top: -4px;
-            width: 792px;
-            font-size: 38px;
-            line-height: 40px;
-            letter-spacing: -0.02em;
-        }
-
-        @include xxl {
-            margin-top: -4px;
-            width: 50vw;
-            font-size: 2.45vw;
-            line-height: 110%;
-            letter-spacing: -0.03em;
+            width: 102px;
         }
     }
 }
 
-.home-projects {
-    overflow: visible !important;
+.motto {
+    letter-spacing: -0.045em;
+    text-align: left;
 
-    .home-project {
-        //transition: all 0.2s linear;
+    @include xs {
+        font-size: 62px;
+        line-height: 56px;
+        padding-bottom: 38px;
+    }
 
-        @include xs {
-            padding: 40px 25px 45px 25px;
-        }
+    @include s {
+        font-size: 88px;
+        line-height: 78px;
+    }
 
-        @include s {
-            padding: 40px $horizontal-padding 45px $horizontal-padding;
-        }
+    @include m {
+        font-size: 9.1vw;
+        line-height: 90%;
+    }
 
-        &:hover {
-            background: $lightgrey;
+    @include xm {
+        font-size: 9.3vw;
+        padding-bottom: 52px;
+    }
 
-            .home-title {
-                text-decoration: underline !important;
-            }
+    @include l {
+        font-size: 9.5vw;
+        padding-bottom: 60px;
+    }
 
-            .tags {
-                text-decoration: none !important;
-                opacity: 1 !important;
+    @include xxl {
+        font-size: 9.725vw;
+    }
+}
 
-                .tag {
-                    background: white !important;
-                }
-            }
-        }
+.home-intro {
+    padding-bottom: 55px;
 
-        .home-project-title {
-            @include xs {
-                font-size: 54px;
-                line-height: 54px;
+    .read-about {
+        font-size: 14px;
+        margin-top: 25px;
+    }
+}
+
+.home {
+    display: grid;
+
+    @include xs {
+        grid-template-columns: auto;
+        grid-gap: 0;
+    }
+
+    @include xm {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 50px;
+    }
+
+    @include l {
+        grid-template-columns: auto auto;
+        grid-gap: 85px;
+    }
+
+    @include xl {
+        grid-template-columns: 54% auto;
+    }
+
+    .home-projects {
+        .home-project {
+            padding-bottom: 65px;
+
+            .home-project-title {
                 letter-spacing: -0.04em;
-                display: block;
 
-                .home-title {
-                    text-decoration: underline;
+                @include xs {
+                    font-size: 36px;
+                    line-height: 38px;
+                }
+
+                @include l {
+                    font-size: 48px;
+                    line-height: 48px;
+                }
+
+                @include xl {
+                    font-size: 3.2vw;
+                    line-height: 102%;
+                }
+
+                img {
+                    margin-right: 0.2em;
+                    filter: invert(1);
+
+                    @include xs {
+                        width: 0.7em;
+                    }
+
+                    @include l {
+                        width: 0.71em;
+                    }
                 }
             }
 
-            @include m {
-                .home-title {
-                    text-decoration: none;
+            .home-project-description {
+                @include xs {
+                    padding-top: 13px;
                 }
-            }
 
-            @include xm {
-                font-size: 60px;
-                line-height: 54px;
-                line-height: 64px;
-            }
-
-            @include l {
-                font-size: 68px;
-                line-height: 64px;
-                letter-spacing: -0.045em;
-            }
-
-            @include xl {
-                display: flex;
-                align-items: baseline;
-            }
-
-            img {
-                margin-right: 0.2em;
-                width: 0.71em;
+                @include l {
+                    padding-top: 17px;
+                }
             }
         }
+    }
+}
 
-        .home-project-description {
-            padding-top: 18px;
+.tags {
+    display: flex;
+    margin-left: 16px;
 
+    @include xs {
+        margin-top: 13px;
+    }
 
-            @include xs {
-                width: 100%;
-            }
+    @include l {
+        margin-top: 15px;
+    }
 
-            @include xm {
-                width: 90%;
-            }
+    .tag {
+        font-size: 16px;
+        line-height: 13px;
+        text-align: center;
+        letter-spacing: -0.01em;
+        background: #3E3E3E;
+        color: white;
+        padding: 3px 9px 8px 9px;
+        border-radius: 7px;
+        margin-right: 30px;
 
-            @include xl {
-                width: 75%;
-            }
-        }
-
-        .tags {
-            display: flex;
-            transform: translateY(-7px);
-            transition: opacity 0.2s linear;
-            opacity: 1;
-
-            @include xs {
-                margin-top: 26px;
-                margin-left: 26px;
-            }
-
-            @include xl {
-                margin-top: 0;
-                margin-left: 42px;
-            }
-
-            .tag {
-                font-size: 16px;
-                line-height: 13px;
-                text-align: center;
-                letter-spacing: -0.01em;
-                background: #E2E2E2;
-                padding: 3px 9px 8px 9px;
-                border-radius: 7px;
-                margin-right: 46px;
-
-                &::before {
-                    content: "#";
-                    font-family: "SF Mono";
-                    font-weight: bold;
-                    color: white;
-                    background: black;
-                    width: 24px;
-                    height: 14px;
-                    position: absolute;
-                    margin-left: -33px;
-                    margin-top: -3px;
-                    padding: 5px 0;
-                    border-radius: 100px;
-                }
-            }
+        &::before {
+            content: "#";
+            font-family: "SF Mono";
+            font-weight: bold;
+            color: #676767;
+            width: 14px;
+            height: 14px;
+            position: absolute;
+            margin-left: -26px;
+            margin-top: -3px;
+            padding: 5px 0;
+            border-radius: 100px;
         }
     }
 }
