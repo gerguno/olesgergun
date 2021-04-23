@@ -1220,7 +1220,7 @@ code {
 .rainbow {
     display: flex;
     justify-content: space-between;
-    height: 128px;
+    height: 143px;
     font-size: 16px;
     line-height: 18px;
     background: url('/home/ktf_violet.jpg') center center / cover no-repeat;
@@ -1257,11 +1257,7 @@ code {
     }
 
     .left {
-        display: flex;
-
         .contacts {
-            margin-left: 160px;
-
             a {
                 text-decoration-color: transparent !important;
                 text-decoration: underline;
@@ -1276,7 +1272,7 @@ code {
 
     .right {
         img {
-            width: 102px;
+            width: 128px;
         }
     }
 }
