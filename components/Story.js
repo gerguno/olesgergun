@@ -5,12 +5,10 @@ export function Story({name, text}) {
         <>
             <div className="story">
                 <div className="story-name">
-                    {name}
+                    <img src="/bullet.svg"/>{name}
                 </div>
                 <div className="story-text">
-                    <h1>
-                        <ReactMarkdown source={text}/>
-                    </h1>
+                    <ReactMarkdown source={text}/>
                 </div>
             </div>
         </>

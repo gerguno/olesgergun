@@ -1,6 +1,7 @@
 import {request} from "../../lib/api";
 import {PostLayout} from "../../components/PostLayout";
 import PostBar from "../../components/PostBar";
+import PostHeader from "../../components/PostHeader";
 import SuperMedium from "../../components/SuperMedium";
 import {Fullpage} from "../../components/Fullpage";
 import {Description} from "../../components/Description";
@@ -9,13 +10,14 @@ import {Story} from "../../components/Story";
 import Highlight from "../../components/Highlight";
 import Code from "../../components/Code";
 import NextPost from "../../components/NextPost";
-import Footer from "../../components/Footer";
+import PostMenu from "../../components/PostMenu";
 
 export default function Slug({ post, allPosts }) {
 	return (
 			<PostLayout title={post.title}>
-				<PostBar title={post.title} afterTitle={post.afterTitle} tags={post.tags}/>
-				<ShortDescription src={post.shortDescription}/>
+				<PostMenu title={post.title} afterTitle={post.afterTitle}/>
+				<PostBar color={post.color.hex}/>
+				<PostHeader title={post.title} afterTitle={post.afterTitle} shortDescription={post.shortDescription} tags={post.tags}/>
 				{post.postContent.map(c => {
 					return (
 						<>
@@ -46,9 +48,7 @@ export default function Slug({ post, allPosts }) {
 						</>
 					)
 				})}
-				<NextPost arr={allPosts} color={post.menu}/>
-				<Footer color={post.menu}/>
-				<div className="rainbow"></div>
+				<NextPost arr={allPosts} color={post.color.hex}/>
 			</PostLayout>
 	)
 }
@@ -68,7 +68,9 @@ export async function getPost(slug) {
 		query: `
 query PostBySlug($slug: String) {
   post(filter: {slug: {eq: $slug}}) {
-    menu
+     color {
+      hex
+    }
     title
     afterTitle
     slug

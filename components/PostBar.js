@@ -1,83 +1,36 @@
-import Link from "next/link";
 import useWindowDimensions from "./useWindowDimensions";
-import { useRouter } from 'next/router'
-import {useEffect, useState, useRef} from "react";
+import Link from "next/link";
 
-export default function PostBar({ title, afterTitle, tags }) {
+export default function PostBar({ color }) {
     const { height, width } = useWindowDimensions()
-    const router = useRouter()
-
-    const postBar = useRef(null)
-    const [scrollDir, setScrollDir] = useState()
-
-    const close = () => {
-        router.push("/")
-    }
-
-    useEffect(() => {
-        const threshold = 5;
-        let lastScrollY = window.pageYOffset;
-        let ticking = false;
-
-        const updateScrollDir = () => {
-            const scrollY = window.pageYOffset;
-
-            if (Math.abs(scrollY - lastScrollY) < threshold) {
-                ticking = false;
-                return;
-            }
-            if (scrollY < 202) {
-                setScrollDir("on top")
-            } else {
-                scrollY > lastScrollY ? setScrollDir("scrolling down") : setScrollDir("scrolling up")
-            }
-            lastScrollY = scrollY > 5 ? scrollY : 5;
-            ticking = false;
-        };
-
-        const onScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateScrollDir);
-                ticking = true;
-            }
-        };
-
-        window.addEventListener("scroll", onScroll);
-
-        if (scrollDir === "on top") {
-            postBar.current.className = 'post-bar'
-        }
-        if (scrollDir === "scrolling down") {
-            postBar.current.className = "post-bar __post-bar-fixed"
-        }
-
-        return () => window.removeEventListener("scroll", onScroll);
-    }, [scrollDir]);
 
     return (
-        <div className='post-bar' ref={postBar}>
-            <div className="post-bar-left">
-                <a onClick={close}>
-                    <img src="/oi_small.png"/>
-                </a>
-                <div className="post-bar-title">
-                    {title}
-                    <span className="dark-grey">&nbsp;{afterTitle}</span>
-                    <div className="tags">
-                        {tags.split(',').map(t => {
-                            return (
-                                <div className="tag">
-                                    {t}
-                                </div>
-                            )
-                        })}
-                    </div>
+        <div className="post-bar" style={{backgroundColor: color}}>
+            <div className="left">
+                <div className="logo">
+                    <Link href={'/'}><a>Oleś Gergun</a></Link>
+                </div>
+                <div className="contacts">
+                    {width > 575
+                        ?
+                        <>
+                            Email: <a href="mailto:hello@olesgergun.com">hello@olesgergun.com</a> <br/>
+                            Social: <a href="https://www.instagram.com/olesgergun">Instagram</a>, <a href="https://www.facebook.com/olesgergun">Facebook</a>, <a href="https://github.com/gerguno">GitHub</a>, <br/>
+                            <a href="https://www.instagram.com/kyiv_type_digest">Kyiv Type Digest</a>, <a href="https://www.instagram.com/kyiv_type_foundry">Kyiv Type Foundry</a> <br/>
+                            © 2021 All rights reserved
+                        </>
+                        :
+                        <>
+                            Email: <a href="mailto:hello@olesgergun.com">hello@olesgergun.com</a> <br/>
+                            Social: <a href="https://www.instagram.com/olesgergun">Instagram</a>, <a href="https://www.facebook.com/olesgergun">Facebook</a>, <br/>
+                            <a href="https://www.instagram.com/kyiv_type_foundry">Kyiv Type Foundry</a>, <a href="https://github.com/gerguno">GitHub</a> <br/>
+                            © 2021 All rights reserved
+                        </>
+                    }
                 </div>
             </div>
-            <div className="post-bar-right">
-                <div className="post-bar-logo">
-                    Oleś Gergun
-                </div>
+            <div className="right">
+                <img src="/oi.png"/>
             </div>
         </div>
     )

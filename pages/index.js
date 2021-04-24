@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import {request} from '../lib/api'
 import {MainLayout} from "../components/MainLayout"
-import {PostLayout} from "../components/PostLayout"
-import Footer from "../components/Footer";
 import useWindowDimensions from "../components/useWindowDimensions";
 import { useRouter } from 'next/router'
 import { useEffect } from "react";
@@ -21,7 +19,7 @@ export default function Index({ posts }) {
 			<div className="rainbow">
 				<div className="left">
 					<div className="logo">
-						Oleś Gergun
+						<Link href={'/'}><a>Oleś Gergun</a></Link>
 					</div>
 					<div className="contacts">
 						{width > 575
@@ -135,7 +133,6 @@ export async function getStaticProps() {
 		query: `
 		{
 		  allPosts {
-			menu
             title
             afterTitle
             tags

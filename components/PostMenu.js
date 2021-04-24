@@ -2,19 +2,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
-export default function Menu() {
-    const router = useRouter()
-
+export default function PostMenu({ title, afterTitle }) {
     const nav = useRef(null)
-    const workbench = useRef(null)
-    const about = useRef(null)
 
     const [scrollDir, setScrollDir] = useState()
-
-    useEffect(() => {
-        router.pathname === "/" ? workbench.current.className = "__active" : workbench.current.className = ""
-        router.pathname === "/about" ? about.current.className = "__active" : about.current.className = ""
-    }, [router])
 
     useEffect(() => {
         const threshold = 5;
@@ -59,11 +50,14 @@ export default function Menu() {
     return (
         <nav ref={nav}>
             <div className="nav-left">
-                <div ref={workbench}>
-                    <Link href={'/'}><a>Workbench</a></Link>
-                </div>
-                <div ref={about}>
-                    <Link href={'/about'}><a>About</a></Link>
+                <div className="nav-title">
+                    <Link href={'/'}>
+                        <a>
+                            <img src="/back.svg"/>
+                        </a>
+                    </Link>
+                    {title}
+                    <span className="grey"> {afterTitle}</span>
                 </div>
             </div>
             <div className="nav-right">

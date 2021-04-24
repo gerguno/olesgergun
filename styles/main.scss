@@ -131,11 +131,11 @@ nav {
         display: flex;
 
         @include xs {
-            padding: 24px 30px;
+            padding: 24px 0 0 30px;
         }
 
         @include s {
-            padding: 24px 35px;
+            padding: 24px 0 0 35px;
         }
 
         div {
@@ -175,6 +175,43 @@ nav {
             pointer-events: none;
         }
     }
+
+    .nav-title {
+        color: black;
+        margin-right: 0 !important;
+
+        @include xs {
+            font-size: 16px;
+            line-height: 18px;
+            span {
+                display: none;
+            }
+        }
+
+        @include s {
+            font-size: 22px;
+            line-height: 22px;
+            letter-spacing: -0.03em;
+            span {
+                display: inline;
+            }
+        }
+
+        a {
+            font-size: 16px;
+            line-height: 18px;
+            padding: 1px 9px 4px 8px;
+            margin-right: 12px;
+            background: #E2E2E2;
+            box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+            transition: all 0.4s linear;
+
+            &:hover {
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 2px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
 }
 
 .__fixed {
@@ -210,68 +247,54 @@ nav {
 }
 
 .next-post {
-    background: white;
-    color: black;
+    background: black;
+    color: white;
     transition: all 0.15s linear;
+    font-size: 36px;
+    line-height: 38px;
+    letter-spacing: -0.03em;
 
     @include xs {
-        padding: 28px 25px;
-
+        padding: 30px $horizontal-padding-mob 33px $horizontal-padding-mob;
         span {
             display: none;
-        }
-        img:first-child {
-            display: none;
-        }
-    }
-
-    @include s {
-        padding: 28px $horizontal-padding;
-
-        img:first-child {
-            display: inline-block;
         }
     }
 
     @include m {
+        padding: 35px $horizontal-padding 38px $horizontal-padding;
         span {
-            display: inline-block;
+            display: inline;
         }
     }
 
     a {
-        display: flex;
-        align-items: baseline;
         border-radius: 7px;
-        padding: 14px 20px 16px 20px;
-        background: #E2E2E2;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0), inset 2px 2px 2px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0, 0, 0, 0.15);
         transition: all 0.2s linear !important;
 
-        &:hover {
-            cursor: pointer;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 2px 2px 2px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0, 0, 0, 0.15);
-        }
-
-        img:first-child {
+        img {
             margin-right: 10px;
-        }
-
-        img:last-child {
-            margin-left: auto;
-            width: 15px !important;
-            height: 22px !important;
+            filter: invert(1);
         }
     }
 }
 
-.__next-post-grey {
-    background: #E2E2E2 !important;
-
-    a {
-        background: white !important;
+.go-top {
+    @include xs {
+        padding: 23px $horizontal-padding-mob 26px $horizontal-padding-mob;
     }
 
+    @include s {
+        padding: 23px $horizontal-padding 26px $horizontal-padding;
+    }
+
+    a {
+        mix-blend-mode: difference;
+        img {
+            margin-right: 6px;
+            transform: translateY(2px);
+        }
+    }
 }
 
 .description {
@@ -280,38 +303,47 @@ nav {
     color: white;
 }
 
-.short-description {
-    background: black;
-    color: white;
-
-    @include xs {
-        padding: 38px 25px;
-    }
-
-    @include s {
-        padding: 38px 35px;
-    }
-
-    & > div {
-        width: 85vw;
-    }
-}
-
 .story {
     background: black;
     color: white;
 
     @include xs {
-        padding: 34px 25px 43px 25px;
+        display: block;
+    }
+
+    @include xm {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    @include xs {
+        padding: 30px $horizontal-padding-mob 33px $horizontal-padding-mob;
     }
 
     @include s {
-        padding: 34px $horizontal-padding 43px $horizontal-padding;
+        padding: 35px $horizontal-padding 38px $horizontal-padding;
+    }
+
+    .story-name {
+        margin-bottom: 19px;
+        font-size: 22px;
+        line-height: 22px;
+        letter-spacing: -0.01em;
+
+        img {
+            filter: invert(1);
+            width: 0.77em;
+            margin-right: 7px;
+            transform: translateY(0.5px);
+        }
     }
 
     .story-text {
-        margin-top: 10px;
-        width: 85vw;
+        font-family: 'SF Mono';
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 23px;
+        letter-spacing: -0.03em;
 
         a {
             color: white;
@@ -328,21 +360,34 @@ nav {
 
 
 .highlight {
-    display: flex;
     background: white;
     color: black;
-    padding: 24px $horizontal-padding 90px $horizontal-padding;
 
     @include xs {
-        padding: 24px 25px 90px 25px;
+        font-size: 36px;
+        line-height: 38px;
+        letter-spacing: -0.03em;
+        padding: 25px $horizontal-padding-mob 88px $horizontal-padding-mob;
     }
 
     @include s {
-        padding: 24px $horizontal-padding 90px $horizontal-padding;
+        padding: 30px $horizontal-padding 100px $horizontal-padding;
+    }
+
+    @include l {
+        font-size: 42px;
+        line-height: 99%;
+        letter-spacing: -0.035em;
+    }
+
+    @include xl {
+        font-size: 48px;
+        line-height: 45px;
+        letter-spacing: -0.04em;
     }
 
     a {
-        color: black;
+        color: black !important;
         text-decoration: underline;
         text-decoration-color: black;
         transition: all 0.2s linear;
@@ -832,7 +877,8 @@ nav {
 
         .viewGithub {
             display: flex;
-            color: #8F8F8F;
+            color: #8F8F8F !important;
+            text-decoration: none;
             opacity: 0;
             font-size: 13px;
             position: absolute;
@@ -896,7 +942,8 @@ nav {
             padding-top: 1px;
 
             a {
-                color: $darkgrey;
+                color: $darkgrey !important;
+                text-decoration: none;
                 cursor: pointer;
                 padding-bottom: 10px;
             }
@@ -1045,6 +1092,18 @@ code {
             @include s {
                 width: 128px;
             }
+        }
+    }
+}
+
+.logo {
+    a {
+        text-decoration-color: transparent !important;
+        text-decoration: underline;
+        transition: all 0.2s linear;
+
+        &:hover {
+            text-decoration-color: white !important;
         }
     }
 }
@@ -1203,230 +1262,98 @@ code {
     }
 }
 
-.hide-scrollbar {
-    position: fixed;
-}
-
 .post-bar {
-    z-index: 9999;
-    top: 0;
-    right: 0;
-    background: black;
-    color: white;
     display: flex;
     justify-content: space-between;
-    box-sizing: border-box;
 
     @include xs {
-        padding: 14px 20px 26px 25px;
-        //padding: 14px 20px 26px $horizontal-padding;
+        font-size: 14px;
+        line-height: 16px;
+        height: 133px;
     }
 
     @include s {
-        padding: 14px 20px 14px $horizontal-padding;
+        font-size: 16px;
+        line-height: 18px;
+        height: 143px;
     }
 
-    .post-bar-left {
-        display: flex;
+    .left, .right {
+        mix-blend-mode: difference;
+    }
 
-        .post-bar-title {
-            letter-spacing: -0.03em;
-
-            @include xs {
-                display: block;
-                margin-left: 28px;
-                font-size: 23px;
-                line-height: 23px;
-                margin-top: 4px;
-            }
-
-            @include xm {
-                display: flex;
-                align-items: baseline;
-            }
-
-            @include l {
-                margin-left: 88px;
-                font-size: 36px;
-                line-height: 38px;
-                margin-top: -3px;
-            }
-
-            .grey {
-                @include xs {
-                    max-width: 100%;
-                }
-
-                @include s {
-                    max-width: 32vw;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-            }
-
-            .tags {
-                display: flex;
-                transition: opacity 0.2s linear;
-
-                @include xs {
-                    margin-left: 22px;
-                    margin-top: 8px;
-                }
-
-                @include xm {
-                    transform: translateY(-4px);
-                    margin-left: 42px;
-                    margin-top: 0;
-                }
-
-                @include l {
-                    transform: translateY(-7px);
-                }
-
-                .tag {
-                    font-size: 16px;
-                    line-height: 13px;
-                    text-align: center;
-                    letter-spacing: -0.01em;
-                    background: #3E3E3E;
-                    color: white;
-                    padding: 3px 9px 8px 9px;
-                    border-radius: 7px;
-                    margin-right: 46px;
-
-                    @include xs {
-                        font-size: 13px;
-                        line-height: 13px;
-                        letter-spacing: 0em;
-                        padding: 3px 9px 4px 9px;
-                        margin-right: 37px;
-                    }
-
-                    @include l {
-                        font-size: 16px;
-                        line-height: 13px;
-                        letter-spacing: -0.01em;
-                        padding: 3px 9px 8px 9px;
-                        margin-right: 46px;
-                    }
-
-                    &::before {
-                        content: "#";
-                        font-family: "SF Mono";
-                        font-weight: bold;
-                        color: black;
-                        background: white;
-                        position: absolute;
-                        border-radius: 100px;
-                        width: 24px;
-                        height: 14px;
-                        margin-left: -33px;
-                        margin-top: -3px;
-                        padding: 5px 0;
-
-                        @include xs {
-                            width: 20px;
-                            height: 14px;
-                            margin-left: -30px;
-                            padding: 3px 0;
-                        }
-
-                        @include l {
-                            width: 24px;
-                            height: 14px;
-                            margin-left: -33px;
-                            padding: 5px 0;
-
-                        }
-                    }
-                }
-            }
+    .left {
+        @include xs {
+            padding: 25px 0 25px $horizontal-padding-mob;
         }
 
-        a {
-            &:hover {
-                cursor: pointer;
-            }
+        @include s {
+            padding: 25px $horizontal-padding;
+        }
 
-            img {
-                @include xs {
-                    width: 41px !important;
-                }
+        .contacts {
+            a {
+                text-decoration-color: transparent !important;
+                text-decoration: underline;
+                transition: all 0.2s linear;
 
-                @include s {
-                    width: 81px !important;
-                }
-
-                @include xm {
-                    width: 41px !important;
+                &:hover {
+                    text-decoration-color: white !important;
                 }
             }
         }
     }
 
-    .post-bar-right {
-        .post-bar-logo {
-            font-size: 23px;
-            line-height: 18px;
-            text-align: right;
-            letter-spacing: -0.03em;
-            white-space: nowrap;
-            transition: all 0.2s linear;
-            margin-top: 6px;
-
+    .right {
+        @include xs {
+            padding: 25px $horizontal-padding-mob 25px 0;
+        }
+        img {
             @include xs {
-                display: none;
+                width: 112px;
             }
 
             @include s {
-                display: block;
+                width: 128px;
             }
         }
     }
 }
 
+.post-header {
+    @include xs {
+        padding: 20px $horizontal-padding-mob 28px $horizontal-padding-mob;
+    }
 
+    @include s {
+        padding: 20px $horizontal-padding 28px $horizontal-padding;
+    }
 
-.__post-bar-fixed {
-    width: 100%;
-    position: fixed !important;
-    animation: slidenavtop 0.4s ease-out forwards;
-    top: -60px;
+    @include l {
+        padding: 25px $horizontal-padding 28px $horizontal-padding;
+    }
 
-    .post-bar-title {
-        margin-left: 28px !important;
-        font-size: 23px !important;
-        line-height: 23px !important;
-        margin-top: 4px !important;
+    .post-title {
+        letter-spacing: -0.05em;
 
-        .tags {
-            @include xm {
-                transform: translateY(-4px) !important;
-            }
+        @include xs {
+            font-size: 51px;
+            line-height: 47px;
+        }
 
-            .tag {
-                font-size: 13px !important;
-                line-height: 13px !important;
-                letter-spacing: 0em !important;
-                padding: 3px 9px 4px 9px !important;
-                margin-right: 37px !important;
+        @include xm {
+            font-size: 64px;
+            line-height: 54px;
+        }
 
-                &::before {
-                    width: 20px !important;
-                    height: 14px !important;
-                    margin-left: -30px !important;
-                    margin-top: -3px  !important;
-                    padding: 3px 0 !important;
-                }
-            }
+        @include l {
+            font-size: 72px;
+            line-height: 54px;
         }
     }
-}
 
-@keyframes slidenavtop {
-    to {
-        top: 0px;
+    .short-description {
+        margin-top: 50px;
+        margin-bottom: 14px;
     }
 }
-
