@@ -15,6 +15,7 @@ export function MainLayout({children, title='Oleś Gergun'}) {
                 <meta name="description" content='oles, gergun, ui, design, type, typography, code'/>
                 <meta charSet="utf-8"/>
             </Head>
+            <Menu/>
             <main>
                 {children}
             </main>

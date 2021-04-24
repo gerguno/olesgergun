@@ -13,9 +13,8 @@ export default function Menu() {
     const [scrollDir, setScrollDir] = useState()
 
     useEffect(() => {
-        (router.pathname === "/" || router.pathname === "/work/[slug]") ? workbench.current.className = "__active" : workbench.current.className = ""
+        router.pathname === "/" ? workbench.current.className = "__active" : workbench.current.className = ""
         router.pathname === "/about" ? about.current.className = "__active" : about.current.className = ""
-        router.pathname === "/contact" ? contact.current.className = "__active" : contact.current.className = ""
     }, [router])
 
     useEffect(() => {
@@ -30,7 +29,7 @@ export default function Menu() {
                 ticking = false;
                 return;
             }
-            if (scrollY < 202) {
+            if (scrollY < 50) {
                 setScrollDir("on top")
             } else {
                 scrollY > lastScrollY ? setScrollDir("scrolling down") : setScrollDir("scrolling up")
@@ -52,7 +51,7 @@ export default function Menu() {
             nav.current.className = ''
         }
         if (scrollDir === "scrolling down") {
-            nav.current.className = "__nav-scrolled __fixed"
+            nav.current.className = "__fixed"
         }
 
         return () => window.removeEventListener("scroll", onScroll);
@@ -61,30 +60,15 @@ export default function Menu() {
     return (
         <nav ref={nav}>
             <div className="nav-left">
-                <div className="nav-logo">
-                    <img src="/oi.png"/>
+                <div ref={workbench}>
+                    <Link href={'/'}><a>Workbench</a></Link>
+                </div>
+                <div ref={about}>
+                    <Link href={'/about'}><a>About</a></Link>
                 </div>
             </div>
             <div className="nav-right">
-                <div className="nav-right-top">
-                    <div className="nav-right-menu">
-                        <div ref={workbench}>
-                            <Link href={'/'}><a>Workbench</a></Link>
-                        </div>
-                        <div ref={about}>
-                            <Link href={'/about'}><a>About</a></Link>
-                        </div>
-                        <div ref={contact}>
-                            <Link href={'/contact'}><a>Contact</a></Link>
-                        </div>
-                    </div>
-                    <div className="nav-right-logo">
-                        Oleś Gergun
-                    </div>
-                </div>
-                <div className="nav-right-bottom">
-                    Architecting the digital
-                </div>
+                <img src="/oi-small.png"/>
             </div>
         </nav>
     )
