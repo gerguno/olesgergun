@@ -2,9 +2,57 @@ import useWindowDimensions from "../components/useWindowDimensions";
 import PostBar from "../components/PostBar";
 import {PostLayout} from "../components/PostLayout";
 import Menu from "../components/Menu";
+import Link from 'next/link'
 
 export default function About() {
     const { height, width } = useWindowDimensions()
+
+    const third = (<div className="3rd">
+        <div className="about-block">
+            <h3>Services</h3>
+            <p>
+                (1) User experience design <br/>
+                Сreating complex enterprise and market-oriented web services (to a greater extent), mobile applications (to a lesser extent) solely or as a part of a team. Creating websites with experimental user interface. Taking responsibility for certain design development processes.
+            </p>
+            <p>
+                (2) Web development<br/>
+                Developing components for large scale projects. Creating corporate websites, experimental websites, small size e-stores, browser extensions, landing pages.
+            </p>
+            <p>
+                (3) Type design<br/>
+                Making letterings, type and type-containing logotypes, typefaces with close attention to Cyrillic alphabet.
+            </p>
+        </div>
+        <div className="about-block">
+            <h3>Activities</h3>
+            <p>
+                <img src="/bullet.svg"/>2019 “<Link href={'/work/marrying-the-impossible'}><a target="_blank">Marrying the Impossible</a></Link>”, experimental lettering workshop<br/>
+                <img src="/bullet.svg"/>2019 “<Link href={'https://www.the-village.com.ua/village/culture/culture-news/288395-minifilm-pro-vizualnu-kulturu-mista-vid-ukrayinskih-dizayneriv'}><a target="_blank">Atelier</a></Link>” («Ательє»), movie about visual culture, interview<br/>
+                <img src="/bullet.svg"/>2018 Telegraf.live with Maria Leonenko, interview
+            </p>
+        </div>
+        <div className="about-block">
+            <h3>Worked with</h3>
+            <p>
+                <Link href={'http://www.mishasmetana.com/'}><a target="_blank">Misha Smetana</a></Link> (<Link href={'https://tsentsiper.com/en/'}><a target="_blank">Tsentsiper</a></Link>, Moscow, Russia art director) on selected projects in Method Bureau, <Link href={'http://anfalov.de/'}><a target="_blank">Jevhen Anfalov</a></Link> (<Link href={'https://www.ecal.ch/'}><a target="_blank">ECAL</a></Link> graduate, independent designer, Hannover, Germany) on creating type foundry, <Link href={'https://barnbrook.net/'}><a target="_blank">Barnbrook</a></Link> (London, UK) on implementing Arsenale 2012 visual identity
+            </p>
+        </div>
+        <div className="about-block">
+            <h3>Networks</h3>
+            <p>
+                <img src="/bullet.svg"/><Link href={'http://github.com/gerguno'}><a target="_blank">GitHub</a></Link>, a repository for selected code projects <br/>
+                <img src="/bullet.svg"/><a href="https://www.instagram.com/kyiv_type_digest" target="_blank">Kyiv Type Digest</a>, a blog on vernacular typography<br/>
+                <img src="/bullet.svg"/><a href="https://www.instagram.com/kyiv_type_foundry" target="_blank">Kyiv Type Foundry</a>, foundry’s Instagram account<br/>
+                <img src="/bullet.svg"/><a href="https://www.facebook.com/olesgergun" target="_blank">Facebook</a>, daily life, jokes & virtue signalling<br/>
+                <img src="/bullet.svg"/><a href="https://www.instagram.com/olesgergun" target="_blank">Instagram</a>, reflecting work-life balance
+            </p>
+        </div>
+        <div className="about-block">
+            <a className="download-pdf" onClick={downloadFile}>
+                <img src="/download.svg"/>Download PDF
+            </a>
+        </div>
+    </div>)
 
     const downloadFile = () => {
         fetch('/api/fileServer', {
@@ -29,7 +77,7 @@ export default function About() {
             <Menu/>
             <PostBar color={'#000000'}/>
             <section className="about">
-                <div>
+                <div className="1st">
                     <div className="about-block">
                         Oleś Gergun is a digital designer and developer based in Kyiv. He gained a degree of Master of Arts in Cultural Studies at Kyiv-Mohyla Academy. Subsequently, he became a designer through an autodidact’s will, not least because of his interest in visual culture and creative coding.
                         <br/><br/>
@@ -37,13 +85,13 @@ export default function About() {
                         <br/><br/>
                         He has expertise in a wide range of practices with horizontal deepening into digital products сreation:
                         <br/><br/>
-                        (1) User experience design
-                        Big fan of strategy, creating user flows, algorithms, inventing new UI patterns as well as replicating conventional ones, generating tone of voice and design language.
+                        (1) User experience design<br/>
+                        Designing strategy- and research-oriented user journeys, applying conventional UI patterns, and inventing experimental ones, creating UI design language and tone of voice.
                         <br/><br/>
-                        (2) Web development
+                        (2) Web development<br/>
                         HTML, CSS (incl. preprocessors Sass, Less), advanced JavaScript (ES5, ES6+), RestAPI, GraphQL, ReactJS (Context API, React hooks), NextJS, Node.js (basics, incl. Express.js)
                         <br/><br/>
-                        (3) Type design
+                        (3) Type design<br/>
                         Paying attention to type as a fundamental to design. Exploring type forms of the past as well as of today’s street visual culture (predominantly of Eastern Europe origin).
                     </div>
                     <div className="about-block">
@@ -63,7 +111,7 @@ export default function About() {
                         </p>
                     </div>
                 </div>
-                <div>
+                <div className="2nd">
                     <div className="about-block">
                         <h3>Work experience</h3>
                         <p>
@@ -99,53 +147,9 @@ export default function About() {
                             Implementing and complementing The International Art Biennale Arsenale 2012 visual identity
                         </p>
                     </div>
+                    {width < 1366 && third}
                 </div>
-                <div>
-                    <div className="about-block">
-                        <h3>Services</h3>
-                        <p>
-                            (1) User experience design <br/>
-                            Сreating complex enterprise and market-oriented web services (to a greater extent), mobile applications (to a lesser extent) solely or as a part of a team. Creating websites with experimental user interface. Taking responsibility for certain design development processes.
-                        </p>
-                        <p>
-                            (2) Web development<br/>
-                            Developing components for large scale projects. Creating corporate websites, experimental websites, small size e-stores, browser extensions, landing pages.
-                        </p>
-                        <p>
-                            (3) Type design<br/>
-                            Making letterings, type and type-containing logotypes, typefaces with close attention to Cyrillic alphabet.
-                        </p>
-                    </div>
-                    <div className="about-block">
-                        <h3>Services</h3>
-                        <p>
-                            <img src="/bullet.svg"/>2019 “Marrying the Impossible”, experimental lettering workshop<br/>
-                            <img src="/bullet.svg"/>2019 “Atelier” («Ательє»), movie about visual culture, interview<br/>
-                            <img src="/bullet.svg"/>2018 Telegraf.live with Maria Leonenko, interview
-                        </p>
-                    </div>
-                    <div className="about-block">
-                        <h3>Worked with</h3>
-                        <p>
-                            Misha Smetana (Tsentsiper, Moscow, Russia art director) on selected projects in Method Bureau, Jevhen Anfalov (ECAL graduate, independent designer, Hannover, Germany) on creating type foundry, Barnbrook (London, UK) on implementing Arsenale 2012 visual identity
-                        </p>
-                    </div>
-                    <div className="about-block">
-                        <h3>Networks</h3>
-                        <p>
-                            <img src="/bullet.svg"/>GitHub, a repository for selected code projects <br/>
-                            <img src="/bullet.svg"/>Kyiv Type Digest, a blog on vernacular typography<br/>
-                            <img src="/bullet.svg"/>Kyiv Type Foundry, foundry’s Instagram account<br/>
-                            <img src="/bullet.svg"/>Facebook, daily life, jokes & virtue signalling<br/>
-                            <img src="/bullet.svg"/>Instagram, reflecting work-life balance
-                        </p>
-                    </div>
-                    <div className="about-block">
-                        <a className="download-pdf" onClick={downloadFile}>
-                            <img src="/download.svg"/>Download PDF
-                        </a>
-                    </div>
-                </div>
+                {width > 1365 && third}
             </section>
         </PostLayout>
     )

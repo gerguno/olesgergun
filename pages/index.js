@@ -110,7 +110,7 @@ export default function Index({ posts }) {
 							Oleś Gergun is a digital designer and developer based in Kyiv. He has expertise in a wide range of practices with horizontal deepening into digital products сreation:
 							<br/><br/>
 							(1) User experience design<br/>
-							Big fan of strategy, creating user flows, algorithms, new UI patterns as well as replicating conventional ones, generating tone of voice and design language.
+							Designing strategy- and research-oriented user journeys, applying conventional UI patterns, and inventing experimental ones, creating UI design language and tone of voice.
 							<br/><br/>
 							(2) Web development<br/>
 							HTML, CSS (incl. preprocessors Sass, Less), advanced JavaScript (ES5, ES6+), RestAPI, GraphQL, ReactJS (Context API, React hooks), NextJS, Node.js (basics, incl. Express.js)

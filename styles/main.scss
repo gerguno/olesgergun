@@ -1371,9 +1371,6 @@ code {
     font-size: 17px;
     line-height: 23px;
     letter-spacing: -0.03em;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 85px;
 
     @include xs {
         padding: 10px $horizontal-padding-mob 38px $horizontal-padding-mob;
@@ -1383,10 +1380,20 @@ code {
         padding: 10px $horizontal-padding 38px $horizontal-padding;
     }
 
-    img {
-        filter: invert(1);
-        width: 0.7em;
-        margin-right: 5px;
+    @include m {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: 50px;
+    }
+
+    @include l {
+        grid-gap: 85px;
+    }
+
+    @include xl {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 85px;
     }
 
     .about-block {
@@ -1394,6 +1401,37 @@ code {
 
         p {
             padding: 10px 0;
+
+            img {
+                filter: invert(1);
+                width: 0.7em;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    a {
+        color: white !important;
+        text-decoration: underline;
+        text-decoration-color: white;
+        transition: all 0.2s linear;
+        cursor: pointer !important;
+
+        &:hover {
+            text-decoration-color: transparent;
+        }
+    }
+
+    .download-pdf {
+        font-family: 'Helvetica Neue';
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0;
+
+        img {
+            margin-right: 8px;
+            transform: translateY(2px);
         }
     }
 }
