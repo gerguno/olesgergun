@@ -50,14 +50,16 @@ export default function PostMenu({ title, afterTitle }) {
     return (
         <nav ref={nav}>
             <div className="nav-left">
-                <div className="nav-title">
+                <div className="nav-title-group">
                     <Link href={'/'}>
                         <a>
                             <img src="/back.svg"/>
                         </a>
                     </Link>
-                    {title}
-                    <span className="grey"> {afterTitle}</span>
+                    <div className="nav-title">
+                        {title}
+                        <span className="grey"> {afterTitle}</span>
+                    </div>
                 </div>
             </div>
             <div className="nav-right">
