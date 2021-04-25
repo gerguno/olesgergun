@@ -63,10 +63,13 @@ h2 {
 }
 
 h3 {
-    font-size: 20px;
-    line-height: 22px;
-    letter-spacing: -0.02em;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0em;
 }
+
 a {
     color: white !important;
     text-decoration: underline;
@@ -1358,5 +1361,39 @@ code {
     .short-description {
         margin-top: 50px;
         margin-bottom: 14px;
+    }
+}
+
+.about {
+    font-family: 'SF Mono';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 23px;
+    letter-spacing: -0.03em;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 85px;
+
+    @include xs {
+        padding: 10px $horizontal-padding-mob 38px $horizontal-padding-mob;
+    }
+
+    @include s {
+        padding: 10px $horizontal-padding 38px $horizontal-padding;
+    }
+
+    img {
+        filter: invert(1);
+        width: 0.7em;
+        margin-right: 5px;
+    }
+
+    .about-block {
+        padding-bottom: 42px;
+
+        p {
+            padding: 10px 0;
+        }
     }
 }

@@ -4,6 +4,7 @@ import {MainLayout} from "../components/MainLayout"
 import useWindowDimensions from "../components/useWindowDimensions";
 import { useRouter } from 'next/router'
 import { useEffect } from "react";
+import Menu from "../components/Menu";
 
 export default function Index({ posts }) {
 	const router = useRouter()
@@ -16,6 +17,7 @@ export default function Index({ posts }) {
 
 	return (
 		<MainLayout title={'Workbench'}>
+			<Menu/>
 			<div className="rainbow">
 				<div className="left">
 					<div className="logo">
