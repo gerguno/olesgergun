@@ -79,12 +79,12 @@ a {
     }
 }
 
-a:visited {
-    color: white;
+a:hover, a:active, a:visited, a:focus {
+    text-decoration: underline;
 }
 
-div::selection {
-    background: rgba(0,0,0,0.1);
+a:visited {
+    color: white;
 }
 
 // Props
@@ -1311,6 +1311,11 @@ code {
         @include xs {
             padding: 25px $horizontal-padding-mob 25px 0;
         }
+
+        @include s {
+            padding: 25px $horizontal-padding 25px 0;
+        }
+
         img {
             @include xs {
                 width: 112px;
