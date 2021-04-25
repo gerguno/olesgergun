@@ -6,6 +6,24 @@ import Menu from "../components/Menu";
 export default function About() {
     const { height, width } = useWindowDimensions()
 
+    const downloadFile = () => {
+        fetch('/api/fileServer', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                response.blob().then(blob => {
+                    let url = window.URL.createObjectURL(blob);
+                    let a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Oleś Gergun CV.pdf';
+                    a.click();
+                })
+            })
+    }
+
     return (
         <PostLayout title={'About'}>
             <Menu/>
@@ -121,6 +139,11 @@ export default function About() {
                             <img src="/bullet.svg"/>Facebook, daily life, jokes & virtue signalling<br/>
                             <img src="/bullet.svg"/>Instagram, reflecting work-life balance
                         </p>
+                    </div>
+                    <div className="about-block">
+                        <a className="download-pdf" onClick={downloadFile}>
+                            <img src="/download.svg"/>Download PDF
+                        </a>
                     </div>
                 </div>
             </section>
