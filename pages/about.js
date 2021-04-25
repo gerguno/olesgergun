@@ -7,7 +7,25 @@ import Link from 'next/link'
 export default function About() {
     const { height, width } = useWindowDimensions()
 
-    const third = (<div className="3rd">
+    const downloadFile = () => {
+        fetch('/api/fileServer', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                response.blob().then(blob => {
+                    let url = window.URL.createObjectURL(blob);
+                    let a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Oleś Gergun CV.pdf';
+                    a.click();
+                })
+            })
+    }
+
+    const third = <div className="3rd">
         <div className="about-block">
             <h3>Services</h3>
             <p>
@@ -52,25 +70,7 @@ export default function About() {
                 <img src="/download.svg"/>Download PDF
             </a>
         </div>
-    </div>)
-
-    const downloadFile = () => {
-        fetch('/api/fileServer', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(response => {
-                response.blob().then(blob => {
-                    let url = window.URL.createObjectURL(blob);
-                    let a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'Oleś Gergun CV.pdf';
-                    a.click();
-                })
-            })
-    }
+    </div>
 
     return (
         <PostLayout title={'About'}>
