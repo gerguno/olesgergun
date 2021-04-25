@@ -63,7 +63,11 @@ export default function PostMenu({ title, afterTitle }) {
                 </div>
             </div>
             <div className="nav-right">
-                <img src="/oi-small.png"/>
+                <Link href={'/'}>
+                    <a>
+                        <img src="/oi-small.png"/>
+                    </a>
+                </Link>
             </div>
         </nav>
     )

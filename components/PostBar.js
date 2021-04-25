@@ -30,7 +30,11 @@ export default function PostBar({ color }) {
                 </div>
             </div>
             <div className="right">
-                <img src="/oi.png"/>
+                <Link href={'/'}>
+                    <a>
+                        <img src="/oi.png"/>
+                    </a>
+                </Link>
             </div>
         </div>
     )

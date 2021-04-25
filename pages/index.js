@@ -41,7 +41,11 @@ export default function Index({ posts }) {
 					</div>
 				</div>
 				<div className="right">
-					<img src="/oi.png"/>
+					<Link href={'/'}>
+						<a>
+							<img src="/oi.png"/>
+						</a>
+					</Link>
 				</div>
 			</div>
 			<section className="container">
