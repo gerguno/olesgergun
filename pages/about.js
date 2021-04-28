@@ -118,7 +118,7 @@ export default function About() {
                             <img src="/bullet.svg"/>2021–now<br/>
                             Kyiv Type Foundry<br/>
                             Co-founder, Type Designer & JS Developer (part-time)<br/>
-                            Shaping strategy, drawing retail typefaces, developing and supporting online webstore, opening new perspectives on cyrillic-based heritage
+                            Shaping strategy, drawing retail typefaces, developing and supporting online webstore, opening new perspectives on Cyrillic-based heritage
                         </p>
                         <p>
                             <img src="/bullet.svg"/>2016–2020<br/>

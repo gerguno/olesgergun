@@ -1182,6 +1182,10 @@ code {
             .home-project-title {
                 letter-spacing: -0.04em;
 
+                &:hover {
+                    text-decoration-color: transparent;
+                }
+
                 @include xs {
                     font-size: 36px;
                     line-height: 38px;
