@@ -14,7 +14,7 @@ import PostMenu from "../../components/PostMenu";
 
 export default function Slug({ post, allPosts }) {
 	return (
-			<PostLayout title={post.title}>
+			<PostLayout title={post.title} description={post.shortDescription}>
 				<PostMenu title={post.title} afterTitle={post.afterTitle}/>
 				<PostBar color={post.color.hex}/>
 				<PostHeader title={post.title} afterTitle={post.afterTitle} shortDescription={post.shortDescription} tags={post.tags}/>
