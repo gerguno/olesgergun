@@ -28,7 +28,8 @@ class ProgressBar extends React.Component {
           width: 100%;
         }
         #nprogress .bar {
-          background: black;
+          background: white;
+          mix-blend-mode: difference;
           position: fixed;
           z-index: 1031;
           bottom: 0;
