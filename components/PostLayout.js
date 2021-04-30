@@ -6,6 +6,7 @@ export function PostLayout({children, title='Oleś Gergun', description='Oleś G
             <Head>
                 <title>{title} @ Oleś Gergun</title>
                 <meta name="description" content={description}/>
+                <meta property="og:image" content="/thumbnail.jpg" />
                 <meta charSet="utf-8"/>
             </Head>
             <div>
