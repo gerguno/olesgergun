@@ -78,7 +78,7 @@ a {
     cursor: pointer !important;
 
     &:hover {
-        text-decoration-color: transparent;
+        text-decoration-color: transparent !important;
     }
 }
 
@@ -452,7 +452,7 @@ nav {
         height: 717px;
     }
 
-    video {
+    .background-video {
         position: absolute;
         width: 101%;
         height: 101%;
@@ -632,6 +632,77 @@ nav {
         }
     }
 
+    .iphonex-screen-web {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+        @include xs {
+            width: 41vw;
+        }
+
+        @include s {
+            width: 26vw;
+        }
+
+        @include l {
+            width: 304px;
+        }
+
+        .__device {
+            width: inherit;
+            img {
+                width: inherit;
+            }
+            .__notch {
+                position: absolute;
+                width: inherit;
+                top: 0;
+                z-index: 1;
+            }
+        }
+
+        .__media {
+            position: absolute;
+            background: white;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            overflow: hidden;
+
+            @include xs {
+                top: 1.9vw;
+                width: 36.8vw;
+                height: 80.2vw;
+                border-radius: 4.4vw;
+            }
+
+            @include s {
+                top: 1.1vw;
+                width: 23.35vw;
+                height: 50.9vw;
+                border-radius: 3vw;
+            }
+
+            @include l {
+                top: 13px;
+                width: 274px;
+                height: 596px;
+                border-radius: 35px;
+            }
+
+            img, video {
+                width: inherit;
+                position: inherit;
+                bottom: 0;
+            }
+
+            video {
+
+            }
+        }
+    }
+
     .iphone6-screen {
         position: relative;
         top: 50%;
@@ -734,7 +805,10 @@ nav {
             video {
                 height: inherit;
                 width: auto;
-                //position: inherit;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
             }
         }
     }
